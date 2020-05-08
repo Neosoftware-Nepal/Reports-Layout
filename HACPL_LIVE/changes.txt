@@ -1,0 +1,4 @@
+purchase order need to be backuped and update the query
+distpatch order
+sales return 
+goods receipt

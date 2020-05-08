@@ -1,0 +1,81 @@
+CREATE PROCEDURE SP_ITN_SalesLineDetails (IN DocKey INT)
+AS 
+BEGIN
+SELECT 	
+		/*  For Item Details  */
+		T0."DocEntry"
+		,T1."ItemCode" AS "ItemCode"
+		,T1."Dscription" AS "Dscription"
+		,T1."Quantity" AS "Quantity"
+		--,T1."unitMsr" AS "UoM"
+		,T4."SalUnitMsr" AS "UoM"
+		,T1."PriceBefDi" AS "Price"
+		,(IFNULL(T1."Quantity", 0) * IFNULL(T1."PriceBefDi", 0)) AS "LineAmt"
+		,T1."LineTotal"
+		
+		/* Subqueries of Line Excise and Line Vat     */		
+		,(SELECT sum(TX."TaxSum")
+		  FROM INV4 TX 
+		  WHERE TX."DocEntry" = T0."DocEntry" 
+		  and TX."staType" = 7) AS "LineExcise"
+		,(SELECT sum(TX."TaxSum") 
+		 FROM INV4 TX 
+		 WHERE TX."DocEntry"=T0."DocEntry" 
+		 and TX."staType" = 1) AS "LineVAT"
+		 
+		 /* Taxes and VAT  */
+		,T2."TaxId8" AS "ECCNo"
+		,T2."CERange"
+		,T0."VatSum"
+		,T2."CEDivis"
+		,T2."CEComRate"
+		,T1."LineNum" AS "Line No"
+		,T3."TaxId4" AS "PANNo"
+		,T3."TaxId1" AS "CSTNo"
+		,T3."TaxId2" AS "LSTNo"
+		,T3."TaxId11" AS "TINNo"
+		,T5."ChapterID"
+		,T5."Dscription" AS "ChIdDes"
+		,T1."VatPrcnt" AS "TAXRATE"
+		,T1."VatPrcnt"
+		
+		/* Expenses and discounts */	
+		,CASE 
+			WHEN T1."DiscPrcnt" = 0.0
+				THEN (IFNULL(T1."Quantity", 0) * IFNULL(T1."Price", 0))
+			ELSE (IFNULL(T1."Quantity", 0) * IFNULL(T1."Price", 0)) * (T1."DiscPrcnt") - T1."LineTotal"
+			END AS "Amt"
+		,T9."PymntGroup" AS "PaymntMethd"
+		,IFNULL(T0."WTSum", 0) AS "TCS"
+		,T12."CurrName" AS "CurrName"
+		,T12."F100Name" AS "CurrName2"
+		--,T13."TransCat" AS "SalAgstFrm"
+		,T1."DiscPrcnt" AS "LineDisc"	
+		,T0."DiscPrcnt" AS "DiscntPct"
+		,T0."TotalExpns"
+		
+		
+		/* subquery for Line Discount amount */
+		,(Select ("PriceBefDi" - "Price") From INV1 where INV1."DocEntry" = T0."DocEntry" ) as "LineDisAmt"
+		
+		/* user defined feild*/
+		,IFNULL(T1."U_ITN_EXPU", 0) * T1."Quantity" AS "LineExcise"	
+	    
+FROM OINV T0
+    /* Using Join functions  */
+	INNER JOIN INV1 T1 ON T0."DocEntry" = T1."DocEntry" 	 /*  Inner Joining invoice table with DocEntry for
+															 `for item details and dicounts	   */
+	LEFT JOIN CRD7 T2 ON T2."CardCode" = T0."CardCode"	 	 /*  Left Joining CRD7 with card code for taxes */
+		AND T2."Address" = T0."ShipToCode"				 	 /*	 and Vats  */	
+		AND T2."AddrType" = 'S'								
+	LEFT JOIN CRD7 T3 ON T3."CardCode" = T0."CardCode"		 /*  Left Joining CRD7 for TaxID */
+		AND T3."Address" = ''
+		AND T3."AddrType" = 'S'
+	LEFT JOIN OITM T4 ON T4."ItemCode" = T1."ItemCode"		 /*  Join used for Unit of measurements   */
+		AND T1."ObjType" = '13'
+	LEFT JOIN OCHP T5 ON T5."AbsEntry" = T4."ChapterID"
+	LEFT JOIN OCTG T9 ON T9."GroupNum" = T0."GroupNum"	 	 /*  Join used for Group Number  */	
+	LEFT JOIN OCRN T12 ON T0."DocCur" = T12."CurrCode"	 	 /*  Join used for Currcency Name and Currency code*/
+	--LEFT JOIN INV12 T13 ON T13."DocEntry" = T1."DocEntry"    
+	WHERE T0."DocEntry" = 14;
+END

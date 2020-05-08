@@ -1,0 +1,19 @@
+Localization Addon Version 1.1.0
+This addon gives a brief summary regarding the functions performed by the Localization Addon version 1.
+
+Functionality handled in this version:
+1. HAC Batch Management - This addon is specifically developed for the requirements of Hulas Auto Craft that handles the 
+management of serials and batches in the Receipt from Production screen in SAP Business One application. In the process of
+production, when the goods are issued with certain batch on the basis of Workorder number, finished goods needs to 
+be received. During the receipt of finished goods, a functionality to search the batch details on the basis of reference number
+of goods issued is provided, to ease the user with fetching the details of batch respective to the reference number.
+
+Required Stored Procedures:
+1. ITN_GETBATCHDETAILS
+
+UDFs required:
+None
+
+UDTs required:
+None
+

@@ -1,0 +1,19 @@
+ Select T0."PostDate"
+	   ,T0."StartDate"
+	   ,T0."DueDate"
+	   ,T0."CloseDate" 
+	   ,T0."DocNum"
+	   ,IFNULL(T1."BeginStr", '') ||''|| CAST(T0."DocNum" AS CHAR(6)) || ''|| CAST(T1."EndStr" AS CHAR(6)) AS "ProductionOrderNo"
+	   ,T2."BaseRef" 
+	  ,T2."RefDate"
+	  ,T3."Account"
+	  ,T3."Debit"
+	  ,T3."Credit"
+	  ,T4."AcctName"
+	 
+from OWOR T0
+Left Join NNM1 T1 On T0."Series" = T1."Series"	 
+Left Join OJDT T2 ON T0."DocNum" = T2."BaseRef"
+Left Join JDT1 T3 ON T2."TransId" = T3."TransId"
+Left Join OACT T4 ON T3."Account" = T4."AcctCode"
+where T0."PostDate" <= TO_DATE(('16/7/2019'), 'DD/MM/YYYY')

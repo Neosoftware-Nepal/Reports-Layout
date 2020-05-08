@@ -1,0 +1,85 @@
+CREATE PROCEDURE SP_ITN_SalesHeaderDetails (IN DocKey INT)
+As
+BEGIN
+SELECT 
+	/* Document level information */
+	 T0."DocEntry"
+	,T0."DocNum"
+	,T0."DocDate" AS "InvDate"
+	,IFNULL(T20."BeginStr", '')
+	|| '' || CAST(T0."DocNum" AS CHAR(20)) 
+	|| '' || IFNULL(CAST(T20."EndStr" AS CHAR(20)), '') AS "InvNo"
+	,IFNULL(CAST(AD."Building" AS VARCHAR), '') AS "Building"
+	,IFNULL(AD."City", '') AS "City"
+	,IFNULL(ST."Name", '') AS "State"
+	,IFNULL(AD."ZipCode", '') AS "ZipCode"
+	,IFNULL(AD."Country", '') AS "Country"
+	,T0."PeyMethod" AS "PaymentMode"
+	
+	
+	/* Nepali Date*/
+	,SUBSTRING(T0."U_ITN_NPDate", 0, 4)
+	|| '/' || SUBSTRING(T0."U_ITN_NPDate", 5, 2) 
+	|| '/' || SUBSTRING(T0."U_ITN_NPDate", 7, 2) AS "NP Date"
+	
+	
+	/*  Start of Cutomer Details */	
+	,T0."CardName" AS "CutomerName"
+	,T0."CardCode"
+	,T0."CntctCode" AS "CustomerContact"
+	,T0."Address2" AS "Address"
+	,T0."Address" AS "BilToAdrs"
+	,IFNULL(T16."Cellular", T16."Phone1") AS "CustNumber"
+	,IFNULL(M."Name", '') AS "CustContName"
+	,IFNULL(M."Cellolar", '') AS "CustContMobileNo"
+	,IFNULL(M."Tel1", '') AS "Tel"
+	,IFNULL(M."E_MailL", '') AS "CustContEmail"
+	
+	/* start of footer Details   */
+	,T0."DocTotal"
+	,T0."DocCur" AS "Currency"
+	,T0."Comments" AS "Remarks"
+	,T0."RoundDif" AS "RoundOf"
+	,T0."NumAtCard" AS "CustomerRefNum"
+	,T0."OwnerCode" AS "Owner"	
+	,T0."DiscPrcnt" AS "DiscntPct"
+	,T0."DiscSum"
+	,T0."TotalExpns"
+	,OUSR."U_NAME" AS "USER_CODE"
+	,T16."Balance"
+	
+	,T0."U_ITN_VECN" AS "VehicleNo"
+	,T0."U_ITN_MDPY" AS "ModeofPay"
+	
+	/* To be added on Client Demand " Frieght" */
+	
+	/*,CASE 
+		WHEN T0."TotalExpns" < '0'
+			THEN T0."TotalExpns" * (- 1)
+		ELSE T0."TotalExpns"
+		END AS "frt"
+	,CASE 
+		WHEN T0."DocCur" = 'NPR'
+			THEN IfNULL(I27."LineTotal", 0)
+		ELSE IfNULL(I27."TotalFrgn", 0)
+		END AS "TotalFreight"*/
+
+FROM OINV T0
+LEFT JOIN OCRD T16 ON T16."CardCode" = T0."CardCode"
+LEFT JOIN OUSR ON T0."UserSign" = OUSR."USERID"
+INNER JOIN NNM1 T20 ON T20."Series" = T0."Series"
+LEFT JOIN CRD7 T2 ON T2."CardCode" = T0."CardCode"  
+	AND T2."AddrType" = 'S'
+LEFT JOIN CRD1 AD ON AD."CardCode" = T0."CardCode"
+	AND AD."Address" = T0."PayToCode"
+	AND AD."AdresType" = 'B'
+LEFT JOIN OCST ST ON ST."Code" = AD."State"
+	AND ST."Country" = AD."Country"
+LEFT JOIN OCPR M ON M."CntctCode" = T0."CntctCode"
+	AND M."CardCode" = T0."CardCode"
+/* To be added on customer demand "Frieght"   */
+/* LEFT JOIN INV3 I27 ON T0."DocEntry" = I27."DocEntry"
+	AND I27."ExpnsCode" = 8 */
+WHERE T0."DocEntry" =:DocKey;
+
+END

@@ -1,0 +1,21 @@
+USE [HACPL_LIVE]
+GO
+/****** Object:  UserDefinedFunction [dbo].[ITN_NEPALI_FMT_DATE]    Script Date: 02/12/2019 3:05:08 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+	ALTER function [dbo].[ITN_NEPALI_FMT_DATE]  
+(  
+   @DateString varchar(30)  
+)  
+returns nvarchar(100)  
+as  
+begin return(SELECT case 
+			 when @DateString is null 
+				then '' 
+			else 
+				concat(SUBSTRING(@DateString,1,4), '/', SUBSTRING(@DateString,6,2),'/',SUBSTRING(@DateString,9,2))
+		   END)
+
+END  

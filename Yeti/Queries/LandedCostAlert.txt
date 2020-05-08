@@ -1,0 +1,16 @@
+with LC as(
+SELECT T0."DocEntry"  
+	,T0."DocNum"
+	,T0."U_ITN_LDDC"
+	,IFNULL((SELECT 'Yes' FROM IPF1 T1 WHERE T0."DocEntry" = T1."BaseEntry"), 'NULL') AS "LC_Created"
+
+FROM OPDN T0
+WHERE T0."U_ITN_LDDC" = 'Yes'
+)
+
+Select    LC."DocEntry"
+	  ,LC."DocNum"
+	  ,LC."U_ITN_LDDC" as "Landed Cost Required"
+	  ,LC."LC_Created"
+from LC
+where  LC."U_ITN_LDDC" = 'NULL'

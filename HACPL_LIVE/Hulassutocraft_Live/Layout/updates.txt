@@ -1,0 +1,24 @@
+sales invoices uploaded and tested
+doubts(*)
+
+1. uploaded sales order
+2. uploaded sales return in A/R credit memo
+    **1st data of chasis no. is not shown
+3. uploaded purchase order
+4. uploaded purchase return
+5. uploaded purchase request
+6. uploaded incomming payment
+	** In amount the the heading section
+7. uploaded incomming payments
+8. uploaded Dispatch order
+	**Dosenot display batches in same pages from 2nd items.
+9. updated GRN batch wise and non batch wise
+ 	** the naming pattern of the non batch wise is GRN_NB_crp3
+
+10. updated service sales credit memo
+11. updated service purchase order
+12. uploaded jounal vourcher
+
+** Report EXCISE sales data not shown
+
+// Task to be done upload service and reports in live

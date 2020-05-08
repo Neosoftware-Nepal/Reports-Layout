@@ -1,0 +1,37 @@
+CREATE PROCEDURE "APCREDITMEMO"
+	AS
+	BEGIN
+SELECT 'Incoming', T2."DocDate", T2."DocNum",  T3."FormatCode", T2."Project" as "PrjCode",
+  T3."AcctName"  as "AccountName",
+ T1."LineMemo", T1."Debit", (CASE WHEN T10."ObjType" ='19'THEN T10."LineTotal"  END ) AS "Credit",T1."Credit" AS "Credit1" , 
+ SUBSTRING(T2."U_UNE_NPDate",0,4)||'/'||SUBSTRING(T2."U_UNE_NPDate",5,2)||'/'||SUBSTRING(T2."U_UNE_NPDate",7,2) AS  "NP Date",
+ IFNULL(T4."BeginStr",'') ||''|| CAST(T2."DocNum" AS char(20)) ||''|| CAST (T4."EndStr" as CHAR (20)) AS "DocNo" , 
+ T5."PrcName" as "Employee", T6."PrcName" as "Department", T7."PrcName" as "Division", T8."PrcName" as "Asset", 
+ T9."PrcName" as "Others",
+  CASE WHEN IFNULL(T10."Dscription",'')='' THEN  T2."Comments" ELSE  T10."Dscription" END as "Rmk", 
+ T0."TransId", T2."TransId" as "DCno",
+  T2."DocEntry",T11."CardName",
+  --CASE WHEN T12."SeriesName" LIKE '%CP%' THEN 'Cash Payment'  WHEN T12."SeriesName" LIKE '%BP%'THEN 'Bank Payment'
+  --WHEN T12."SeriesName" LIKE '%JV%'THEN 'Journal Voucher' END 
+  'Debit Note' as "TYPE", 
+  CASE WHEN T1."Project" = 'Birgunj' then 'Lipni Birta,Ward No-8'
+    When T1."Project" = 'Kathmandu-HO' then 'P.O. Box No. 5751, Sinamangal' END "Adrs",
+  B."U_NAME" , T2."DocEntry"
+  FROM OJDT T0
+ INNER JOIN JDT1 T1 ON T0."TransId" = T1."TransId"
+ INNER JOIN ORPC T2 ON T0."TransId" = T2."TransId" 
+ LEFT JOIN OACT T3 ON T1."ShortName" = T3."AcctCode"
+ Left Join NNM1 T4 on T4."Series" = T2."Series"
+ left JOIN OPRC T5 ON T5."PrcCode" = T1."ProfitCode"
+  left JOIN OPRC T6 ON T6."PrcCode" = T1."OcrCode2"
+  left JOIN OPRC T7 ON T7."PrcCode" = T1."OcrCode3"
+  left JOIN OPRC T8 ON T8."PrcCode" = T1."OcrCode4"
+  left JOIN OPRC T9 ON T9."PrcCode" = T1."OcrCode5"
+  LEFT JOIN RPC1 T10 ON T10."DocEntry"=T2."DocEntry" AND T10."AcctCode"=T1."Account" --AND T10."LineId"=T1."Line_ID"-1
+  LEFT JOIN OCRD T11 ON T11."CardCode"=T1."ShortName"
+  LEFT JOIN NNM1 T12 ON T12."Series"=T2."Series"
+  Inner Join OUSR B on T0."UserSign"=B."INTERNAL_K"
+  --WHERE T2."DocNum" = '790001'
+  ORDER BY T1."Line_ID"
+;
+END

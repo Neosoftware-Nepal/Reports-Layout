@@ -1,0 +1,43 @@
+Documentation:
+Tigers changes 
+
+purchase order
+1. Image changed 
+2. Quotation ref consist of multiple rows changed into single
+3. removed Mode of shipment is removed from Quotation ref
+4. Director is removed from Authorised signatory
+5. Added Exim code below Pan No. of comapnay.
+6. footer section c comapnay name aligned has been changed
+
+
+
+sales invoice
+1. According to Article 11.5 of the directory has been added in header a section
+2. remark has been removed 
+3. the formula of discount in percent has been removed.
+
+purchase indent/receipt
+1. removed price and value column from the table
+** prepared by already has a username which is purchase request.
+
+good receipt note
+1. added rate column in the table
+2. added column for amount.
+
+Dispatch Advice
+1. heading "Delivery Chalan" is added in header section
+
+
+
+  
+Common updates
+1. image is linked with database and maintained resolutions
+
+##vat purchase register no store procedure
+
+
+
+discurssion
+purchase requester name in purchase request
+
+

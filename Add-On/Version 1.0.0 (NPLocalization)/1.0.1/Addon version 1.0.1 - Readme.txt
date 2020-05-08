@@ -1,0 +1,18 @@
+Localization Addon Version 1.0.1
+This docement gives a brief summary regarding the functions performed by the Localization Addon version 1.0.1.
+
+Functionality handled in this version:
+1. Nepali Date field - Automatic update of Nepali Date in the Journal Entry of its respective documents
+2. IRD Bill Upload - Bulk upload of bills not previously uploaded and bills failed to be uploaded due to some reasons.
+
+Required Stored Procedures:
+1. ITN_GETUNSYNCEDOINV
+2. ITN_GETUNSYNCEDORIN
+
+UDFs required:
+None.
+
+UDTs required:
+None.
+
+Regarding IRD Bill Upload, a screen under Sales is added, namely Pending IRD Sync. This screen fetches the data that are not uploaded previously or failed to upload due to some reason. After the click of upload button, a prompt screen shows the number of bills successfully uploaded or failed. Also, if the CBMS config is set to false, clicking the upload button prompts the user a message that the CBMS config is disabled.

@@ -1,0 +1,4 @@
+##Dispatch order
+1. driver's sign alignment is changed into left.
+2. customer is added infront of PAN No. 
+3. Company phone is changed into Contact number.

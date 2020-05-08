@@ -1,0 +1,3 @@
+Battery No - SELECT Notes from OSRN where LotNumber = $[$3.53.0] and MnfSerial = $[$3.1.0]
+Color - SELECT U_ITN_CLR from OSRN where LotNumber = $[$3.53.0] and MnfSerial = $[$3.1.0]
+Registration No - SELECT U_ITN_REGNO from OSRN where LotNumber = $[$3.53.0] and MnfSerial = $[$3.1.0]

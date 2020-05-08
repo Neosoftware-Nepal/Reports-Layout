@@ -1,0 +1,116 @@
+CREATE Procedure "SP_ITN_ServicePurchaseOrder"(IN DocKey INT)
+AS
+BEGIN
+SELECT T0."DocEntry"
+	,IFNULL(T4."BeginStr", '') 
+	 || '' || CAST(T0."DocNum" AS CHAR(20)) 
+	 || '' || IFNULL(CAST(T4."EndStr" AS CHAR(20)), '') AS "PurOrdNo"
+	,T0."DocDate" AS "PurOrdDt"
+	,SUBSTRING(T0."U_ITN_NPDate",0,4)||'/'||SUBSTRING(T0."U_ITN_NPDate",5,2)||'/'||SUBSTRING(T0."U_ITN_NPDate",7,2) AS Miti 
+	,T0."DocCur" AS "DocumentCurrency"
+	,T0."UpdateDate" AS "POModifyDt"
+	,T0."CardCode" AS "VendorCode"
+	,T0."CardName" AS "VendorName" -- T11."CardName"
+	,T0."Address" AS "VendorBillingAddress"
+	,T13."Street" AS "VendorStreet"
+	,T13."City" AS "VendorCity"
+	,T13."ZipCode" AS "VendorZipCode"
+	,T13."Country" AS "VendorCountry"
+	,T12."TaxId2" AS "VendorPAN"
+	,T11."E_Mail" AS "VendorEmail"
+	,T11."Phone1" AS "VendorPhone"
+	,T11."Fax" AS "VendorFax"
+	,T8."Name" AS "VendorContactPerson" -- ,T8.Title + ' ' + T8."FirstName" + ' ' + T8."MiddleName" + ' ' + T8."LastName"
+	,T8."Cellolar" AS "VendorContactPhone"
+	,OADM."CompnyName" AS "CompanyName"
+	,OADM."CompnyAddr" AS "CompanyAddress"
+	,ADM1."Building" AS "CompanyBuilding"
+	,ADM1."Block" AS "CompanyBlock"
+	,ADM1."Street" AS "CompanyStreet"
+	,ADM1."StreetNo"  AS "CompanyPoBoX"
+	,ADM1."City"  AS "CompanyCity"
+	,ADM1."ZipCode"  AS "CompanyZipCode"
+	,OADM."RevOffice" AS "CompanyPAN"
+	,OADM."Phone1" AS "CompanyPhone"
+	,OADM."Fax" AS "CompanyFax"
+	,OADM."E_Mail" AS "CompanyEmail"
+	,OADM."Country" AS "CompanyCountryName"
+	,ST2."Name" AS "ComStateName"
+	,T2."CeRegNo" AS "CompRegNo"
+	,T0."Address2" AS "ShippingAddress"
+	,IFNULL(T21."BeginStr", '') 
+	 || '' || CAST(RH."DocNum" AS CHAR(20)) 
+	 || '' || IFNULL(CAST(T21."EndStr" AS CHAR(20)), '') AS "RequisitionNum"
+	,RH."ReqName" AS "RequesterName"
+	,RH."DocDate" AS "ReqDate"
+	,SUBSTRING(RH."U_ITN_NPDate",0,4)||'/'||SUBSTRING(RH."U_ITN_NPDate",5,2)||'/'||SUBSTRING(RH."U_ITN_NPDate",7,2) AS "ReqMiti"
+	,T0."DocDueDate" AS "DeliveryDate"
+	,T14."CurrName" AS "CurrencyName"
+	,OSAC."ServCode" AS "ServiceCode"
+	,OSAC."ServName" AS "ServiceName"
+	,CASE 
+		WHEN T1."Text" IS NULL
+			THEN T1."Dscription"
+		ELSE T1."Text"
+		END AS "ItemName"
+	,T1."Price" AS "Price"
+	,CASE 
+		WHEN T0."DocCur" = 'NPR'
+			THEN T1."VatSum"
+		ELSE T1."VatSumFrgn"
+		END AS "VAT AMOUNT"
+	,CASE 
+		WHEN T0."DocCur" = 'NPR'
+			THEN T0."DocTotal"
+		ELSE T0."DocTotalFC"
+		END AS "POTotal"
+	--,T0."U_ITN_PYTM" AS "PaymentTerm"
+	,OUSR."U_NAME"   AS "Doc_CreaterName"
+	,T9."SlpName"    AS "BuyerName"
+	--,T0."U_ITN_OTHC" AS "OtherConditon"
+	,T0."Comments"   AS "Comments"
+	,T4."Remark"	 AS "Remarks"
+	,T1."TaxCode"    AS "TAX CODE"
+	,IFNULL((SELECT SUM(POR4."TaxSum")
+     FROM POR4
+     WHERE T0."DocEntry" = POR4."DocEntry"
+	 AND POR4."staType" = 1), 0) AS "VatAmt"
+	,T2."Building" AS "LocAdr"
+	,T2."City" AS "LocCity"
+	,T2."CompType" AS "LocEmail"
+	,T2."AsseType" AS "LocPhn"
+	,T4."Remark" AS "Division"
+	,T0."DocCur" AS "Currency"
+	,OUSR."U_NAME" AS "USER_Name"
+	--,T0."U_ITN_CONN" AS "Contract Number"
+	,((IFNULL(T1."PriceBefDi", 0) - IFNULL(T1."Price", 0)) * IFNULL(T1."Quantity", 0)) + T0."DiscSum" AS "DisAmt"
+FROM OPOR T0
+INNER JOIN POR1 T1 ON T0."DocEntry" = T1."DocEntry"
+LEFT JOIN OLCT T2 ON T1."LocCode" = T2."Code"
+LEFT JOIN NNM1 T4 ON T0."Series" = T4."Series"
+LEFT JOIN OSHP T5 ON T0."TrnspCode" = T5."TrnspCode"
+LEFT JOIN OCTG T6 ON T0."GroupNum" = T6."GroupNum"
+LEFT JOIN OPYM T7 ON T0."PeyMethod" = T7."PayMethCod"
+LEFT JOIN OCPR T8 ON T0."CntctCode" = T8."CntctCode"
+LEFT JOIN OSLP T9 ON T0."SlpCode" = T9."SlpCode"
+LEFT JOIN OSTC T10 ON T1."TaxCode" = T10."Code"
+LEFT JOIN OCRN T14 ON T0."DocCur" = T14."CurrCode"
+LEFT JOIN OCRD T11 ON T11."CardCode" = T0."CardCode"
+LEFT JOIN POR12 T12 ON T12."DocEntry" = T0."DocEntry"
+LEFT JOIN CRD1 T13 ON T13."CardCode" = T0."CardCode"
+	AND T13."AdresType" = 'B'
+LEFT JOIN OUSR ON T0."UserSign" = OUSR."USERID"
+INNER JOIN OADM ON 1 = 1
+LEFT JOIN ADM1 ON OADM."Code" = ADM1."Code"
+LEFT JOIN PRQ1 RQ ON RQ."DocEntry" = T1."BaseEntry"
+	AND RQ."ObjType" = T1."BaseType"
+	AND RQ."LineNum" = T1."BaseLine"
+LEFT JOIN OPRQ RH ON RH."DocEntry" = RQ."DocEntry"
+LEFT JOIN OCST ST2 ON ST2."Code" = OADM."State"
+	AND ST2."Country" = OADM."Country"
+LEFT JOIN NNM1 T21 ON T21."Series" = RH."Series"
+LEFT JOIN OSAC ON T1."SacEntry" = OSAC."AbsEntry"
+WHERE T0."DocType" = 'S'
+AND T0."DocEntry" = :DocKey;
+END
+Ser

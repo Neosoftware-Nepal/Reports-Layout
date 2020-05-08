@@ -1,0 +1,6 @@
+SELECT T0."DocDate"
+	  ,T0."DocNum" as "IncommingDoc"
+	  , T0."CreateDate"
+	  , CURRENT_DATE
+FROM ORCT T0 
+WHERE T0."CreateDate" = CURRENT_DATE

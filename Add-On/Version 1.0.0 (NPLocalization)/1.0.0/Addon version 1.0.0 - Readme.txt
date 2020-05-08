@@ -1,0 +1,38 @@
+Localization Addon Version 1.0.0
+This docement gives a brief summary regarding the functions performed by the Localization Addon version 1.0.0.
+
+Functionality handled in this version:
+1. Nepali Date field - showing Nepali date field in documents where ever necessary
+2. IRD Bill Printing - handling the print count for the sales invoice.
+3. IRD Bill Upload - upload sales invoice and sales credit memo to the IRD server
+
+Required Stored Procedures:
+1. ITN_UPDATEPRINTCOUNT  
+2. ITN_GET_INVOICE_DATA_DETAILS
+3. ITN_POSTING_CREDITMEMO_DATA
+4. ITN_OINVSETSYNCSTATUS 
+5. ITN_GETAPIDETAILS
+6. ITN_ORINSETSYNCSTATUS
+
+UDFs required:
+1. U_ITN_NPDate, Alphanumeric(10) - Required in every necessary documents
+2. U_ITN_Print_Count, Numeric(3) - Required in marketing documents
+3. U_ITN_Is_RealTime, Text; U_ITN_Is_Synced, Text; U_ITN_Sync_Date, Date - Required in marketing documents
+
+UDTs required:
+1. @CBMS_CONFIG
+
+For CBMS_CONFIG:
+Need to create UDT from SAP application, with following specification and default value "false" in U_Enabled. Also, in the field of validation, put valid values
+and enter "true", "false" in the column "Value" and "True", "False" in the column "Description" respectively.
+CREATE COLUMN TABLE "@CBMS_CONFIG" ("Code" NVARCHAR(50) NOT NULL ,
+	 "Name" NVARCHAR(100) NOT NULL ,
+	 "U_Username" NVARCHAR(20),
+	 "U_Password" NVARCHAR(10),
+	 "U_BillApiUrl" NVARCHAR(40),
+	 "U_BillReturnApiUrl" NVARCHAR(40),
+	 "U_Enabled" NCLOB MEMORY THRESHOLD 1000,
+	 "U_CompanyCode" NVARCHAR(4),
+	 PRIMARY KEY ("Code")) UNLOAD PRIORITY 5 AUTO MERGE;
+
+Note: If the value in the UDT: CBMS_CONFIG is to be changed, user must restart the application after the value is changed.

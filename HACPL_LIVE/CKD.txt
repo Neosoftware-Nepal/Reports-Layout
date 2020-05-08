@@ -1,0 +1,35 @@
+select distinct 
+T0.U_ITN_WO as 'Work Order No'
+,T0.U_ITN_BILL as 'Billing Date'
+,T1.Dscription  as 'Model No'
+,T0.U_ITN_VECN as 'Container No'
+,T0.U_ITN_CON  as 'Container Recived From'
+,T1.Quantity   as 'Arrival Quantity'
+,T0.U_ITN_Work  as 'W/o Order Recipt Date'
+,T0.U_ITN_NPDate as 'W/o Receipt Month'
+,T2.DueDate as 'Production Started Date'
+,T2.CloseDate as 'Production Complete date'
+,T2.CmpltQty as 'Units Produced'
+,T2.U_ITN_NPDate as 'Production Month '
+,T3.Quantity as 'sale Quantity' 
+,T4.U_ITN_NPDate as 'sales Month'
+ from OPDN t0 
+ inner join Pdn1 T1 on T0.DocEntry=T1.DocEntry
+ left outer join OWOR T2 on T0.U_ITN_WO=T2.U_ITN_WO and T2.Type='s' and T2.Status='L'
+ left   join ORDR  T4 on T4.U_ITN_WO= T0.U_ITN_WO and T4.[DocStatus]= 'c'
+  left  JOIN RDR1 T3 ON T3.DocEntry = T4.DocEntry
+
+ group by T0.U_ITN_WO 
+,T0.U_ITN_BILL 
+,T0.U_ITN_CON  
+,T1.Quantity  
+,T0.U_ITN_Work 
+,T0.U_ITN_NPDate 
+,T2.DueDate 
+,T2.CloseDate
+,T2.CmpltQty
+,T2.U_ITN_NPDate
+,T1.Dscription 
+,T3.Quantity
+,T4.U_ITN_NPDate
+,T0.U_ITN_VECN

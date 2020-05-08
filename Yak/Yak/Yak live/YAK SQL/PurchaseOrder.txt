@@ -1,0 +1,227 @@
+CREATE Procedure "SP_ITN_purchaseOrder"(IN DocKey INT)
+AS
+BEGIN
+SELECT 
+/*  Heading Details   */
+	 T0."DocEntry"
+	,T0."DocNum"
+	,T0."DocCur" AS "DocumentCurrency"
+	,T0."UpdateDate" AS "POModifyDt"
+	,T0."CardCode" AS "VendorCode"
+	--,T0."CardName" AS "VendorName" 
+	,T0."DocDate" AS "PurOrdDt"
+	,T0."Address" AS "VendorBillingAddress"
+	,T0."Address2" AS "ShippingAddress"
+	,T0."DocDueDate" AS "DeliveryDate"
+	,T0."DocCur" AS "Currency"
+	,T0."DiscPrcnt" AS "DocDiscPercent"
+	,T9."SlpName"    AS "BuyerName"
+	,CASE 
+		WHEN T0."DocStatus" = 'C'
+			THEN 'Closed'
+		ELSE 'Open'
+		END AS "Status"
+	,T11."CardName"
+	,T13."Street" AS "VendorStreet"
+	,T13."City" AS "VendorCity"
+	,T13."ZipCode" AS "VendorZipCode"
+	,T13."Country" AS "VendorCountry"
+	,T12."TaxId2" AS "VendorPAN"
+	,T11."E_Mail" AS "VendorEmail"
+	,T11."Phone1" AS "VendorPhone"
+	,T11."Fax" AS "VendorFax"
+	,T8."Name" AS "VendorContactPerson" -- ,T8.Title + ' ' + T8."FirstName" + ' ' + T8."MiddleName" + ' ' + T8."LastName"
+	,T8."Cellolar" AS "VendorContactPhone"
+	,T0."Comments"   AS "Comments"
+	,T4."Remark"	 AS "Remarks"
+	,T5."TrnspName" AS "ShipType"
+	,IFNULL(CASE 
+		WHEN T0."DocCur" = 'NPR'
+			THEN T15."LineTotal"
+		ELSE T15."TotalFrgn"
+		END, 0) AS "FreightInclusive"
+	,IFNULL(CASE 
+		WHEN T0."DocCur" = 'NPR'
+			THEN T17."LineTotal"
+		ELSE T17."TotalFrgn"
+		END, 0) AS "TransitInsurance"
+	,IFNULL(CASE 
+		WHEN T0."DocCur" = 'NPR'
+			THEN T19."LineTotal"
+		ELSE T19."TotalFrgn"
+		END, 0) AS "PackingCharges"	
+	,IFNULL(CASE 
+		WHEN T0."DocCur" = 'NPR'
+			THEN T21."LineTotal"
+		ELSE T21."TotalFrgn"
+		END, 0) AS "Loading&Unloading"
+	,IFNULL(CASE 
+		WHEN T0."DocCur" = 'NPR'
+			THEN T23."LineTotal"
+		ELSE T23."TotalFrgn"
+		END, 0) AS "MiscExp"	
+	,IFNULL(CASE 
+		WHEN T0."DocCur" = 'NPR'
+			THEN T25."LineTotal"
+		ELSE T25."TotalFrgn"
+		END, 0) AS "FreightExclusive"	
+	,IFNULL(CASE 
+		WHEN T0."DocCur" = 'NPR'
+			THEN T27."LineTotal"
+		ELSE T27."TotalFrgn"
+		END, 0) AS "CST"			
+	,IFNULL(T16."ExpnsName", '')  AS "PACKAGEName"
+	,IFNULL(T18."ExpnsName", '')  AS "FreightName"
+	,CASE
+		WHEN T1."TaxCode" = 'EXVAT'
+		  THEN IFNULL(T1."U_ITN_EXPU", 0) * T1."Quantity" 
+		ELSE IFNULL((SELECT SUM(POR4."TaxSum")
+     		  		 FROM POR4
+     		  		 WHERE T0."DocEntry" = POR4."DocEntry"
+	 				 AND POR4."staType" = 7), 0)
+	 				 END  AS "LineExcise"
+	 	,OADM."CompnyName" AS "CompanyName"
+		,OADM."CompnyAddr" AS "CompanyAddress"
+		,ADM1."Building" AS "CompanyBuilding"
+		,ADM1."Block" AS "CompanyBlock"
+		,ADM1."Street" AS "CompanyStreet"
+		,ADM1."StreetNo"  AS "CompanyPoBoX"
+		,ADM1."City"  AS "CompanyCity"
+		,ADM1."ZipCode"  AS "CompanyZipCode"
+		,ADM1."EccNo" AS "ExciseRegNo"
+		,OADM."RevOffice" AS "CompanyPAN"
+		,OADM."Phone1" AS "CompanyPhone"
+		,OADM."Phone2" AS "MobileNumber"
+		,OADM."Fax" AS "CompanyFax"
+		,OADM."E_Mail" AS "CompanyEmail"
+		,OADM."Country" AS "CompanyCountryName"
+		,ST2."Name" AS "ComStateName"
+	
+	
+	
+/* Dates   */	
+	,IFNULL(T4."BeginStr", '') 
+	 || '' || CAST(T0."DocNum" AS CHAR(20)) 
+	 || '' || IFNULL(CAST(T4."EndStr" AS CHAR(20)), '') AS "PurOrdNo"
+	,ITN_NEPALI_FMT_DATE (T0."U_ITN_NPDate") AS Miti	
+	--,SUBSTRING(T0."U_ITN_NPDate",0,4)||'/'||SUBSTRING(T0."U_ITN_NPDate",5,2)||'/'||SUBSTRING(T0."U_ITN_NPDate",7,2) AS Miti 
+	,ITN_NEPALI_FMT_DATE (RH."U_ITN_NPDate") AS "ReqMiti"	
+	---,SUBSTRING(RH."U_ITN_NPDate",0,4)||'/'||SUBSTRING(RH."U_ITN_NPDate",5,2)||'/'||SUBSTRING(RH."U_ITN_NPDate",7,2) AS "ReqMiti"
+	
+	
+/*  Requester Details   */
+	,T2."CeRegNo" AS "CompRegNo"
+	,IFNULL(T29."BeginStr", '') 
+	 || '' || CAST(RH."DocNum" AS CHAR(20)) 
+	 || '' || IFNULL(CAST(T29."EndStr" AS CHAR(20)), '') AS "RequisitionNum"
+	,RH."ReqName" AS "RequesterName"
+	,RH."DocDate" AS "ReqDate"	
+/*  Currency Details  */	
+	,T14."CurrName" AS "CurrencyName"
+	,T14."CurrCode" AS "CurrencyCode"
+/*   Line Details  */
+	,T1."ItemCode" AS "ItemCode"
+	,T1."ShipDate" AS "ItemDeliveryDate"
+	,CASE 
+		WHEN T1."Text" IS NULL
+			THEN T1."Dscription"
+		ELSE T1."Text"
+		END AS "ItemName"
+	,T1."unitMsr" AS "ItemUOM"
+	,T1."Quantity" AS "Quantity"
+	,T1."PriceBefDi" AS "Price"
+	,T1."DiscPrcnt" AS "LineDiscountPercent"
+	,(T1."Quantity" * T1."Price") AS "LineTotal"
+	,T1."TaxCode"    AS "TAX CODE"
+	,CASE 
+		WHEN T0."DocCur" = 'NPR'
+			THEN T0."DiscSum"
+		ELSE T0."DiscSumFC"
+		END AS "Doc Disc AMOUNT"
+	,CASE 
+		WHEN T0."DocCur" = 'NPR'
+			THEN T0."VatSum"
+		ELSE T0."VatSumFC"
+		END AS "Doc VAT AMOUNT"
+	,CASE 
+		WHEN T0."DocCur" = 'NPR'
+			THEN T0."DocTotal"
+		ELSE T0."DocTotalFC"
+		END AS "POTotal"
+	,IFNULL((SELECT SUM(POR4."TaxSum") FROM POR4 WHERE T0."DocEntry" = POR4."DocEntry"  AND POR4."staType" = 1), 0) AS "LineVatAmt"
+	,T2."Building" AS "LocAdr"
+	,T2."City" AS "LocCity"
+	,T2."CompType" AS "LocEmail"
+	,T2."AsseType" AS "LocPhn"
+	,T4."Remark" AS "Division"
+	/*  User Defined Feilds  */
+	,OUSR."U_NAME" AS "USER_Name"
+	--,T1."U_ITN_HSCD" AS "HSCode"
+	--,T3."U_ITN_HSCD" AS "H.S.Code"
+	,T0."U_ITN_MDPY"  as "Mode of Payment"
+	,T0."U_ITN_MTRN"  as "Mode of Transport"
+	,T0."U_ITN_REVNDT" AS "Revision Date"
+    ,T0."U_ITN_REVN" AS "RevisionNO"
+	,T0."U_ITN_POCATG" AS "OrderCITN_POCATGategory"
+	,T1."U_ITN_EXPU" * T1."Quantity" AS "ExciseAmount"
+	,((IFNULL(T1."PriceBefDi", 0) - IFNULL(T1."Price", 0)) * IFNULL(T1."Quantity", 0)) + T0."DiscSum" AS "DisAmt"
+	,OC."ChapterID"
+	
+	
+FROM OPOR T0
+INNER JOIN POR1 T1 ON T0."DocEntry" = T1."DocEntry"
+LEFT JOIN OLCT T2 ON T1."LocCode" = T2."Code"
+LEFT JOIN OITM T3 ON T1."ItemCode" = T3."ItemCode"
+LEFT JOIN OCHP OC ON OC."AbsEntry" = T3."ChapterID"
+LEFT JOIN NNM1 T4 ON T0."Series" = T4."Series"
+LEFT JOIN OSHP T5 ON T0."TrnspCode" = T5."TrnspCode"
+LEFT JOIN OCTG T6 ON T0."GroupNum" = T6."GroupNum"
+LEFT JOIN OPYM T7 ON T0."PeyMethod" = T7."PayMethCod"
+LEFT JOIN OCPR T8 ON T0."CntctCode" = T8."CntctCode"
+LEFT JOIN OSLP T9 ON T0."SlpCode" = T9."SlpCode"
+LEFT JOIN OSTC T10 ON t1."TaxCode" = T10."Code"
+LEFT JOIN OCRN T14 ON T0."DocCur" = T14."CurrCode"
+LEFT JOIN OCRD T11 ON T11."CardCode" = T0."CardCode"
+LEFT JOIN POR12 T12 ON T12."DocEntry" = T0."DocEntry"
+LEFT JOIN CRD1 T13 ON T13."CardCode" = T0."CardCode"
+	AND T13."AdresType" = 'B'
+LEFT JOIN OUSR ON T0."UserSign" = OUSR."USERID"
+INNER JOIN OADM ON 1 = 1
+LEFT JOIN ADM1 ON OADM."Code" = ADM1."Code"
+LEFT JOIN PRQ1 RQ ON RQ."DocEntry" = T1."BaseEntry"
+	AND RQ."ObjType" = T1."BaseType"
+	AND RQ."LineNum" = T1."BaseLine"
+LEFT JOIN OPRQ RH ON RH."DocEntry" = RQ."DocEntry"
+LEFT JOIN OCST ST2 ON ST2."Code" = OADM."State"
+	AND ST2."Country" = OADM."Country"
+LEFT JOIN NNM1 T29 ON T29."Series" = RH."Series"
+LEFT JOIN POR3 T15 ON T0."DocEntry" = T15."DocEntry"
+	 AND T15."ExpnsCode" = 1
+LEFT JOIN OEXD T16 ON T15."ExpnsCode" = T16."ExpnsCode"
+	AND T16."ExpnsCode" = 1
+LEFT JOIN POR3 T17 ON T0."DocEntry" = T17."DocEntry"
+	 AND T17."ExpnsCode" = 2
+LEFT JOIN OEXD T18 ON T17."ExpnsCode" = T18."ExpnsCode"
+	AND T18."ExpnsCode" = 2
+LEFT JOIN POR3 T19 ON T0."DocEntry" = T19."DocEntry"
+	 AND T19."ExpnsCode" = 3
+LEFT JOIN OEXD T20 ON T19."ExpnsCode" = T20."ExpnsCode"
+	AND T20."ExpnsCode" = 3
+LEFT JOIN POR3 T21 ON T0."DocEntry" = T21."DocEntry"
+	 AND T21."ExpnsCode" = 4
+LEFT JOIN OEXD T22 ON T21."ExpnsCode" = T22."ExpnsCode"
+	AND T22."ExpnsCode" = 4
+LEFT JOIN POR3 T23 ON T0."DocEntry" = T23."DocEntry"
+	 AND T23."ExpnsCode" = 5
+LEFT JOIN OEXD T24 ON T23."ExpnsCode" = T24."ExpnsCode"
+	AND T24."ExpnsCode" = 5
+LEFT JOIN POR3 T25 ON T0."DocEntry" = T25."DocEntry"
+	 AND T25."ExpnsCode" = 6
+LEFT JOIN OEXD T26 ON T25."ExpnsCode" = T26."ExpnsCode"
+	AND T26."ExpnsCode" = 6
+LEFT JOIN POR3 T27 ON T0."DocEntry" = T27."DocEntry"
+	 AND T27."ExpnsCode" = 7
+LEFT JOIN OEXD T28 ON T27."ExpnsCode" = T28."ExpnsCode"
+	AND T28."ExpnsCode" = 7 	
+WHERE T0."DocType" = 'I' AND T0."DocEntry" = :DocKey;
+END

@@ -1,0 +1,59 @@
+Create Procedure "SP_ITN_ProductionOrderHeader"(IN DocKey INT)
+AS
+BEGIN
+SELECT DISTINCT OADM."CompnyName" AS "CompanyName"
+	,OADM."CompnyAddr" AS "CompanyAddress"
+	,ADM1."Building" AS "CompanyBuilding"
+	,ADM1."Block" AS "CompanyBlock"
+	,ADM1."Street" AS "CompanyStreet"
+	,ADM1."StreetNo" AS "CompanyPoBoX"
+	,ADM1."City" AS "CompanyCity"
+	,ADM1."ZipCode" AS "CompanyZipCode"
+	,OADM."RevOffice" AS "CompanyPAN"
+	,OADM."Phone1" AS "CompanyPhone"
+	,OADM."Fax" AS "CompanyFax"
+	,OADM."E_Mail" AS "CompanyEmail"
+	,OADM."Country" AS "CompanyCountryName"
+	,ST2."Name" AS "ComStateName"
+	,T1."DocNum"
+	,IFNULL(T8."BeginStr", '') || '' || CAST(T1."DocNum" AS CHAR(20)) || '' || IFNULL(CAST(T8."EndStr" AS CHAR(20)), '') AS "Production Order No"
+	,T1."Status"
+	,T1."PostDate"
+	
+	,SUBSTRING(T1."U_ITN_NPDate", 0, 4) || '/' || SUBSTRING(T1."U_ITN_NPDate", 5, 2) || '/' || SUBSTRING(T1."U_ITN_NPDate", 7, 2) AS Miti
+	--,T1."U_ITN_PRDL" AS "Production Line"
+	,T1."U_ITN_REJBTTL" AS "Rejected Bottles"
+	,T1."U_ITN_RERES" AS "Rejected Reason"
+	,T1."U_ITN_BRKD" AS "Reason for Failure"
+	--,SUBSTRING(T1."U_ITN_BRKD", 1, LENGTH(T1."U_ITN_BRKD") - 2) || ':' || 
+	 --SUBSTRING(T1."U_ITN_BRKD", LENGTH(T1."U_ITN_BRKD") - 1, 2) AS "Breakdown Duration"
+	--,T1."U_ITN_SUPR" AS "Line Supervisor"*/
+	,T1."U_ITN_TWRK" AS "Total Workers"
+	,SUBSTRING(T1."U_ITN_PRHO", 1, LENGTH(T1."U_ITN_PRHO") - 2) || ':' || 
+	 SUBSTRING(T1."U_ITN_PRHO", LENGTH(T1."U_ITN_PRHO") - 1, 2) AS "Production Running Hours"
+	/*,T1."U_ITN_BBIW" AS "Bottle Breakage In Wash"
+	,T1."U_ITN_BBIP" AS "Bottle Breakage in Production"*/
+	--,SUBSTRING(T1."U_ITN_PRPT", 1, LENGTH(T1."U_ITN_PRPT") - 2) || ':' || 
+	 --SUBSTRING(T1."U_ITN_PRPT", LENGTH(T1."U_ITN_PRPT") - 1, 2) AS "Prepration Time"
+	,SUBSTRING(T1."U_ITN_SRTT", 1, LENGTH(T1."U_ITN_SRTT") - 2) || ':' || 
+	 SUBSTRING(T1."U_ITN_SRTT", LENGTH(T1."U_ITN_SRTT") - 1, 2) AS "Starting Time"
+	,SUBSTRING(T1."U_ITN_CLOT", 1, LENGTH(T1."U_ITN_CLOT") - 2) || ':' || 
+	 SUBSTRING(T1."U_ITN_CLOT", LENGTH(T1."U_ITN_CLOT") - 1, 2) AS "Closing Time"
+	,T1."U_ITN_INSO" AS "Inspector Name"
+	,T1."U_ITN_INST" AS "Inspection Time"
+	/*,T1."U_ITN_INSR" AS "Inspection 3"
+	,T1."U_ITN_SEAL" AS "Sealing"*/
+	,T1."Comments"
+FROM OWOR T1
+LEFT JOIN IGN1 T2
+	ON T1."DocNum" = T2."BaseRef"
+LEFT JOIN OIGN T3
+	ON T2."DocEntry" = T3."DocEntry"
+INNER JOIN OADM ON 1 = 1
+LEFT JOIN ADM1 ON OADM."Code" = ADM1."Code"
+LEFT JOIN OCST ST2 ON ST2."Code" = OADM."State"
+	AND ST2."Country" = OADM."Country"
+LEFT JOIN NNM1 T8 ON T1."Series" = T8."Series"
+WHERE T1."Status" <> 'C'
+AND T1."DocEntry" = :DocKey;
+END
