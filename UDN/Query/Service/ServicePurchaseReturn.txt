@@ -1,0 +1,97 @@
+CREATE PROCEDURE "SP_ITN_SERVICEPURCHASERETURN" (IN DocKey INT)
+AS
+BEGIN
+	SELECT T1."DocEntry"
+		,T1."DocNum"
+		,IFNULL(NM."BeginStr", '') 
+	    || '' || CAST(T1."DocNum" AS NVARCHAR(20))
+	     || '' ||  IFNULL(NM."EndStr", '') AS "Invoice No"
+		,T1."DocDate" AS "Invoice Date"
+		,T4."Vendor_PAN"
+		,T1."CardName"
+		,T1."Address" as "BillToAddress"
+		,T1."TaxDate" AS "TaxDate"
+		,T1."DocDueDate" AS "DocDueDate"
+		,T1."CardCode"
+		,ifnull(oc."Phone1",OC."Phone2") as "VendorPhone"
+		,T1."CardName"
+		,T1."Confirmed"
+		,T1."DocCur" AS "CURRENCY"
+		,T1."DocRate" AS "CURRENCY_RATE"
+		,T1."DocDueDate" AS "Delivery Date"
+		,ITN_NEPALI_FMT_DATE(T1."U_ITN_NPDate") AS "ReturnMiti"
+		,T1."DocTotal"
+		,T1."Comments" AS "Remark"
+		,T16."U_NAME" as "Prepared By"
+		,T1."U_BUSUNIT" as "TAGS"
+	
+		,0 as "PCS"
+		,T1."DiscPrcnt" as "DocumentDiscPrcnt"
+		,T1."DiscSum" as "Discount Amount"
+		,T1."VatSum" as "Vat Amount"
+		,T1."VatPercent" as "Vat Percent"
+		,IFNULL((SELECT sum(INV4."BaseSum") FROM INV4 WHERE T1."DocEntry" = INV4."DocEntry" AND INV4."LineNum" = T2."LineNum" AND INV4."staType" = 1), 0) AS "TaxableAmount"
+		,T6."PymntGroup" AS "PaymentTerm"
+		
+		/*  Line Details */
+		,T2."ItemCode"
+		,T2."Dscription" as "Particulars"
+		,T2."Quantity" as "Total Pcs"
+		,T2."VatSum" AS "TaxAmount"
+		,T2."Rate" as "Rate"
+		,OS."Name" AS "TaxName"
+		,OT."UserText"
+		,CASE 
+			WHEN T2."Quantity" = T2."PackQty"
+				THEN NULL
+			ELSE T2."PackQty"
+			END AS "NoofPack"
+		,T2."PriceBefDi"
+		,T2."unitMsr" as "Unit(PCS)"
+		,T2."LineTotal" as  "Amount"
+		,T2."DiscPrcnt" as "LineItemDiscPrcnt"
+		
+	FROM ORPC T1
+	INNER JOIN RPC1 T2 ON T1."DocEntry" = T2."DocEntry"
+	INNER JOIN OSTC OS ON T2."TaxCode" = OS."Code"
+	INNER JOIN OITM OT ON T2."ItemCode" = OT."ItemCode"
+	LEFT OUTER JOIN OCPR T3 ON T1."CntctCode" = T3."CntctCode"
+	LEFT OUTER JOIN NNM1 NM ON NM."Series" = T1."Series"
+	LEFT OUTER JOIN PCH1 PQ ON T2."ItemCode" = PQ."ItemCode"
+		AND T2."LineNum" = PQ."BaseLine"
+		AND T2."BaseEntry" = PQ."DocEntry"
+	LEFT OUTER JOIN OPCH OPQ ON PQ."DocEntry" = OPQ."DocEntry"
+	LEFT OUTER JOIN (
+		SELECT "TaxId4" AS "Vendor_PAN"
+			,"TaxId2" AS "Vendor_VAT"
+		
+			,"CardCode"
+		FROM CRD7
+		WHERE IFNULL("Address", '') = ''
+			AND "AddrType" = 'S'
+		) T4 ON T1."CardCode" = T4."CardCode"
+	LEFT OUTER JOIN POR12 T12 ON T1."DocEntry" = T12."DocEntry"
+	INNER JOIN OLCT T5 ON T2."LocCode" = T5."Code"
+	LEFT OUTER JOIN OCTG T6 ON T1."GroupNum" = T6."GroupNum"
+	LEFT OUTER JOIN OSCN T13 ON T1."CardCode" = T13."CardCode"
+		AND T2."ItemCode" = T13."ItemCode"
+	LEFT OUTER JOIN (
+		SELECT A."WhsCode"
+			,A."Street" AS "SHIP_STREET"
+			,A."Block" AS "SHIP_BLOCK"
+			,A."Building" AS "SHIP_BUILDING"
+			,A."City" AS "SHIP_CITY"
+			,A."ZipCode" AS "SHIP_ZIPCODE"
+			,B."Name" AS "SHIP_StateName"
+			
+		FROM OWHS A
+			,OCST B
+		WHERE A."State" = B."Code"
+			AND A."Country" = B."Country"
+		) Z ON T2."WhsCode" = Z."WhsCode"
+	LEFT OUTER JOIN OSHP T15 ON T1."TrnspCode" = T15."TrnspCode"
+	left join OUSR T16 ON T1."UserSign" = T16."USERID"
+	left join OCRD OC ON OC."CardCode"=T1."CardCode"
+	WHERE T1."DocType"='S' and T1."DocEntry"= :DocKey;
+	
+END

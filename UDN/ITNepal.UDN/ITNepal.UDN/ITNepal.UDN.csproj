@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6354D8B0-6D7E-4319-98D3-F677CCF61FA7}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ITNepal.UDN</RootNamespace>
+    <AssemblyName>ITNepal.UDN</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>ITNepal.Addon.Program</StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="SAPBusinessOneSDK" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Forms\Approval_Stage.b1f.cs">
+      <DependentUpon>Approval_Stage.b1f</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AgingReport.b1f.cs">
+      <DependentUpon>AgingReport.b1f</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ECMDUpload.b1f.cs">
+      <DependentUpon>ECMDUpload.b1f</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\InterestWizardForm .b1f.cs" />
+    <Compile Include="Forms\Model.b1f.cs">
+      <DependentUpon>Model.b1f</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PDIInspection.b1f.cs">
+      <DependentUpon>PDIInspection.b1f</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SendApprovalRequest.b1f.cs" />
+    <Compile Include="Forms\ApplyCoverage.b1f.cs">
+      <DependentUpon>ApplyCoverage.b1f</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Forms\BillingWizardForm.b1f.cs">
+      <DependentUpon>BillingWizardForm.b1f</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Forms\CoverageMaster.b1f.cs">
+      <DependentUpon>CoverageMaster.b1f</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Forms\LeaseContractForm.b1f.cs">
+      <DependentUpon>LeaseContractForm.b1f</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Forms\LoadDataForm.b1f.cs">
+      <DependentUpon>LoadDataForm.b1f</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Forms\MachinePricingMasterForm.b1f.cs">
+      <DependentUpon>MachinePricingMasterForm.b1f</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Forms\MeterSetupForm.b1f.cs">
+      <DependentUpon>MeterSetupForm.b1f</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Forms\TechnicalSkillMasterForm.b1f.cs">
+      <DependentUpon>TechnicalSkillMasterForm.b1f</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Helpers\AddonInfoInfo.cs" />
+    <Compile Include="Helpers\ApplicationHandlers.cs" />
+    <Compile Include="Helpers\B1FormBase.cs" />
+    <Compile Include="Helpers\B1SystemFormBase.cs" />
+    <Compile Include="Helpers\GlobalVariables.cs" />
+    <Compile Include="Helpers\Menu.cs" />
+    <Compile Include="Helpers\SAPColumn.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RecurringScheduleForm.b1f.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ITNepal.MainLibrary\ITNepal.MainLibrary.csproj">
+      <Project>{3DC8B10B-D57E-46EA-8E09-C94C6EE89169}</Project>
+      <Name>ITNepal.MainLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Forms\Approval_Stage.b1f">
+      <FormCategory>UserForm</FormCategory>
+    </None>
+    <None Include="Forms\AgingReport.b1f">
+      <FormCategory>UserForm</FormCategory>
+    </None>
+    <None Include="Forms\ECMDUpload.b1f">
+      <FormCategory>UserForm</FormCategory>
+    </None>
+    <None Include="Forms\InterestWizardForm .b1f">
+      <FormCategory>UserForm</FormCategory>
+    </None>
+    <None Include="Forms\Model.b1f">
+      <FormCategory>UserForm</FormCategory>
+    </None>
+    <None Include="Forms\PDIInspection.b1f">
+      <FormCategory>UserForm</FormCategory>
+    </None>
+    <None Include="Forms\RecurringScheduleForm.b1f">
+      <FormCategory>UserForm</FormCategory>
+    </None>
+    <None Include="Forms\SendApprovalRequest.b1f">
+      <FormCategory>UserForm</FormCategory>
+    </None>
+    <None Include="Forms\ApplyCoverage.b1f">
+      <FormCategory>UserForm</FormCategory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Forms\BillingWizardForm.b1f">
+      <FormCategory>UserForm</FormCategory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Forms\CoverageMaster.b1f">
+      <FormCategory>UserForm</FormCategory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Forms\LeaseContractForm.b1f">
+      <FormCategory>UserForm</FormCategory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Forms\LoadDataForm.b1f">
+      <FormCategory>UserForm</FormCategory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Forms\MachinePricingMasterForm.b1f">
+      <FormCategory>UserForm</FormCategory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Forms\MeterSetupForm.b1f">
+      <FormCategory>UserForm</FormCategory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Forms\TechnicalSkillMasterForm.b1f">
+      <FormCategory>UserForm</FormCategory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="NLog.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Images\imgLogo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Query.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

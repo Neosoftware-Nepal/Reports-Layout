@@ -1,0 +1,74 @@
+C:\Users\john.xavier\source\Workspaces\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Images\imgLogo.png
+C:\Users\john.xavier\source\Workspaces\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\ApplyCoverage.b1f.cs
+C:\Users\john.xavier\source\Workspaces\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\BillingWizardForm.b1f.cs
+C:\Users\john.xavier\source\Workspaces\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\CoverageMaster.b1f.cs
+C:\Users\john.xavier\source\Workspaces\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\LeaseContractForm.b1f.cs
+C:\Users\john.xavier\source\Workspaces\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\LoadDataForm.b1f.cs
+C:\Users\john.xavier\source\Workspaces\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\MachinePricingMasterForm.b1f.cs
+C:\Users\john.xavier\source\Workspaces\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\MeterSetupForm.b1f.cs
+C:\Users\john.xavier\source\Workspaces\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\SystemForms\Item Master Data.b1f.cs
+C:\Users\john.xavier\source\Workspaces\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\SystemForms\Service Contract.b1f.cs
+C:\Users\john.xavier\source\Workspaces\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\TechnicalSkillMasterForm.b1f.cs
+C:\Users\john.xavier\source\Workspaces\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\SystemForms\EquipmentCardForm.b1f.cs
+C:\Users\john.xavier\source\Workspaces\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\SystemForms\ServiceCallForm.b1f.cs
+C:\Users\john.xavier\source\Workspaces\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\ApplyCoverage.b1f
+C:\Users\john.xavier\source\Workspaces\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\BillingWizardForm.b1f
+C:\Users\john.xavier\source\Workspaces\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\CoverageMaster.b1f
+C:\Users\john.xavier\source\Workspaces\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\LeaseContractForm.b1f
+C:\Users\john.xavier\source\Workspaces\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\LoadDataForm.b1f
+C:\Users\john.xavier\source\Workspaces\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\MachinePricingMasterForm.b1f
+C:\Users\john.xavier\source\Workspaces\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\MeterSetupForm.b1f
+C:\Users\john.xavier\source\Workspaces\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\SystemForms\Item Master Data.b1f
+C:\Users\john.xavier\source\Workspaces\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\SystemForms\Item Master Data.b1f__orig_srf
+C:\Users\john.xavier\source\Workspaces\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\SystemForms\Service Contract.b1f
+C:\Users\john.xavier\source\Workspaces\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\SystemForms\Service Contract.b1f__orig_srf
+C:\Users\john.xavier\source\Workspaces\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\TechnicalSkillMasterForm.b1f
+C:\Users\john.xavier\source\Workspaces\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\SystemForms\EquipmentCardForm.b1f
+C:\Users\john.xavier\source\Workspaces\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\SystemForms\EquipmentCardForm.b1f__orig_srf
+C:\Users\john.xavier\source\Workspaces\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\SystemForms\ServiceCallForm.b1f
+C:\Users\john.xavier\source\Workspaces\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\SystemForms\ServiceCallForm.b1f__orig_srf
+C:\Users\john.xavier\source\Workspaces\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Procons.AlGhanim.Xerox.exe.config
+C:\Users\john.xavier\source\Workspaces\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Procons.AlGhanim.Xerox.exe
+C:\Users\john.xavier\source\Workspaces\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Procons.AlGhanim.Xerox.pdb
+C:\Users\john.xavier\source\Workspaces\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Procons.AlGhanim.MainLibrary.dll
+C:\Users\john.xavier\source\Workspaces\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Procons.AlGhanim.MainLibrary.pdb
+C:\Users\john.xavier\source\Workspaces\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\obj\Debug\Procons.AlGhanim.Xerox.csprojResolveAssemblyReference.cache
+C:\Users\john.xavier\source\Workspaces\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\obj\Debug\Procons.AlGhanim.Xerox.exe
+C:\Users\john.xavier\source\Workspaces\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\obj\Debug\Procons.AlGhanim.Xerox.pdb
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Procons.AlGhanim.Xerox.exe.config
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\obj\Debug\Procons.AlGhanim.Xerox.exe
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\obj\Debug\Procons.AlGhanim.Xerox.pdb
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Images\imgLogo.png
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\ApplyCoverage.b1f.cs
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\BillingWizardForm.b1f.cs
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\CoverageMaster.b1f.cs
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\LeaseContractForm.b1f.cs
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\LoadDataForm.b1f.cs
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\MachinePricingMasterForm.b1f.cs
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\MeterSetupForm.b1f.cs
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\SystemForms\Item Master Data.b1f.cs
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\SystemForms\Service Contract.b1f.cs
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\TechnicalSkillMasterForm.b1f.cs
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\SystemForms\EquipmentCardForm.b1f.cs
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\SystemForms\ServiceCallForm.b1f.cs
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\ApplyCoverage.b1f
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\BillingWizardForm.b1f
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\CoverageMaster.b1f
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\LeaseContractForm.b1f
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\LoadDataForm.b1f
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\MachinePricingMasterForm.b1f
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\MeterSetupForm.b1f
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\SystemForms\Item Master Data.b1f
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\SystemForms\Item Master Data.b1f__orig_srf
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\SystemForms\Service Contract.b1f
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\SystemForms\Service Contract.b1f__orig_srf
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\TechnicalSkillMasterForm.b1f
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\SystemForms\EquipmentCardForm.b1f
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\SystemForms\EquipmentCardForm.b1f__orig_srf
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\SystemForms\ServiceCallForm.b1f
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\SystemForms\ServiceCallForm.b1f__orig_srf
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Procons.AlGhanim.Xerox.exe
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Procons.AlGhanim.Xerox.pdb
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Procons.AlGhanim.MainLibrary.dll
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Procons.AlGhanim.MainLibrary.pdb
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\obj\Debug\Procons.AlGhanim.Xerox.csprojResolveAssemblyReference.cache

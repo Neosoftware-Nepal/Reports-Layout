@@ -1,0 +1,154 @@
+ALTER PROCEDURE "SP_ITN_SalesRequest" (IN DocKey INT)
+AS
+BEGIN
+	SELECT   T1."DocEntry"
+		,T1."CardName"
+		,T1."CardCode"
+	    ,T1."Requester"
+		,OUSR."U_NAME"
+		
+		,CASE 
+			WHEN T1."DocStatus" = 'O'
+				THEN 'Open'
+			ELSE 'Closed'
+			END AS "Status"
+		,IFNULL(T21."BeginStr", '') 
+		|| '/' || CAST(T1."DocNum" AS CHAR(20)) 
+		|| '/' || IFNULL(CAST(T21."EndStr" AS CHAR(20)), '') AS "Order Number"
+		
+		,T1."DocDate" AS "Order Date"
+		
+		,SUBSTRING(T1."U_ITN_NPDate", 0, 4) 
+		 || '/' || SUBSTRING(T1."U_ITN_NPDate", 5, 2)
+		 || '/' || SUBSTRING(T1."U_ITN_NPDate", 7, 2) AS "Order Miti"
+		 
+		,T1."TaxDate" AS "TaxDate"
+		,T1."DocDueDate" AS "DocDueDate"
+		,T1."DocCur" AS "CURRENCY"
+		,T1."DocRate" AS "CURRENCY_RATE"
+		,T1."DocDueDate" AS "Delivery Date"
+		,T1."Department" AS "Department"
+		,T1."U_BUNIT" as "TAGS"
+		,T1."U_ITNTRDDIS" as "TradeDisPrcnt"
+		,T1."U_ITNTRDDISAM" as "Trade Discoount Amount"
+		
+		
+		
+		,OT."OnHand"
+		,OT."MinLevel"
+		,OT."MaxLevel"
+		,OT."LastPurPrc"
+		,T5."PanNo" AS "LocPAN"
+		,T5."CstNo" AS "LocCstNo"
+		,T5."EccNo" AS "EXCISE_NO"
+		,T5."Street" AS "LOC_Street"
+		,T5."Block" AS "Loc_Block"
+		,T5."Building" AS "Loc_Building"
+		,T5."City" AS "Loc_City"
+		,T5."ZipCode" AS "Loc_ZipCode"
+		
+		,T1."CANCELED"
+		,Z."SHIP_BLOCK"
+		,Z."SHIP_BUILDING"
+		,Z."SHIP_STREET"
+		,Z."SHIP_CITY"
+		,Z."SHIP_ZIPCODE"
+		,Z."SHIP_StateName"
+		,Z."Country"
+		,T1."DiscPrcnt"
+		,T1."DiscSum"
+		,T1."VatPercent"
+		,T1."VatSum"
+		,CASE IFNULL(CAST(T12."TransCat" AS VARCHAR(10)), '')
+			WHEN ''
+				THEN ''
+			ELSE 'SALE AGAINST ' || CAST(T12."TransCat" AS VARCHAR(10))
+			END AS "FormType"
+		,T12."FormNo"
+		
+		,T6."PymntGroup" AS "PaymentTerm"
+		,T2."ItemCode"
+		
+		,OT."UserText"
+		,CASE 
+			WHEN T1."WddStatus" = 'P'
+				THEN 'APPROVED'
+			ELSE 'NOT APPROVED'
+			END AS "Approval"
+		
+		,T13."Substitute"
+		,T1."DocTotal"
+		,T1."Comments" AS "Remark"
+		,T1."RoundDif"
+		
+		
+		/* Line Details */
+		,T2."Price" as "Price"
+		,T2."unitMsr" as "UnitOfMeasurement"
+		,T2."LineTotal"
+		,T2."Dscription" as "Description"
+		
+		,T2."VatSum" AS "TaxAmount"
+		,T2."PQTReqDate"
+		,T2."FreeTxt" AS "Remarks"
+		,T2."Rate" as "Rate"
+		,T2."VatPrcnt"
+		
+		
+		/* BillTo And ShipTo Address*/
+		,AD."Address" as "BillToAddress"
+		,AD1."Address" as "ShipToAddress"
+		
+		/*PAN Details  */
+		, T7."TaxId4" as "Vendor PAN No"
+		
+		,T2."UomCode" as "UOM"
+		,OT."NumInBuy" as "QTY/Case"
+		,T2."Quantity" as "Total Quantity"
+		,0 as "QTY(PCS)"
+		,T2."U_ITNPRODISPR" as "Promo Discount Percent"
+		,T2."U_ITNPRODISAM" as "Promo Discount Amount"
+	
+		
+		
+	
+	FROM OQUT T1
+	INNER JOIN QUT1 T2 ON T1."DocEntry" = T2."DocEntry"
+	INNER JOIN OITM OT ON T2."ItemCode" = OT."ItemCode"
+	LEFT JOIN OCPR T3 ON T1."CntctCode" = T3."CntctCode"
+	LEFT JOIN QUT12 T12 ON T1."DocEntry" = T12."DocEntry"
+	INNER JOIN OLCT T5 ON T2."LocCode" = T5."Code"
+	LEFT JOIN OCTG T6 ON T1."GroupNum" = T6."GroupNum"
+	LEFT JOIN CRD7 T7 On T1."CardCode" = T7."CardCode"
+		AND T7."Address" = ''
+		AND T7."AddrType" = 'S' 
+	LEFT JOIN OSCN T13 ON T1."CardCode" = T13."CardCode"
+		AND T2."ItemCode" = T13."ItemCode"
+	LEFT JOIN CRD1 AD ON AD."CardCode" = T1."CardCode"
+		AND AD."Address" = T1."PayToCode"
+		AND AD."AdresType" = 'B'
+	LEFT JOIN CRD1 AD1 ON AD1."CardCode" = T1."CardCode"
+		AND AD1."Address" = T1."ShipToCode"
+		AND AD1."AdresType" = 'S'
+	LEFT JOIN (
+		SELECT A."WhsCode"
+			,A."Street" AS "SHIP_STREET"
+			,A."Block" AS "SHIP_BLOCK"
+			,A."Building" AS "SHIP_BUILDING"
+			,A."City" AS "SHIP_CITY"
+			,A."ZipCode" AS "SHIP_ZIPCODE"
+			,B."Name" AS "SHIP_StateName"
+			,'India' AS "Country"
+		FROM OWHS A
+			,OCST B
+		WHERE A."State" = B."Code"
+			AND A."Country" = B."Country"
+		) Z ON T2."WhsCode" = Z."WhsCode"
+	INNER JOIN OADM ON 1 = 1
+	LEFT JOIN ADM1 ON OADM."Code" = ADM1."Code"
+	LEFT JOIN OCST ST2 ON ST2."Code" = OADM."State"
+		AND ST2."Country" = OADM."Country"	
+	LEFT JOIN NNM1 T21 ON T21."Series" = T1."Series"
+	LEFT JOIN OUSR ON T1."Requester" = OUSR."USER_CODE"
+	WHERE T1."DocEntry" = :DocKey;
+END

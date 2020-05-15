@@ -1,0 +1,408 @@
+﻿alter PROCEDURE USP_BillingCallsV
+(
+                in billing_date Date,                                                             
+                in contract_numF int ,                                       
+                in contract_numT int ,
+                in schemaname nvarchar(100)
+               
+)
+LANGUAGE SQLSCRIPT
+AS
+-- Variable declarations
+latest_callID int;
+reset_callID int ;
+latest_callID_reset int; -- Call ID before Reset
+row_count int;
+BEGIN
+                DECLARE EXIT HANDLER FOR SQL_ERROR_CODE 1299
+                BEGIN
+                                latest_callID := 0;
+                                reset_callID := 0;
+                                latest_callID_reset := 0;
+                END;
+                
+                
+                
+   select count(*) into row_count from tables where table_name like '%USEDDURATION%' and schema_name = :schemaname;
+  if :row_count > 0 then
+   
+  DROP TABLE USEDDURATION ;
+   DROP TABLE CallID ;
+   row_count :=0;
+  end if;
+              
+      CREATE COLUMN TABLE USEDDURATION AS (
+                      SELECT  T2."U_MeterCode",T2."U_Description",T0."contractID",T2."U_CountedA3inA4"
+,T2."U_PoolCode",T2."U_CurrentReading",T2."U_ItemCode",T2."U_ItemName",T2."U_IntenalSN" , T2."U_CurrentReading" "U_LastMeterReading"
+                                                FROM OSCL T0 INNER JOIN "@Z_OSCM"  T1 ON T0."callID" = T1."U_SerCallDocNum"
+                                                                INNER JOIN "@Z_SCM1"  T2 ON T1."Code" = T2."Code"
+                                           WHERE T0."callID" = 0); 
+                                                                                    
+           create column table CallID as (
+                    SELECT  IFNULL(T0."callID",0) "callID"
+           FROM OSCL T0  WHERE T0."callID" = 0 );
+ 
+ 
+ BEGIN
+   
+ DECLARE last_billing_date Date;
+ DECLARE Nbilling_date Date;
+ DECLARE contract_num int;
+ DECLARE v_new_price DECIMAL(15,2);
+ DECLARE V_SERIALS NVARCHAR(100);
+ DECLARE ROWCOUNT INT :=0;
+ 
+
+ DECLARE CURSOR C_CONTRACTNUM FOR
+    SELECT to_date(ifnull(T2."U_LastBilledDate", T0."StartDate")) "U_LastBilledDate" ,
+    to_date(T2."U_NextBilledDate") "U_NextBilledDate", T0."ContractID"
+    FROM OCTR T0 JOIN "@Z_OSRB"  T1 ON T0."ContractID" = T1."U_ContractNo" JOIN "@Z_SRB1"  T2 ON T1."Code" = T2."Code" 
+    WHERE T2."U_BillingType" = 'E' and  T0."ContractID"  between :contract_numF and :contract_numT
+  and TO_DATE(T2."U_NextBilledDate") <= :billing_date
+    ORDER BY T0."ContractID";
+ 
+FOR cur_row as C_CONTRACTNUM DO
+
+last_billing_date := cur_row."U_LastBilledDate";
+--Nbilling_date := cur_row."U_NextBilledDate";
+Nbilling_date := :billing_date;
+contract_num := cur_row."ContractID";
+ --select :last_billing_date, :Nbilling_date,  :contract_num, :billing_date from dummy;
+
+ BEGIN
+  
+  DECLARE CURSOR C_SERIALS   FOR
+  SELECT "InternalSN","ContractID" FROM CTR1 WHERE "ContractID"  =  :contract_num;
+ FOR cur_row as C_SERIALS   DO
+    V_SERIALS := cur_row."InternalSN";
+ 
+ --select :V_SERIALS, :last_billing_date, :Nbilling_date from dummy;
+ 
+ 
+ 
+  SELECT count(*) INTO ROWCOUNT
+                                FROM OSCL T0
+                                WHERE T0."contractID" = :contract_num  AND  T0."internalSN" = :V_SERIALS
+                                                AND T0."createDate" BETWEEN :last_billing_date AND :Nbilling_date
+                                                AND T0."status" = -1;
+                                 
+     IF :ROWCOUNT >0 THEN
+                                
+     SELECT TOP 1 IFNULL(T0."callID",0) into latest_callID
+                                FROM OSCL T0
+                                WHERE T0."contractID" = :contract_num  AND  T0."internalSN" = :V_SERIALS
+                                                AND T0."createDate" BETWEEN :last_billing_date AND :Nbilling_date
+                                                AND T0."status" = -1
+                                ORDER BY T0."createDate" DESC, T0."createTime" DESC;   
+                                
+    ELSE
+    
+        latest_callID :=0;                    
+  
+ 
+    END IF;
+                                 
+    ROWCOUNT :=0;
+    
+      SELECT COUNT(*) into ROWCOUNT
+                                FROM OSCL T0 INNER JOIN "@Z_OSCM"  T1 ON T0."callID" = T1."U_SerCallDocNum"
+                                                INNER JOIN "@Z_SCM1"  T2 ON T1."Code" = T2."Code"
+                                WHERE T0."contractID" = :contract_num  AND  T0."internalSN" = :V_SERIALS
+                                                AND  T0."createDate" BETWEEN :last_billing_date AND :Nbilling_date
+                                                AND T2."U_MeterReset" = 'Y';                              
+    IF :ROWCOUNT > 0   THEN                           
+      SELECT IFNULL(MAX(T0."callID"),0) into reset_callID
+                                FROM OSCL T0 INNER JOIN "@Z_OSCM"  T1 ON T0."callID" = T1."U_SerCallDocNum"
+                                                INNER JOIN "@Z_SCM1"  T2 ON T1."Code" = T2."Code"
+                                WHERE T0."contractID" = :contract_num  AND  T0."internalSN" = :V_SERIALS
+                                                AND  T0."createDate" BETWEEN :last_billing_date AND :Nbilling_date
+                                                AND T2."U_MeterReset" = 'Y';
+    ELSE
+       reset_callID :=0;
+    END IF;
+                     
+    IF :reset_callID > 0 then
+         latest_callID_reset := 0;
+        
+         INSERT INTO  CallID  (
+                    SELECT TOP 1 IFNULL(T0."callID",0) "callID"
+           FROM OSCL T0 INNER JOIN "@Z_OSCM"  T1 ON T0."callID" = T1."U_SerCallDocNum"
+           INNER JOIN "@Z_SCM1"  T2 ON T1."Code" = T2."Code"
+           WHERE T0."contractID" = :contract_num  AND  T0."internalSN" = :V_SERIALS
+            AND  T0."createDate" <= (SELECT "createDate" FROM OSCL WHERE "callID" = :reset_callID)
+            AND T0."createDate" BETWEEN :last_billing_date AND :Nbilling_date
+            AND T0."callID" <> :reset_callID                
+            ORDER BY T0."createDate" DESC , T0."createTime"  DESC);
+            
+            SELECT COUNT(*) INTO row_count FROM CallID;
+            
+            IF (:row_count) > 0 THEN
+             SELECT "callID" INTO latest_callID_reset FROM CallID;                               
+            ELSE
+            latest_callID_reset :=0;
+            END IF;
+            
+          -- select :latest_callID , :reset_callID , :latest_callID_reset from dummy;
+            -- select :latest_callID_reset , :latest_callID  from dummy;     
+              INSERT INTO USEDDURATION (      
+                                                SELECT DUR."U_MeterCode",DUR."U_Description",DUR."contractID",DUR."U_CountedA3inA4"
+,DUR."U_PoolCode",SUM(DUR."U_CurrentReading") "U_CurrentReading" ,DUR."U_ItemCode",DUR."U_ItemName",DUR."U_IntenalSN", DUR."U_LastMeterReading" FROM (
+                                                                                          
+                                                SELECT 'ResetCall' "Reset" , T2."U_MeterCode",T2."U_Description",T0."contractID",T2."U_CountedA3inA4"
+,T2."U_PoolCode",T2."U_CurrentReading",T2."U_ItemCode",T2."U_ItemName",T2."U_IntenalSN",0 "U_LastMeterReading"
+                                                FROM OSCL T0 INNER JOIN "@Z_OSCM"  T1 ON T0."callID" = T1."U_SerCallDocNum"
+                                                                INNER JOIN "@Z_SCM1"  T2 ON T1."Code" = T2."Code"
+                                                WHERE T0."callID" = ifnull(:latest_callID_reset,0) AND T2."U_CountedA3inA4" = 'N'
+                                                UNION ALL
+                                                SELECT 'Normal' "Reset",  T2."U_MeterCode",T2."U_Description",T0."contractID",T2."U_CountedA3inA4"
+,T2."U_PoolCode",T2."U_CurrentReading",T2."U_ItemCode",T2."U_ItemName",T2."U_IntenalSN", (SELECT  SUM( TT2."U_CurrentReading") "U_CurrentReading" 
+                                                FROM OSCL TT0 INNER JOIN "@Z_OSCM"  TT1 ON T0."callID" = TT1."U_SerCallDocNum"
+                                                                INNER JOIN "@Z_SCM1"  TT2 ON TT1."Code" = TT2."Code"
+                                                WHERE TT0."callID" = :latest_callID AND TT2."U_CountedA3inA4" = 'N' AND TT2."U_MeterCode" = T2."U_MeterCode"    
+                                                AND TT2."U_ItemCode" = T2."U_ItemCode"                                                                                               
+                                                ) "U_LastMeterReading"
+                                                FROM OSCL T0 INNER JOIN "@Z_OSCM"  T1 ON T0."callID" = T1."U_SerCallDocNum"
+                                                                INNER JOIN "@Z_SCM1"  T2 ON T1."Code" = T2."Code"
+                                                WHERE T0."callID" = :latest_callID AND T2."U_CountedA3inA4" = 'N') DUR
+                                                GROUP BY DUR."U_MeterCode",DUR."U_Description",DUR."contractID",DUR."U_CountedA3inA4"
+,DUR."U_PoolCode"  ,DUR."U_ItemCode",DUR."U_ItemName",DUR."U_IntenalSN",DUR."U_LastMeterReading" ) ;
+
+                              
+                                
+    ELSE
+       
+     
+     --  select :latest_callID from dummy;
+                                               INSERT INTO USEDDURATION (
+                                                SELECT   T2."U_MeterCode",T2."U_Description",T0."contractID",T2."U_CountedA3inA4"
+,T2."U_PoolCode",SUM( T2."U_CurrentReading") "U_CurrentReading" ,T2."U_ItemCode",T2."U_ItemName",T2."U_IntenalSN",
+(SELECT  SUM( TT2."U_CurrentReading") "U_CurrentReading" 
+                                                FROM OSCL TT0 INNER JOIN "@Z_OSCM"  TT1 ON T0."callID" = TT1."U_SerCallDocNum"
+                                                                INNER JOIN "@Z_SCM1"  TT2 ON TT1."Code" = TT2."Code"
+                                                WHERE TT0."callID" = :latest_callID AND TT2."U_CountedA3inA4" = 'N' AND TT2."U_MeterCode" = T2."U_MeterCode"    
+                                                AND TT2."U_ItemCode" = T2."U_ItemCode"                                                                                               
+                                                )
+                                                FROM OSCL T0 INNER JOIN "@Z_OSCM"  T1 ON T0."callID" = T1."U_SerCallDocNum"
+                                                                INNER JOIN "@Z_SCM1"  T2 ON T1."Code" = T2."Code"
+                                                WHERE T0."callID" = :latest_callID AND T2."U_CountedA3inA4" = 'N' GROUP BY  T2."U_MeterCode",T2."U_Description",T0."contractID",T2."U_CountedA3inA4"
+,T2."U_PoolCode", T2."U_ItemCode",T2."U_ItemName",T2."U_IntenalSN");
+                
+         
+  END IF;                                       
+    
+    --UPDATE  "PRODUCT_DETAILS"
+   -- SET PRICE = v_new_price where PRODUCT_ID = cur_row.PRODUCT_ID;
+  END FOR;
+ 
+ END;
+
+ 
+ 
+-- ex_products = select PRODUCT_ID, PRODUCT_NAME, PRICE
+--                    FROM  "PRODUCT_DETAILS" ;
+--select PRODUCT_ID, PRODUCT_NAME, PRICE
+                   -- FROM  "PRODUCT_DETAILS" ;
+ END FOR;
+SELECT * FROM USEDDURATION;
+END;                                    
+     
+                                
+                               -- SELECT * FROM USEDDURATION;
+                               -- DROP TABLE USEDDURATION ;
+                               -- DROP TABLE SERIAL;
+END;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=====================================================================================================================================================
+
+
+alter PROCEDURE USP_BillingCallsV
+(
+                in billing_date Date,                                                             
+                in contract_numF int ,                                       
+                in contract_numT int ,
+                in schemaname nvarchar(100)
+               
+)
+LANGUAGE SQLSCRIPT
+AS
+-- Variable declarations
+latest_callID int;
+reset_callID int;
+latest_callID_reset int; -- Call ID before Reset
+row_count int;
+BEGIN
+                DECLARE EXIT HANDLER FOR SQL_ERROR_CODE 1299
+                BEGIN
+                                latest_callID := 0;
+                                reset_callID := 0;
+                                latest_callID_reset := 0;
+                END;
+                
+                
+                
+   select count(*) into row_count from tables where table_name like '%USEDDURATION%' and schema_name = :schemaname;
+  if :row_count > 0 then
+   
+  DROP TABLE USEDDURATION ;
+   DROP TABLE CallID ;
+   row_count :=0;
+  end if;
+              
+      CREATE COLUMN TABLE USEDDURATION AS (
+                      SELECT  T2."U_MeterCode",T2."U_Description",T0."contractID",T2."U_CountedA3inA4"
+,T2."U_PoolCode",T2."U_CurrentReading",T2."U_ItemCode",T2."U_ItemName",T2."U_IntenalSN"
+                                                FROM OSCL T0 INNER JOIN "@Z_OSCM"  T1 ON T0."callID" = T1."U_SerCallDocNum"
+                                                                INNER JOIN "@Z_SCM1"  T2 ON T1."Code" = T2."Code"
+                                           WHERE T0."callID" = 0); 
+                                                                                    
+           create column table CallID as (
+                    SELECT  IFNULL(T0."callID",0) "callID"
+           FROM OSCL T0  WHERE T0."callID" = 0 );
+                
+ BEGIN
+   
+ DECLARE last_billing_date Date;
+ DECLARE Nbilling_date Date;
+ DECLARE contract_num int;
+ DECLARE v_new_price DECIMAL(15,2);
+ DECLARE V_SERIALS NVARCHAR(100);
+
+ DECLARE CURSOR C_CONTRACTNUM FOR
+    SELECT to_date(ifnull(T2."U_LastBilledDate", T0."StartDate")) "U_LastBilledDate" ,
+    to_date(T2."U_NextBilledDate") "U_NextBilledDate", T0."ContractID"
+    FROM OCTR T0 JOIN "@Z_OSRB"  T1 ON T0."ContractID" = T1."U_ContractNo" JOIN "@Z_SRB1"  T2 ON T1."Code" = T2."Code" 
+    WHERE T2."U_BillingType" = 'E' and  T0."ContractID"  between :contract_numF and :contract_numT
+  and TO_DATE(T2."U_NextBilledDate") <= :billing_date
+    ORDER BY T0."ContractID";
+ 
+FOR cur_row as C_CONTRACTNUM DO
+
+last_billing_date := cur_row."U_LastBilledDate";
+--Nbilling_date := cur_row."U_NextBilledDate";
+Nbilling_date := :billing_date;
+contract_num := cur_row."ContractID";
+
+ --select :last_billing_date, :Nbilling_date,  :contract_num, :billing_date from dummy;
+
+ BEGIN
+  
+  DECLARE CURSOR C_SERIALS   FOR
+  SELECT "InternalSN","ContractID" FROM CTR1 WHERE "ContractID"  =  :contract_num;
+ FOR cur_row as C_SERIALS   DO
+    V_SERIALS := cur_row."InternalSN";
+ 
+ --select :V_SERIALS, :last_billing_date, :Nbilling_date from dummy;
+    SELECT TOP 1 IFNULL(T0."callID",0) into latest_callID
+                                FROM OSCL T0
+                                WHERE T0."contractID" = :contract_num  AND  T0."internalSN" = :V_SERIALS
+                                                AND T0."createDate" BETWEEN :last_billing_date AND :Nbilling_date
+                                                AND T0."status" = -1
+                                ORDER BY T0."createDate" DESC, T0."createTime" DESC;
+                                
+                                                              
+                                
+      SELECT IFNULL(MAX(T0."callID"),0) into reset_callID
+                                FROM OSCL T0 INNER JOIN "@Z_OSCM"  T1 ON T0."callID" = T1."U_SerCallDocNum"
+                                                INNER JOIN "@Z_SCM1"  T2 ON T1."Code" = T2."Code"
+                                WHERE T0."contractID" = :contract_num  AND  T0."internalSN" = :V_SERIALS
+                                                AND  T0."createDate" BETWEEN :last_billing_date AND :Nbilling_date
+                                                AND T2."U_MeterReset" = 'Y';
+                       
+                       select :latest_callID , :reset_callID  from dummy;
+         IF :reset_callID > 0 then
+         latest_callID_reset := 0;
+        
+         INSERT INTO  CallID  (
+                    SELECT TOP 1 IFNULL(T0."callID",0) "callID"
+           FROM OSCL T0 INNER JOIN "@Z_OSCM"  T1 ON T0."callID" = T1."U_SerCallDocNum"
+           INNER JOIN "@Z_SCM1"  T2 ON T1."Code" = T2."Code"
+           WHERE T0."contractID" = :contract_num  AND  T0."internalSN" = :V_SERIALS
+           --  AND  T0."createDate" <= (SELECT "createDate" FROM OSCL WHERE "callID" = :reset_callID)
+            AND T0."createDate" BETWEEN :last_billing_date AND :Nbilling_date
+            AND T0."callID" <> :reset_callID                
+            ORDER BY T0."createDate" DESC , T0."createTime"  DESC);
+            
+            SELECT COUNT(*) INTO row_count FROM CallID;
+            
+            IF (:row_count) > 0 THEN
+             SELECT "callID" INTO latest_callID_reset FROM CallID;                               
+            ELSE
+            latest_callID_reset :=0;
+            END IF;
+                                                  select :latest_callID_reset , :latest_callID  from dummy;     
+              INSERT INTO USEDDURATION (      
+                                                SELECT DUR."U_MeterCode",DUR."U_Description",DUR."contractID",DUR."U_CountedA3inA4"
+,DUR."U_PoolCode",SUM(DUR."U_CurrentReading") "U_CurrentReading" ,DUR."U_ItemCode",DUR."U_ItemName",DUR."U_IntenalSN" FROM (
+                                                                                          
+                                                SELECT 'ResetCall' "Reset" , T2."U_MeterCode",T2."U_Description",T0."contractID",T2."U_CountedA3inA4"
+,T2."U_PoolCode",T2."U_CurrentReading",T2."U_ItemCode",T2."U_ItemName",T2."U_IntenalSN"
+                                                FROM OSCL T0 INNER JOIN "@Z_OSCM"  T1 ON T0."callID" = T1."U_SerCallDocNum"
+                                                                INNER JOIN "@Z_SCM1"  T2 ON T1."Code" = T2."Code"
+                                                WHERE T0."callID" = ifnull(:latest_callID_reset,0) AND T2."U_CountedA3inA4" = 'N'
+                                                UNION ALL
+                                                SELECT 'Normal' "Reset",  T2."U_MeterCode",T2."U_Description",T0."contractID",T2."U_CountedA3inA4"
+,T2."U_PoolCode",T2."U_CurrentReading",T2."U_ItemCode",T2."U_ItemName",T2."U_IntenalSN"
+                                                FROM OSCL T0 INNER JOIN "@Z_OSCM"  T1 ON T0."callID" = T1."U_SerCallDocNum"
+                                                                INNER JOIN "@Z_SCM1"  T2 ON T1."Code" = T2."Code"
+                                                WHERE T0."callID" = :latest_callID AND T2."U_CountedA3inA4" = 'N') DUR
+                                                GROUP BY DUR."U_MeterCode",DUR."U_Description",DUR."contractID",DUR."U_CountedA3inA4"
+,DUR."U_PoolCode"  ,DUR."U_ItemCode",DUR."U_ItemName",DUR."U_IntenalSN" ) ;
+
+                              
+                                
+       ELSE
+       
+     --  select 'normal' from dummy;
+    --   select :latest_callID from dummy;
+                                               INSERT INTO USEDDURATION (
+                                                SELECT   T2."U_MeterCode",T2."U_Description",T0."contractID",T2."U_CountedA3inA4"
+,T2."U_PoolCode",SUM( T2."U_CurrentReading") "U_CurrentReading" ,T2."U_ItemCode",T2."U_ItemName",T2."U_IntenalSN"
+                                                FROM OSCL T0 INNER JOIN "@Z_OSCM"  T1 ON T0."callID" = T1."U_SerCallDocNum"
+                                                                INNER JOIN "@Z_SCM1"  T2 ON T1."Code" = T2."Code"
+                                                WHERE T0."callID" = :latest_callID AND T2."U_CountedA3inA4" = 'N' GROUP BY  T2."U_MeterCode",T2."U_Description",T0."contractID",T2."U_CountedA3inA4"
+,T2."U_PoolCode", T2."U_ItemCode",T2."U_ItemName",T2."U_IntenalSN");
+         
+         
+         END IF;                                       
+    
+    --UPDATE  "PRODUCT_DETAILS"
+   -- SET PRICE = v_new_price where PRODUCT_ID = cur_row.PRODUCT_ID;
+  END FOR;
+ 
+ END;
+
+ 
+ 
+-- ex_products = select PRODUCT_ID, PRODUCT_NAME, PRICE
+--                    FROM  "PRODUCT_DETAILS" ;
+--select PRODUCT_ID, PRODUCT_NAME, PRICE
+                   -- FROM  "PRODUCT_DETAILS" ;
+ END FOR;
+SELECT * FROM USEDDURATION;
+END;                                    
+     
+                                
+                               -- SELECT * FROM USEDDURATION;
+                               -- DROP TABLE USEDDURATION ;
+                               -- DROP TABLE SERIAL;
+END;

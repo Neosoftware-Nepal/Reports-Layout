@@ -1,0 +1,310 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{40236576-6DDC-4A2E-9A71-1C22B20FF172}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Sales_Addon_UDN</RootNamespace>
+    <AssemblyName>Sales_Addon_UDN</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>Sales_Addon_UDN.Program</StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Design, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\SAP BusinessObjects\Crystal Reports for .NET Framework 4.0\Common\SAP BusinessObjects Enterprise XI 4.0\win32_x86\dotnet\CrystalDecisions.CrystalReports.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\SAP BusinessObjects\Crystal Reports for .NET Framework 4.0\Common\SAP BusinessObjects Enterprise XI 4.0\win32_x86\dotnet\CrystalDecisions.CrystalReports.Engine.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\SAP BusinessObjects\Crystal Reports for .NET Framework 4.0\Common\SAP BusinessObjects Enterprise XI 4.0\win32_x86\dotnet\CrystalDecisions.ReportSource.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\SAP BusinessObjects\Crystal Reports for .NET Framework 4.0\Common\SAP BusinessObjects Enterprise XI 4.0\win32_x86\dotnet\CrystalDecisions.Shared.dll</HintPath>
+    </Reference>
+    <Reference Include="NepaliDateConverter, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\NepaliDateConverter.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="SAPBusinessOneSDK" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <Compile Include="Availability.b1f.cs">
+      <DependentUpon>Availability.b1f</DependentUpon>
+    </Compile>
+    <Compile Include="Batches - Setup.b1f.cs">
+      <DependentUpon>Batches - Setup.b1f</DependentUpon>
+    </Compile>
+    <Compile Include="BillAndTradeDiscount.b1f.cs">
+      <DependentUpon>BillAndTradeDiscount.b1f</DependentUpon>
+    </Compile>
+    <Compile Include="BillNTrade.b1f.cs">
+      <DependentUpon>BillNTrade.b1f</DependentUpon>
+    </Compile>
+    <Compile Include="Bin Location Allocation - Receipt.b1f.cs">
+      <DependentUpon>Bin Location Allocation - Receipt.b1f</DependentUpon>
+    </Compile>
+    <Compile Include="Bin_BatchAssig.b1f.cs">
+      <DependentUpon>Bin_BatchAssig.b1f</DependentUpon>
+    </Compile>
+    <Compile Include="bp.b1f.cs">
+      <DependentUpon>bp.b1f</DependentUpon>
+    </Compile>
+    <Compile Include="CreditLimit.b1f.cs">
+      <DependentUpon>CreditLimit.b1f</DependentUpon>
+    </Compile>
+    <Compile Include="CreditLimitChild.b1f.cs">
+      <DependentUpon>CreditLimitChild.b1f</DependentUpon>
+    </Compile>
+    <Compile Include="DrawnItem.b1f.cs">
+      <DependentUpon>DrawnItem.b1f</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GatePass.b1f.cs">
+      <DependentUpon>GatePass.b1f</DependentUpon>
+    </Compile>
+    <Compile Include="Goods Receipt PO.b1f.cs">
+      <DependentUpon>Goods Receipt PO.b1f</DependentUpon>
+    </Compile>
+    <Compile Include="Landed Costs.b1f.cs">
+      <DependentUpon>Landed Costs.b1f</DependentUpon>
+    </Compile>
+    <Compile Include="Payment.b1f.cs">
+      <DependentUpon>Payment.b1f</DependentUpon>
+    </Compile>
+    <Compile Include="PerfomaInvoice.b1f.cs">
+      <DependentUpon>PerfomaInvoice.b1f</DependentUpon>
+    </Compile>
+    <Compile Include="PickListReport.b1f.cs">
+      <DependentUpon>PickListReport.b1f</DependentUpon>
+    </Compile>
+    <Compile Include="PromotionSelection.b1f.cs">
+      <DependentUpon>PromotionSelection.b1f</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="PromotionSetUp.b1f.cs">
+      <DependentUpon>PromotionSetUp.b1f</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Provisional Cost.b1f.cs">
+      <DependentUpon>Provisional Cost.b1f</DependentUpon>
+    </Compile>
+    <Compile Include="Purchase Order.b1f.cs">
+      <DependentUpon>Purchase Order.b1f</DependentUpon>
+    </Compile>
+    <Compile Include="ProofOfDelivery.b1f.cs">
+      <DependentUpon>ProofOfDelivery.b1f</DependentUpon>
+    </Compile>
+    <Compile Include="Sales Order.b1f.cs">
+      <DependentUpon>Sales Order.b1f</DependentUpon>
+    </Compile>
+    <Compile Include="ShipmentTracking.b1f.cs">
+      <DependentUpon>ShipmentTracking.b1f</DependentUpon>
+    </Compile>
+    <Compile Include="ShipmentTrackings.b1f.cs">
+      <DependentUpon>ShipmentTrackings.b1f</DependentUpon>
+    </Compile>
+    <Compile Include="Transaction.b1f.cs">
+      <DependentUpon>Transaction.b1f</DependentUpon>
+    </Compile>
+    <Compile Include="UDFGeneration.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Menu.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="Availability.b1f">
+      <FormCategory>UserForm</FormCategory>
+    </None>
+    <None Include="Batches - Setup.b1f">
+      <FormCategory>SystemForm</FormCategory>
+    </None>
+    <None Include="Batches - Setup.b1f__orig_srf">
+      <DependentUpon>Batches - Setup.b1f</DependentUpon>
+    </None>
+    <None Include="BillAndTradeDiscount.b1f">
+      <FormCategory>UserForm</FormCategory>
+    </None>
+    <None Include="BillNTrade.b1f">
+      <FormCategory>UserForm</FormCategory>
+    </None>
+    <None Include="Bin Location Allocation - Receipt.b1f">
+      <FormCategory>SystemForm</FormCategory>
+    </None>
+    <None Include="Bin Location Allocation - Receipt.b1f__orig_srf">
+      <DependentUpon>Bin Location Allocation - Receipt.b1f</DependentUpon>
+    </None>
+    <None Include="Bin_BatchAssig.b1f">
+      <FormCategory>UserForm</FormCategory>
+    </None>
+    <None Include="bp.b1f">
+      <FormCategory>SystemForm</FormCategory>
+    </None>
+    <None Include="bp.b1f__orig_srf">
+      <DependentUpon>bp.b1f</DependentUpon>
+    </None>
+    <None Include="CreditLimit.b1f">
+      <FormCategory>UserForm</FormCategory>
+    </None>
+    <None Include="CreditLimitChild.b1f">
+      <FormCategory>UserForm</FormCategory>
+    </None>
+    <None Include="DrawnItem.b1f">
+      <FormCategory>SystemForm</FormCategory>
+    </None>
+    <None Include="DrawnItem.b1f__orig_srf">
+      <DependentUpon>DrawnItem.b1f</DependentUpon>
+    </None>
+    <None Include="GatePass.b1f">
+      <FormCategory>UserForm</FormCategory>
+    </None>
+    <None Include="Goods Receipt PO.b1f">
+      <FormCategory>SystemForm</FormCategory>
+    </None>
+    <None Include="Goods Receipt PO.b1f__orig_srf">
+      <DependentUpon>Goods Receipt PO.b1f</DependentUpon>
+    </None>
+    <None Include="Landed Costs.b1f">
+      <FormCategory>SystemForm</FormCategory>
+    </None>
+    <None Include="Landed Costs.b1f__orig_srf">
+      <DependentUpon>Landed Costs.b1f</DependentUpon>
+    </None>
+    <None Include="Payment.b1f">
+      <FormCategory>UserForm</FormCategory>
+    </None>
+    <None Include="PerfomaInvoice.b1f">
+      <FormCategory>UserForm</FormCategory>
+    </None>
+    <None Include="PickListReport.b1f">
+      <FormCategory>UserForm</FormCategory>
+    </None>
+    <None Include="PromotionSelection.b1f">
+      <FormCategory>UserForm</FormCategory>
+    </None>
+    <None Include="PromotionSetUp.b1f">
+      <FormCategory>UserForm</FormCategory>
+    </None>
+    <None Include="ProofOfDelivery.b1f">
+      <FormCategory>UserForm</FormCategory>
+    </None>
+    <None Include="Provisional Cost.b1f">
+      <FormCategory>UserForm</FormCategory>
+    </None>
+    <None Include="Purchase Order.b1f">
+      <FormCategory>SystemForm</FormCategory>
+    </None>
+    <None Include="Purchase Order.b1f__orig_srf">
+      <DependentUpon>Purchase Order.b1f</DependentUpon>
+    </None>
+    <None Include="Sales Order.b1f">
+      <FormCategory>SystemForm</FormCategory>
+    </None>
+    <None Include="Sales Order.b1f__orig_srf">
+      <DependentUpon>Sales Order.b1f</DependentUpon>
+    </None>
+    <None Include="ShipmentTracking.b1f">
+      <FormCategory>UserForm</FormCategory>
+    </None>
+    <None Include="ShipmentTrackings.b1f">
+      <FormCategory>UserForm</FormCategory>
+    </None>
+    <None Include="Transaction.b1f">
+      <FormCategory>UserForm</FormCategory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\ITNepal.UDN\ITNepal.MainLibrary\ITNepal.MainLibrary.csproj">
+      <Project>{3DC8B10B-D57E-46EA-8E09-C94C6EE89169}</Project>
+      <Name>ITNepal.MainLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ITNepal.UDN\ITNepal.UDN\ITNepal.UDN.csproj">
+      <Project>{6354D8B0-6D7E-4319-98D3-F677CCF61FA7}</Project>
+      <Name>ITNepal.UDN</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

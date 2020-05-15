@@ -1,0 +1,566 @@
+private void txtDEnt_ChooseFromListBefore(object sboObject, SBOItemEventArg pVal, out bool BubbleEvent)
+        {
+            BubbleEvent = true;
+            SAPbobsCOM.Recordset rec = null;
+            SAPbobsCOM.Recordset RecIns = null;
+            SAPbobsCOM.Recordset recGetdata = null;
+
+            try
+            {
+                if (CmbQCType.Selected != null)
+                {
+
+                    //ExceptionLog.SendErrorToText( "QCInspection");
+                    if (CmbQCType.Selected.Value == "1")
+                    {
+                        #region Inward
+                        SAPbouiCOM.ChooseFromList oCFL3 = this.UIAPIRawForm.ChooseFromLists.Item("CFL_GRPO");
+                        txtDEnt.ChooseFromListUID = oCFL3.UniqueID;
+                        txtDEnt.ChooseFromListAlias = "DocEntry";
+                        //test add DocStatus = 'O' in the DocMaster
+
+
+
+
+                        string strUid2 = oCFL3.UniqueID;
+                        string DeptCode = string.Empty;
+                        oCFL3.SetConditions(null);
+                        SAPbouiCOM.Conditions oCons = default(SAPbouiCOM.Conditions);
+                        SAPbouiCOM.Condition oCon = default(SAPbouiCOM.Condition);
+                        oCons = oCFL3.GetConditions();
+
+                        //oCon = oCons.Add(); //83
+                        //oCon.Alias = "DocStatus";
+                        //oCon.Operation = SAPbouiCOM.BoConditionOperation.co_EQUAL;
+                        //oCon.CondVal = "O";//rec.Fields.Item("DocEntry").Value.ToString();
+                        //oCon.Relationship = SAPbouiCOM.BoConditionRelationship.cr_AND;
+
+                        recGetdata = ((SAPbobsCOM.Recordset)Program.oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.BoRecordset));
+                        string GetdataQuery = QueryManger.GetQuery(QueryString.SYSGETRECFORGENSETTING);
+                        recGetdata.DoQuery(GetdataQuery);
+
+                        if (recGetdata.Fields.Item("U_QCWareMan").Value.ToString().ToLower() == "true")
+                        {
+                            rec = ((SAPbobsCOM.Recordset)Program.oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.BoRecordset));
+                            string query = QueryManger.GetQuery(QueryString.QCINSPTXDECFLBFR);
+                            rec.DoQuery(query);
+                        }
+
+                        if (recGetdata.Fields.Item("U_QCBinMan").Value.ToString().ToLower() == "true")
+                        {
+                            rec = ((SAPbobsCOM.Recordset)Program.oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.BoRecordset));
+                            string query = QueryManger.GetQuery(QueryString.QCINSPTXDECFLBFRR);
+                            rec.DoQuery(query);
+                        }
+                        int recordcount = rec.RecordCount - 1;
+                        if (rec.RecordCount > 0)
+                        {
+                            while (!rec.EoF)
+                            {
+                                string queryy;
+                                SAPbobsCOM.Recordset recIns = ((SAPbobsCOM.Recordset)Program.oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.BoRecordset));
+                                if (ConfigurationSettings.AppSettings["DBtype"].ToString() == "SQL")
+                                {
+                                    queryy = "select \"U_GrpoDocE\"  From [@QCINSMAST] where  \"U_DNo\" = '" + rec.Fields.Item("DocNum").Value.ToString() + "' \"U_ICode\"='" + rec.Fields.Item("ItemCode").Value.ToString() + "'";
+                                }
+                                else
+                                {
+                                    queryy = "select \"U_GrpoDocE\"  From \"@QCINSMAST\" where  \"U_GrpoDocE\" = '" + rec.Fields.Item("DocEntry").Value.ToString() + "'  and \"U_ICode\"='" + rec.Fields.Item("ItemCode").Value.ToString() + "' and \"U_ItmLnid\" = '" + rec.Fields.Item("LineNum").Value.ToString() + "'";
+                                }
+                                recIns.DoQuery(queryy);
+
+
+                                if (recordcount != 0)
+                                {
+                                    if (recIns.RecordCount == 0)
+                                    {
+                                        oCon = oCons.Add();
+                                        oCon.Alias = "DocEntry";
+                                        oCon.Operation = SAPbouiCOM.BoConditionOperation.co_EQUAL;
+                                        oCon.CondVal = rec.Fields.Item("DocEntry").Value.ToString();
+                                        oCon.Relationship = SAPbouiCOM.BoConditionRelationship.cr_OR;
+                                    }
+                                }
+                                else
+                                {
+                                    if (recIns.RecordCount == 0)
+                                    {
+                                        oCon = oCons.Add();
+                                        oCon.Alias = "DocEntry";
+                                        oCon.Operation = SAPbouiCOM.BoConditionOperation.co_EQUAL;
+                                        oCon.CondVal = rec.Fields.Item("DocEntry").Value.ToString();
+                                    }
+                                    else
+                                    {
+                                        oCon = oCons.Add();
+                                        oCon.Alias = "DocEntry";
+                                        oCon.Operation = SAPbouiCOM.BoConditionOperation.co_EQUAL;
+                                        oCon.CondVal = "-1";
+                                    }
+                                }
+
+                                recordcount = recordcount - 1;
+                                rec.MoveNext();
+                            }
+                        }
+                        else
+                        {
+                            oCon = oCons.Add();
+                            oCon.Alias = "DocEntry";
+                            oCon.Operation = SAPbouiCOM.BoConditionOperation.co_EQUAL;
+                            oCon.CondVal = "-1";
+
+                        }
+
+
+
+                        oCFL3.SetConditions(oCons);
+                        // select * from OPDN as T0 inner join PDN1 as T1 on T0.DocEntry = T1.DocEntry INNER JOIN oitm AS t2 ON T2.iTEMcODE = T1.ItemCode WHERE isnull(T2.u_QCApp,'N') = 'Y'
+                        // only QC applied bin GRPO is displayed    
+                        #endregion
+                    }
+                    if (CmbQCType.Selected.Value == "2" || CmbQCType.Selected.Value == "3" || CmbQCType.Selected.Value == "4" || CmbQCType.Selected.Value == "8")
+                    {
+                        #region Inventory
+                        SAPbouiCOM.ChooseFromList oCFL = this.UIAPIRawForm.ChooseFromLists.Item("CFL_Inv");
+                        SAPbouiCOM.ISBOChooseFromListEventArg chList = (SAPbouiCOM.ISBOChooseFromListEventArg)pVal;
+                        SAPbouiCOM.DataTable oTable = chList.SelectedObjects;
+                        txtDEnt.ChooseFromListUID = oCFL.UniqueID;
+                        txtDEnt.ChooseFromListAlias = "DocEntry";
+
+                        string strUid2 = oCFL.UniqueID;
+                        string DeptCode = string.Empty;
+                        oCFL.SetConditions(null);
+                        SAPbouiCOM.Conditions oCons = default(SAPbouiCOM.Conditions);
+                        SAPbouiCOM.Condition oCon = default(SAPbouiCOM.Condition);
+                        oCons = oCFL.GetConditions();
+
+                        //oCon = oCons.Add(); //83
+                        //oCon.Alias = "DocStatus";
+                        //oCon.Operation = SAPbouiCOM.BoConditionOperation.co_EQUAL;
+                        //oCon.CondVal = "O";//rec.Fields.Item("DocEntry").Value.ToString();
+                        //oCon.Relationship = SAPbouiCOM.BoConditionRelationship.cr_AND;
+
+                        if (CmbQCType.Selected.Value.Trim() == "2")
+                        {
+                            rec = ((SAPbobsCOM.Recordset)Program.oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.BoRecordset));
+                            string query = QueryManger.GetQuery(QueryString.QCINSPTXDECFLBFR2);
+                            rec.DoQuery(query);
+                        }
+
+                        if (CmbQCType.Selected.Value.Trim() == "8")
+                        {
+                            rec = ((SAPbobsCOM.Recordset)Program.oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.BoRecordset));
+                            string query = QueryManger.GetQuery(QueryString.QCINSPTXDECFLBFR8);
+                            rec.DoQuery(query);
+                        }
+
+                        if (CmbQCType.Selected.Value.Trim() == "3")
+                        {
+                            rec = ((SAPbobsCOM.Recordset)Program.oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.BoRecordset));
+                            string query = QueryManger.GetQuery(QueryString.QCINSPTXDECFLBFR3);
+                            rec.DoQuery(query);
+                        }
+
+                        if (CmbQCType.Selected.Value.Trim() == "4")
+                        {
+                            rec = ((SAPbobsCOM.Recordset)Program.oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.BoRecordset));
+                            string query = QueryManger.GetQuery(QueryString.QCINSPTXDECFLBFR4);
+                            rec.DoQuery(query);
+                        }
+
+                        int recordcount = rec.RecordCount - 1;
+                        if (rec.RecordCount > 0)
+                        {
+                            while (!rec.EoF)
+                            {
+                                string queryy;
+                                SAPbobsCOM.Recordset recIns = ((SAPbobsCOM.Recordset)Program.oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.BoRecordset));
+                                if (ConfigurationSettings.AppSettings["DBtype"].ToString() == "SQL")
+                                {
+                                    queryy = "select \"U_GrpoDocE\"  From [@QCINSMAST] where \"U_DNo\" = '" + rec.Fields.Item("DocNum").Value.ToString() + "'";
+                                }
+                                else
+                                {
+                                    queryy = "select ifnull(\"U_GrpoDocE\",'')  From \"@QCINSMAST\" where \"U_GrpoDocE\" = '" + rec.Fields.Item("DocEntry").Value.ToString() + "'";
+                                }
+                                recIns.DoQuery(queryy);
+
+
+                                if (recordcount != 0)
+                                {
+                                    if (recIns.RecordCount == 0)
+                                    {
+                                        oCon = oCons.Add();
+                                        oCon.Alias = "DocEntry";
+                                        oCon.Operation = SAPbouiCOM.BoConditionOperation.co_EQUAL;
+                                        oCon.CondVal = rec.Fields.Item("DocEntry").Value.ToString();
+                                        oCon.Relationship = SAPbouiCOM.BoConditionRelationship.cr_OR;
+                                    }
+                                }
+                                else
+                                {
+                                    if (recIns.RecordCount == 0)
+                                    {
+                                        oCon = oCons.Add();
+                                        oCon.Alias = "DocEntry";
+                                        oCon.Operation = SAPbouiCOM.BoConditionOperation.co_EQUAL;
+                                        oCon.CondVal = rec.Fields.Item("DocEntry").Value.ToString();
+                                    }
+
+                                    else
+                                    {
+                                        oCon = oCons.Add();
+                                        oCon.Alias = "DocEntry";
+                                        oCon.Operation = SAPbouiCOM.BoConditionOperation.co_EQUAL;
+                                        oCon.CondVal = "-1";
+                                    }
+                                }
+
+                                recordcount = recordcount - 1;
+                                rec.MoveNext();
+                            }
+                        }
+                        else
+                        {
+                            oCon = oCons.Add();
+                            oCon.Alias = "DocEntry";
+                            oCon.Operation = SAPbouiCOM.BoConditionOperation.co_EQUAL;
+                            oCon.CondVal = "-1";
+                        }
+                        oCFL.SetConditions(oCons);
+                        #endregion
+                    }
+
+                    #region Commented
+                    //if (CmbQCType.Selected.Value == "4") // Pre-dispatch Delivery Challan
+                    //{
+                    //    #region Delivery
+                    //    SAPbouiCOM.ChooseFromList oCFL3 = this.UIAPIRawForm.ChooseFromLists.Item("cflDel");
+                    //    txtDEnt.ChooseFromListUID = oCFL3.UniqueID;
+                    //    txtDEnt.ChooseFromListAlias = "DocEntry";
+
+                    //    string strUid2 = oCFL3.UniqueID;
+                    //    string DeptCode = string.Empty;
+                    //    oCFL3.SetConditions(null);
+                    //    SAPbouiCOM.Conditions oCons = default(SAPbouiCOM.Conditions);
+                    //    SAPbouiCOM.Condition oCon = default(SAPbouiCOM.Condition);
+                    //    oCons = oCFL3.GetConditions();
+
+                    //    recGetdata = ((SAPbobsCOM.Recordset)Program.oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.BoRecordset));
+                    //    string GetdataQuery = QueryManger.GetQuery(QueryString.SYSGETRECFORGENSETTING);
+                    //    recGetdata.DoQuery(GetdataQuery);
+
+                    //    if (recGetdata.Fields.Item("U_QCWareMan").Value.ToString().ToLower() == "true")
+                    //    {
+                    //        rec = ((SAPbobsCOM.Recordset)Program.oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.BoRecordset));
+                    //        string query = QueryManger.GetQuery(QueryString.QCINSPTXDECFLBFR5);
+                    //        rec.DoQuery(query);
+                    //    }
+
+                    //    if (recGetdata.Fields.Item("U_QCBinMan").Value.ToString().ToLower() == "true")
+                    //    {
+                    //        //rec = ((SAPbobsCOM.Recordset)Program.oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.BoRecordset));
+                    //        //string query = QueryManger.GetQuery(QueryString.QCINSPTXDECFLBFRR);
+                    //        //rec.DoQuery(query);
+                    //    }
+
+                    //    int recordcount = rec.RecordCount - 1;
+                    //    if (rec.RecordCount > 0)
+                    //    {
+                    //        while (!rec.EoF)
+                    //        {
+                    //            string queryy;
+                    //            SAPbobsCOM.Recordset recIns = ((SAPbobsCOM.Recordset)Program.oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.BoRecordset));
+                    //            if (ConfigurationSettings.AppSettings["DBtype"].ToString() == "SQL")
+                    //            {
+                    //                queryy = "select \"U_GrpoDocE\"  From [@QCINSMAST] where  \"U_DNo\" = '" + rec.Fields.Item("DocNum").Value.ToString() + "' and \"U_ICode\"='" + rec.Fields.Item("ItemCode").Value.ToString() + "'";
+                    //            }
+                    //            else
+                    //            {
+                    //                queryy = "select \"U_GrpoDocE\"  From \"@QCINSMAST\" where  \"U_DNo\" = '" + rec.Fields.Item("DocNum").Value.ToString() + "' and \"U_ICode\"='" + rec.Fields.Item("ItemCode").Value.ToString() + "'";
+                    //            }
+                    //            recIns.DoQuery(queryy);
+                    //            if (recordcount != 0)
+                    //            {
+                    //                if (recIns.RecordCount == 0)
+                    //                {
+                    //                    oCon = oCons.Add();
+                    //                    oCon.Alias = "DocEntry";
+                    //                    oCon.Operation = SAPbouiCOM.BoConditionOperation.co_EQUAL;
+                    //                    oCon.CondVal = rec.Fields.Item("DocEntry").Value.ToString();
+                    //                    oCon.Relationship = SAPbouiCOM.BoConditionRelationship.cr_OR;
+                    //                }
+                    //            }
+                    //            else
+                    //            {
+                    //                if (recIns.RecordCount == 0)
+                    //                {
+                    //                    oCon = oCons.Add();
+                    //                    oCon.Alias = "DocEntry";
+                    //                    oCon.Operation = SAPbouiCOM.BoConditionOperation.co_EQUAL;
+                    //                    oCon.CondVal = rec.Fields.Item("DocEntry").Value.ToString();
+                    //                }
+                    //                else
+                    //                {
+                    //                    oCon = oCons.Add();
+                    //                    oCon.Alias = "DocEntry";
+                    //                    oCon.Operation = SAPbouiCOM.BoConditionOperation.co_EQUAL;
+                    //                    oCon.CondVal = "-1";
+                    //                }
+                    //            }
+                    //            recordcount = recordcount - 1;
+                    //            rec.MoveNext();
+                    //        }
+                    //    }
+                    //    else
+                    //    {
+                    //        oCon = oCons.Add();
+                    //        oCon.Alias = "DocEntry";
+                    //        oCon.Operation = SAPbouiCOM.BoConditionOperation.co_EQUAL;
+                    //        oCon.CondVal = "-1";
+                    //    }
+
+                    //    oCFL3.SetConditions(oCons);
+                    //    #endregion
+                    //} 
+                    #endregion
+
+                    if (CmbQCType.Selected.Value == "6") // Production QC Receipt from Production
+                    {
+                        #region Receipt From Production
+                        try
+                        {
+                            //ExceptionLog.SendInformation("Inside the choose from list Selected Value :: " + CmbQCType.Selected.Value + "Qc selected desc" + CmbQCType.Selected.Description, "QCInspection");
+                            SAPbouiCOM.ChooseFromList oCFL = this.UIAPIRawForm.ChooseFromLists.Item("CFLRecipt");
+                            //ExceptionLog.SendInformation("CFL OBJECT Type Value :: " + oCFL.ObjectType.ToString(), "QCInspection");
+
+                            SAPbouiCOM.ISBOChooseFromListEventArg chList = (SAPbouiCOM.ISBOChooseFromListEventArg)pVal;
+
+                            SAPbouiCOM.DataTable oTable = chList.SelectedObjects;
+                            txtDEnt.ChooseFromListUID = oCFL.UniqueID;
+                            txtDEnt.ChooseFromListAlias = "DocEntry";
+
+                            string strUid2 = oCFL.UniqueID;
+                            string DeptCode = string.Empty;
+                            oCFL.SetConditions(null);
+                            SAPbouiCOM.Conditions oCons = default(SAPbouiCOM.Conditions);
+                            SAPbouiCOM.Condition oCon = default(SAPbouiCOM.Condition);
+                            oCons = oCFL.GetConditions();
+
+                            //oCon = oCons.Add(); //83
+                            //oCon.Alias = "DocStatus";
+                            //oCon.Operation = SAPbouiCOM.BoConditionOperation.co_EQUAL;
+                            //oCon.CondVal = "O";//rec.Fields.Item("DocEntry").Value.ToString();
+                            //oCon.Relationship = SAPbouiCOM.BoConditionRelationship.cr_AND;
+
+                            rec = ((SAPbobsCOM.Recordset)Program.oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.BoRecordset));
+                            //string query = "select distinct IGN1.\"DocEntry\",OIGN.\"DocNum\" from OIGN inner join IGN1 on OIGN.\"DocEntry\"=IGN1.\"DocEntry\" inner join OITM on IGN1.\"ItemCode\" = OITM.\"ItemCode\" inner join OWOR on IGN1.\"BaseEntry\" = OWOR.\"DocEntry\" and OWOR.\"Type\" = 'S' where \"U_QCApp\"='Y' and Canceled = 'N' and IGN1.\"BaseEntry\" is not null and OIGN.\"DocDate\" >= '" + ConfigurationSettings.AppSettings["ThresholdDate"] + "' and NOT EXISTS ( select \"U_GrpoDocE\" from \"@QCINSMAST\" where \"U_QCType\" = '6' and \"@QCINSMAST\".\"U_GrpoDocE\" = IGN1.\"DocEntry\"  and  \"@QCINSMAST\".\"U_GrpoWhs\" = IGN1.\"WhsCode\"  and \"@QCINSMAST\".\"U_ICode\" = IGN1.\"ItemCode\"  ) ";
+
+                            string query = "select distinct T1.\"DocEntry\" from OIGN T0 inner join IGN1 T1 on T0.\"DocEntry\"=T1.\"DocEntry\" Inner join  SRI1 T2 on T2.\"BaseEntry\" = T0.\"DocEntry\" Inner join OSRI T3 on T3.\"ItemCode\" = T2.\"ItemCode\" and T2.\"SysSerial\" = T3.\"SysSerial\" and \"IntrSerial\" not in (Select ifnull(\"U_BSNo\",'') from \"@QCINSMAST\" T0 inner join \"@QCINSBATCHPARA\" T1 on  T0.\"Code\" = T1.\"Code\" ) inner join OWOR T4 on T1.\"BaseEntry\" = T4.\"DocEntry\" Inner join OITM T5 on T5.\"ItemCode\" = T1.\"ItemCode\" where T4.\"Type\" = 'S' and \"U_QCApp\"='Y' and T0.Canceled = 'N' and T0.\"DocDate\" >= '" + ConfigurationSettings.AppSettings["ThresholdDate"] + "'";
+
+                            //ExceptionLog.SendInformation("Query Formed  :: " + query, "QCInspection");
+                            rec.DoQuery(query);
+                            int recordcount = rec.RecordCount - 1;
+                            if (rec.RecordCount > 0)
+                            {
+                                while (!rec.EoF)
+                                {
+                                    if (recordcount != 0)
+                                    {
+                                        oCon = oCons.Add();
+                                        oCon.Alias = "DocEntry";
+                                        oCon.Operation = SAPbouiCOM.BoConditionOperation.co_EQUAL;
+                                        oCon.CondVal = rec.Fields.Item("DocEntry").Value.ToString();
+                                        oCon.Relationship = SAPbouiCOM.BoConditionRelationship.cr_OR;
+                                    }
+                                    else
+                                    {
+                                        oCon = oCons.Add();
+                                        oCon.Alias = "DocEntry";
+                                        oCon.Operation = SAPbouiCOM.BoConditionOperation.co_EQUAL;
+                                        oCon.CondVal = rec.Fields.Item("DocEntry").Value.ToString();
+                                    }
+                                    recordcount = recordcount - 1;
+                                    rec.MoveNext();
+                                }
+                            }
+                            else
+                            {
+                                oCon = oCons.Add();
+                                oCon.Alias = "DocEntry";
+                                oCon.Operation = SAPbouiCOM.BoConditionOperation.co_EQUAL;
+                                oCon.CondVal = "-1";
+                            }
+
+                            oCFL.SetConditions(oCons);
+                        }
+                        catch (Exception ex)
+                        {
+                            ExceptionLog.SendErrorToText(ex, "QCInspection");
+                        }
+                        finally
+                        {
+                            GC.Collect();
+                            if (rec != null)
+                                System.Runtime.InteropServices.Marshal.ReleaseComObject(rec);
+                            rec = null;
+                        }
+                        #endregion
+                    }
+
+                    if (CmbQCType.Selected.Value == "7") // Production QC Receipt from Production
+                    {
+                        #region Receipt From Production with special Production only
+                        try
+                        {
+                            ExceptionLog.SendInformation("Inside the choose from list Selected Value :: " + CmbQCType.Selected.Value + "Qc selected desc" + CmbQCType.Selected.Description, "QCInspection");
+                            SAPbouiCOM.ChooseFromList oCFL = this.UIAPIRawForm.ChooseFromLists.Item("CFLRecipt");
+                            ExceptionLog.SendInformation("CFL OBJECT Type Value :: " + oCFL.ObjectType.ToString(), "QCInspection");
+                            SAPbouiCOM.ISBOChooseFromListEventArg chList = (SAPbouiCOM.ISBOChooseFromListEventArg)pVal;
+                            SAPbouiCOM.DataTable oTable = chList.SelectedObjects;
+                            txtDEnt.ChooseFromListUID = oCFL.UniqueID;
+                            txtDEnt.ChooseFromListAlias = "DocEntry";
+
+                            string strUid2 = oCFL.UniqueID;
+                            string DeptCode = string.Empty;
+                            oCFL.SetConditions(null);
+                            SAPbouiCOM.Conditions oCons = default(SAPbouiCOM.Conditions);
+                            SAPbouiCOM.Condition oCon = default(SAPbouiCOM.Condition);
+                            oCons = oCFL.GetConditions();
+
+                            //oCon = oCons.Add(); //83
+                            //oCon.Alias = "DocStatus";
+                            //oCon.Operation = SAPbouiCOM.BoConditionOperation.co_EQUAL;
+                            //oCon.CondVal = "O";//rec.Fields.Item("DocEntry").Value.ToString();
+                            //oCon.Relationship = SAPbouiCOM.BoConditionRelationship.cr_AND;
+
+                            rec = ((SAPbobsCOM.Recordset)Program.oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.BoRecordset));
+                            string query = "select distinct IGN1.\"DocEntry\",OIGN.\"DocNum\" from OIGN inner join IGN1 on OIGN.\"DocEntry\"=IGN1.\"DocEntry\" and IGN1.\"WhsCode\" in ( 'TRD/UI' , 'IMD/UI')  inner join OITM on IGN1.\"ItemCode\" = OITM.\"ItemCode\" inner join OWOR on IGN1.\"BaseEntry\" = OWOR.\"DocEntry\" and OWOR.\"Type\" = 'P' where \"U_QCApp\"='Y' and Canceled = 'N' and IGN1.\"BaseEntry\" is not null and OIGN.\"DocDate\" >= '" + ConfigurationSettings.AppSettings["ThresholdDate"] + "' and NOT EXISTS ( select \"U_GrpoDocE\" from \"@QCINSMAST\" where \"U_QCType\" = '7' and \"@QCINSMAST\".\"U_GrpoDocE\" = IGN1.\"DocEntry\"  and  \"@QCINSMAST\".\"U_GrpoWhs\" = IGN1.\"WhsCode\"  and \"@QCINSMAST\".\"U_ICode\" = IGN1.\"ItemCode\"  ) ";
+
+                            rec.DoQuery(query);
+                            int recordcount = rec.RecordCount - 1;
+                            if (rec.RecordCount > 0)
+                            {
+                                while (!rec.EoF)
+                                {
+                                    if (recordcount != 0)
+                                    {
+                                        oCon = oCons.Add();
+                                        oCon.Alias = "DocEntry";
+                                        oCon.Operation = SAPbouiCOM.BoConditionOperation.co_EQUAL;
+                                        oCon.CondVal = rec.Fields.Item("DocEntry").Value.ToString();
+                                        oCon.Relationship = SAPbouiCOM.BoConditionRelationship.cr_OR;
+                                    }
+                                    else
+                                    {
+                                        oCon = oCons.Add();
+                                        oCon.Alias = "DocEntry";
+                                        oCon.Operation = SAPbouiCOM.BoConditionOperation.co_EQUAL;
+                                        oCon.CondVal = rec.Fields.Item("DocEntry").Value.ToString();
+                                    }
+                                    recordcount = recordcount - 1;
+                                    rec.MoveNext();
+                                }
+                            }
+                            else
+                            {
+                                oCon = oCons.Add();
+                                oCon.Alias = "DocEntry";
+                                oCon.Operation = SAPbouiCOM.BoConditionOperation.co_EQUAL;
+                                oCon.CondVal = "-1";
+                            }
+
+                            oCFL.SetConditions(oCons);
+                        }
+                        catch (Exception ex)
+                        {
+                            ExceptionLog.SendErrorToText(ex, "QCInspection");
+                        }
+                        finally
+                        {
+                            GC.Collect();
+                            if (rec != null)
+                                System.Runtime.InteropServices.Marshal.ReleaseComObject(rec);
+                            rec = null;
+                        }
+                        #endregion
+                    }
+                }
+                else
+                {
+                    Program.SBO_Application.StatusBar.SetText("Select the QC Type", SAPbouiCOM.BoMessageTime.bmt_Short, SAPbouiCOM.BoStatusBarMessageType.smt_Error);
+                    BubbleEvent = false;
+                    return;
+                }
+            }
+
+            catch (Exception ex)
+            {
+                ExceptionLog.SendErrorToText(ex, "QCInspection");
+            }
+            finally
+            {
+                if (rec != null)
+                {
+                    System.Runtime.InteropServices.Marshal.ReleaseComObject(rec);
+                }
+            }
+        }
+
+        //Docentry Choose from list AFTER
+        private void txtDEnt_ChooseFromListAfter(object sboObject, SBOItemEventArg pVal)
+        {
+            try
+            {
+                ClearData();
+                SAPbouiCOM.ISBOChooseFromListEventArg chList = (SAPbouiCOM.ISBOChooseFromListEventArg)pVal;
+                SAPbouiCOM.DataTable oTable = chList.SelectedObjects;
+                try
+                {
+                    txtDEnt.Value = oTable.GetValue("DocEntry", 0).ToString();
+                }
+                catch { }
+                try
+                {
+                    txtDNo.Value = oTable.GetValue("DocNum", 0).ToString();
+                }
+                catch { }
+                try
+                {
+                    txtDDte.Value = Convert.ToDateTime(oTable.GetValue("DocDate", 0)).ToString("yyyyMMdd");
+                }
+                catch { }
+                try
+                {
+                    txtICode.Value = oTable.GetValue("ItemCode", 0).ToString();
+                }
+                catch { }
+                try
+                {
+                    txtIName.Value = oTable.GetValue("ItemName", 0).ToString();
+                }
+                catch { }
+                try
+                {
+                    txtSrs.Value = oTable.GetValue("Series", 0).ToString();
+                }
+                catch
+                {
+                }
+                try
+                {
+                    txtVen.Value = oTable.GetValue("CardName", 0).ToString();
+                }
+                catch
+                {
+
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                ExceptionLog.SendErrorToText(ex, "QCInspection");
+            }
+        }

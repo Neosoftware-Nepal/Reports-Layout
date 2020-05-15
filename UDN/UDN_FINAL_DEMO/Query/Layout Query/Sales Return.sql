@@ -1,0 +1,125 @@
+ALTER PROCEDURE SP_ITN_SalesReturn ( IN DocKey INT)
+AS
+BEGIN
+SELECT 
+		/* Heading Details    */
+		T0."DocEntry"
+		,T0."CardCode"
+		,T0."CardName" as "Customer"
+		,T0."DocTotal"
+		,T0."Address2" AS "ShippingAddress"
+		,T0."Address" AS "BilToAdrs"
+		,T0."DocDate" AS "Credit Note Date"
+		,T0."VatSum" as "Vat Amount"
+		,T0."OwnerCode" AS "PreparedBy"
+		,T0."DiscPrcnt" AS "DiscntPct"
+		,T0."DiscSum"
+		,T0."PeyMethod" AS "PaymentMode"
+		,T0."Comments" as "Remarks"
+		,T0."VatPercent" AS "Vat Percent"
+		,T0."U_BUNIT" as "TAGS"
+		,T0."U_ITNTRDDIS" as "TradeDisPrcnt"
+		,T0."U_ITNTRDDISAM" as "Trade Discoount Amount"
+		,CASE 
+			WHEN T0."TotalExpns" < '0'
+				THEN T0."TotalExpns" * (- 1)
+			ELSE T0."TotalExpns"
+			END AS "frt"
+	
+		
+		/*  Dates  */
+		
+		,IFNULL(T20."BeginStr", '') 
+		||''|| CAST(T0."DocNum" AS CHAR(20))
+		||''|| IFNULL(T20."EndStr", '') AS "Credit Note No"
+		
+		---,SUBSTRING(OINV."U_ITN_NPDate", 0, 4) ,'/' , SUBSTRING(OINV."U_ITN_NPDate", 5, 2) , '/' , SUBSTRING(OINV."U_ITN_NPDate", 7, 2)) AS "OrdrNpDt"
+		--,ITN_NEPALI_FMT_DATE(OINV."U_ITN_NPDate") AS "OrdrNpDt"
+	
+		--,IFNULL(T20."SeriesName", '') ||''||  CAST(T0."DocNum" AS CHAR(20)) AS "InvNo"
+		
+		,ITN_NEPALI_FMT_DATE(T0."U_ITN_NPDate") AS "NP Date"
+		--,CONCAT(SUBSTRING(T0."U_ITN_NPDate", 0, 4) , '/' , SUBSTRING(T0."U_ITN_NPDate", 5, 2) , '/' ,SUBSTRING(T0."U_ITN_NPDate", 7, 2)) AS "NP Date"
+		
+		
+		/*  Line Details  */
+		,T1."ItemCode" AS "ItemCode"
+		,T1."Dscription" AS "Particulars"
+		, 0 as "PCS"
+		,T1."Rate" as "Rate"
+		,T1."Quantity" AS "Total PCS"
+		,T1."unitMsr" AS "UoM"
+		,T1."PriceBefDi"
+		,T1."Price" AS "Price"
+		,(IFNULL(T1."Quantity", 0) * IFNULL(T1."PriceBefDi", 0)) AS "LineAmt"
+		,T1."LineTotal" as "Amount"
+		,T1."LineNum" AS "Line No"
+		,T1."VatPrcnt" AS "Vat Percent"
+		,T1."DiscPrcnt" AS "LineDisc"
+	
+		,((IFNULL(T1."PriceBefDi", 0) - IFNULL(T1."Price", 0)) * IFNULL(T1."Quantity", 0)) AS "DisAmt"
+		,IFNULL((SELECT RIN4."TaxSum" FROM RIN4 WHERE T0."DocEntry" = RIN4."DocEntry" AND RIN4."LineNum" = T1."LineNum" AND RIN4."staType" = 1), 0) AS "LineVatAmt"
+		,IFNULL((SELECT RIN4."TaxSum" FROM RIN4 WHERE T0."DocEntry" = RIN4."DocEntry" AND RIN4."LineNum" = T1."LineNum" AND RIn4."staType" = 7), 0) AS "LineExciseAmount"
+		
+		
+		/* User Defined Fields  */
+		,OUSR."U_NAME" AS "Prepared By"
+		
+		/*  Currency Name  */
+		,T12."CurrName" AS "CurrName"
+	
+	
+		,T3."TaxId4" AS "PANNo"
+		,T4."NumInBuy" as "QTY/Case"
+		,0 as "QTY(PCS)"
+		--,T1."U_PRODISAM" as "Promo Discount"
+		--,T0."U_BUSUNIT" as "TAGS"
+		--,T0."U_TRDDISAM" as "Trade Discount Amount"
+		
+	FROM ORIN T0
+	INNER JOIN RIN1 T1 ON T0."DocEntry" = T1."DocEntry"
+	LEFT JOIN OADM T18 ON 1 = 1
+	LEFT JOIN ADM1 T19 ON T18."Code" = T19."Code"
+	LEFT JOIN OCRD T16 ON T16."CardCode" = T0."CardCode"
+	LEFT JOIN OUSR ON T0."UserSign" = OUSR."USERID"
+	INNER JOIN NNM1 T20 ON T20."Series" = T0."Series"
+	LEFT JOIN CRD7 T2 ON T2."CardCode" = T0."CardCode"
+		AND T2."Address" = T0."ShipToCode"
+		AND T2."AddrType" = 'S'
+	LEFT JOIN CRD7 T3 ON T3."CardCode" = T0."CardCode"
+		AND T3."Address" = ''
+		AND T3."AddrType" = 'S'
+	LEFT JOIN OITM T4 ON T4."ItemCode" = T1."ItemCode" --AND T1."ObjType" = '16'
+	LEFT JOIN OCHP T5 ON T5."AbsEntry" = T4."ChapterID"
+	LEFT JOIN INV1 T7 ON T1."DocEntry" = T7."TrgetEntry"
+		AND T7."ObjType" = T1."BaseType"
+		AND T7."LineNum" = T1."BaseLine"
+	LEFT JOIN OINV ON T7."DocEntry" = OINV."DocEntry"
+	LEFT JOIN NNM1 T21 ON T21."Series" = OINV."Series"
+	LEFT JOIN DLN1 T6 ON T1."DocEntry" = T6."TrgetEntry"
+		AND T6."ObjType" = T1."BaseType"
+		AND T6."LineNum" = T1."BaseLine"
+	LEFT JOIN ODLN ON T6."DocEntry" = ODLN."DocEntry"
+	LEFT JOIN RDR1 T23 ON T6."DocEntry" = T23."TrgetEntry"
+		AND T23."ObjType" = T6."BaseType"
+		AND T23."LineNum" = T6."BaseLine"
+	LEFT JOIN ORDR ON T23."DocEntry" = ORDR."DocEntry"
+	LEFT JOIN OCTG T9 ON T9."GroupNum" = T0."GroupNum"
+	LEFT JOIN OCRN T12 ON T0."DocCur" = T12."CurrCode"
+	LEFT JOIN RIN12 T13 ON T13."DocEntry" = T1."DocEntry"
+	LEFT JOIN OWHS T15 ON T1."WhsCode" = T15."WhsCode"
+	LEFT JOIN OLCT L ON L."Code" = T15."Location"
+	LEFT JOIN CRD1 AD ON AD."CardCode" = T0."CardCode"
+		AND AD."Address" = T0."PayToCode"
+		AND AD."AdresType" = 'B'
+	LEFT JOIN OCST ST ON ST."Code" = AD."State"
+		AND ST."Country" = AD."Country"
+	LEFT JOIN CRD1 AD1 ON AD1."CardCode" = T0."CardCode"
+		AND AD1."Address" = T0."ShipToCode"
+		AND AD1."AdresType" = 'S'
+	LEFT JOIN OCST ST1 ON ST1."Code" = AD1."State"
+		AND ST1."Country" = AD1."Country"
+	LEFT JOIN OCPR M ON M."CntctCode" = T0."CntctCode"
+		AND M."CardCode" = T0."CardCode"
+		WHERE T0."DocEntry" = :DocKey;
+END

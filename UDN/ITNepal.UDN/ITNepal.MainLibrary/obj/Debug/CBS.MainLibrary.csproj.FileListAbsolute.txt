@@ -1,0 +1,24 @@
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\CBS.MainLibrary\bin\Debug\CBS.MainLibrary.dll.config
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\CBS.MainLibrary\bin\Debug\CBS.MainLibrary.dll
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\CBS.MainLibrary\bin\Debug\CBS.MainLibrary.pdb
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\CBS.MainLibrary\obj\Debug\CBS.MainLibrary.dll
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\CBS.MainLibrary\obj\Debug\CBS.MainLibrary.pdb
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\CBS.MainLibrary\obj\Debug\CBS.MainLibrary.csprojResolveAssemblyReference.cache
+C:\sathya\Doctor Pack\John\New\CBS.CommonAddon\CBS.MainLibrary\bin\Debug\CBS.MainLibrary.dll.config
+C:\sathya\Doctor Pack\John\New\CBS.CommonAddon\CBS.MainLibrary\bin\Debug\CBS.MainLibrary.dll
+C:\sathya\Doctor Pack\John\New\CBS.CommonAddon\CBS.MainLibrary\bin\Debug\CBS.MainLibrary.pdb
+C:\sathya\Doctor Pack\John\New\CBS.CommonAddon\CBS.MainLibrary\obj\Debug\CBS.MainLibrary.csprojResolveAssemblyReference.cache
+C:\sathya\Doctor Pack\John\New\CBS.CommonAddon\CBS.MainLibrary\obj\Debug\CBS.MainLibrary.dll
+C:\sathya\Doctor Pack\John\New\CBS.CommonAddon\CBS.MainLibrary\obj\Debug\CBS.MainLibrary.pdb
+C:\John\sathya_Common Framework\CBS.CommonAddon\CBS.MainLibrary\bin\Debug\CBS.MainLibrary.dll.config
+C:\John\sathya_Common Framework\CBS.CommonAddon\CBS.MainLibrary\bin\Debug\CBS.MainLibrary.dll
+C:\John\sathya_Common Framework\CBS.CommonAddon\CBS.MainLibrary\bin\Debug\CBS.MainLibrary.pdb
+C:\John\sathya_Common Framework\CBS.CommonAddon\CBS.MainLibrary\obj\Debug\CBS.MainLibrary.csprojResolveAssemblyReference.cache
+C:\John\sathya_Common Framework\CBS.CommonAddon\CBS.MainLibrary\obj\Debug\CBS.MainLibrary.dll
+C:\John\sathya_Common Framework\CBS.CommonAddon\CBS.MainLibrary\obj\Debug\CBS.MainLibrary.pdb
+C:\Users\John\Desktop\Deepak\CBS.CommonAddon\CBS.MainLibrary\bin\Debug\CBS.MainLibrary.dll.config
+C:\Users\John\Desktop\Deepak\CBS.CommonAddon\CBS.MainLibrary\bin\Debug\CBS.MainLibrary.dll
+C:\Users\John\Desktop\Deepak\CBS.CommonAddon\CBS.MainLibrary\bin\Debug\CBS.MainLibrary.pdb
+C:\Users\John\Desktop\Deepak\CBS.CommonAddon\CBS.MainLibrary\obj\Debug\CBS.MainLibrary.csprojResolveAssemblyReference.cache
+C:\Users\John\Desktop\Deepak\CBS.CommonAddon\CBS.MainLibrary\obj\Debug\CBS.MainLibrary.dll
+C:\Users\John\Desktop\Deepak\CBS.CommonAddon\CBS.MainLibrary\obj\Debug\CBS.MainLibrary.pdb

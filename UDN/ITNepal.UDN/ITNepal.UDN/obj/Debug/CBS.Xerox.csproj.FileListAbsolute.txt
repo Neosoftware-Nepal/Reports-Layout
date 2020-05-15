@@ -1,0 +1,111 @@
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Images\imgLogo.png
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\ApplyCoverage.b1f.cs
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\BillingWizardForm.b1f.cs
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\CoverageMaster.b1f.cs
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\LeaseContractForm.b1f.cs
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\LoadDataForm.b1f.cs
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\MachinePricingMasterForm.b1f.cs
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\MeterSetupForm.b1f.cs
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\SystemForms\Item Master Data.b1f.cs
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\SystemForms\Service Contract.b1f.cs
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\TechnicalSkillMasterForm.b1f.cs
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\SystemForms\EquipmentCardForm.b1f.cs
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\SystemForms\ServiceCallForm.b1f.cs
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\ApplyCoverage.b1f
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\BillingWizardForm.b1f
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\CoverageMaster.b1f
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\LeaseContractForm.b1f
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\LoadDataForm.b1f
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\MachinePricingMasterForm.b1f
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\MeterSetupForm.b1f
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\SystemForms\Item Master Data.b1f
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\SystemForms\Item Master Data.b1f__orig_srf
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\SystemForms\Service Contract.b1f
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\SystemForms\Service Contract.b1f__orig_srf
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\TechnicalSkillMasterForm.b1f
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\SystemForms\EquipmentCardForm.b1f
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\SystemForms\EquipmentCardForm.b1f__orig_srf
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\SystemForms\ServiceCallForm.b1f
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Forms\SystemForms\ServiceCallForm.b1f__orig_srf
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Procons.AlGhanim.Xerox.exe.config
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Procons.AlGhanim.Xerox.exe
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Procons.AlGhanim.Xerox.pdb
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Procons.AlGhanim.MainLibrary.dll
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\bin\Debug\Procons.AlGhanim.MainLibrary.pdb
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\obj\Debug\CBS.Xerox.csprojResolveAssemblyReference.cache
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\obj\Debug\Procons.AlGhanim.Xerox.exe
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\Procons.AlGhanim.Xerox\obj\Debug\Procons.AlGhanim.Xerox.pdb
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\CBS.Xerox\bin\Debug\Images\imgLogo.png
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\CBS.Xerox\bin\Debug\Forms\ApplyCoverage.b1f.cs
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\CBS.Xerox\bin\Debug\Forms\BillingWizardForm.b1f.cs
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\CBS.Xerox\bin\Debug\Forms\CoverageMaster.b1f.cs
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\CBS.Xerox\bin\Debug\Forms\LeaseContractForm.b1f.cs
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\CBS.Xerox\bin\Debug\Forms\LoadDataForm.b1f.cs
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\CBS.Xerox\bin\Debug\Forms\MachinePricingMasterForm.b1f.cs
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\CBS.Xerox\bin\Debug\Forms\MeterSetupForm.b1f.cs
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\CBS.Xerox\bin\Debug\Forms\SystemForms\Item Master Data.b1f.cs
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\CBS.Xerox\bin\Debug\Forms\SystemForms\Service Contract.b1f.cs
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\CBS.Xerox\bin\Debug\Forms\TechnicalSkillMasterForm.b1f.cs
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\CBS.Xerox\bin\Debug\Forms\SystemForms\EquipmentCardForm.b1f.cs
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\CBS.Xerox\bin\Debug\Forms\SystemForms\ServiceCallForm.b1f.cs
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\CBS.Xerox\bin\Debug\Forms\ApplyCoverage.b1f
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\CBS.Xerox\bin\Debug\Forms\BillingWizardForm.b1f
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\CBS.Xerox\bin\Debug\Forms\CoverageMaster.b1f
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\CBS.Xerox\bin\Debug\Forms\LeaseContractForm.b1f
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\CBS.Xerox\bin\Debug\Forms\LoadDataForm.b1f
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\CBS.Xerox\bin\Debug\Forms\MachinePricingMasterForm.b1f
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\CBS.Xerox\bin\Debug\Forms\MeterSetupForm.b1f
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\CBS.Xerox\bin\Debug\Forms\SystemForms\Item Master Data.b1f
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\CBS.Xerox\bin\Debug\Forms\SystemForms\Item Master Data.b1f__orig_srf
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\CBS.Xerox\bin\Debug\Forms\SystemForms\Service Contract.b1f
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\CBS.Xerox\bin\Debug\Forms\SystemForms\Service Contract.b1f__orig_srf
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\CBS.Xerox\bin\Debug\Forms\TechnicalSkillMasterForm.b1f
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\CBS.Xerox\bin\Debug\Forms\SystemForms\EquipmentCardForm.b1f
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\CBS.Xerox\bin\Debug\Forms\SystemForms\EquipmentCardForm.b1f__orig_srf
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\CBS.Xerox\bin\Debug\Forms\SystemForms\ServiceCallForm.b1f
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\CBS.Xerox\bin\Debug\Forms\SystemForms\ServiceCallForm.b1f__orig_srf
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\CBS.Xerox\bin\Debug\CBS.MainLibrary.dll
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\CBS.Xerox\bin\Debug\CBS.MainLibrary.pdb
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\CBS.Xerox\obj\Debug\CBS.Xerox.csprojResolveAssemblyReference.cache
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\CBS.Xerox\bin\Debug\CBS.Xerox.exe.config
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\CBS.Xerox\bin\Debug\CBS.Xerox.exe
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\CBS.Xerox\bin\Debug\CBS.Xerox.pdb
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\CBS.Xerox\obj\Debug\CBS.Xerox.exe
+C:\sathya\Doctor Pack\John\New\Procons.AlGhanim.XeroxAddOn\CBS.Xerox\obj\Debug\CBS.Xerox.pdb
+C:\sathya\Doctor Pack\John\New\CBS.CommonAddon\CBS.Xerox\bin\Debug\CBS.Xerox.exe.config
+C:\sathya\Doctor Pack\John\New\CBS.CommonAddon\CBS.Xerox\obj\Debug\CBS.Xerox.exe
+C:\sathya\Doctor Pack\John\New\CBS.CommonAddon\CBS.Xerox\obj\Debug\CBS.Xerox.pdb
+C:\sathya\Doctor Pack\John\New\CBS.CommonAddon\CBS.Xerox\bin\Debug\Images\imgLogo.png
+C:\sathya\Doctor Pack\John\New\CBS.CommonAddon\CBS.Xerox\bin\Debug\Forms\ApplyCoverage.b1f.cs
+C:\sathya\Doctor Pack\John\New\CBS.CommonAddon\CBS.Xerox\bin\Debug\Forms\BillingWizardForm.b1f.cs
+C:\sathya\Doctor Pack\John\New\CBS.CommonAddon\CBS.Xerox\bin\Debug\Forms\CoverageMaster.b1f.cs
+C:\sathya\Doctor Pack\John\New\CBS.CommonAddon\CBS.Xerox\bin\Debug\Forms\LeaseContractForm.b1f.cs
+C:\sathya\Doctor Pack\John\New\CBS.CommonAddon\CBS.Xerox\bin\Debug\Forms\LoadDataForm.b1f.cs
+C:\sathya\Doctor Pack\John\New\CBS.CommonAddon\CBS.Xerox\bin\Debug\Forms\MachinePricingMasterForm.b1f.cs
+C:\sathya\Doctor Pack\John\New\CBS.CommonAddon\CBS.Xerox\bin\Debug\Forms\MeterSetupForm.b1f.cs
+C:\sathya\Doctor Pack\John\New\CBS.CommonAddon\CBS.Xerox\bin\Debug\Forms\SystemForms\Item Master Data.b1f.cs
+C:\sathya\Doctor Pack\John\New\CBS.CommonAddon\CBS.Xerox\bin\Debug\Forms\SystemForms\Service Contract.b1f.cs
+C:\sathya\Doctor Pack\John\New\CBS.CommonAddon\CBS.Xerox\bin\Debug\Forms\TechnicalSkillMasterForm.b1f.cs
+C:\sathya\Doctor Pack\John\New\CBS.CommonAddon\CBS.Xerox\bin\Debug\Forms\SystemForms\EquipmentCardForm.b1f.cs
+C:\sathya\Doctor Pack\John\New\CBS.CommonAddon\CBS.Xerox\bin\Debug\Forms\SystemForms\ServiceCallForm.b1f.cs
+C:\sathya\Doctor Pack\John\New\CBS.CommonAddon\CBS.Xerox\bin\Debug\Forms\ApplyCoverage.b1f
+C:\sathya\Doctor Pack\John\New\CBS.CommonAddon\CBS.Xerox\bin\Debug\Forms\BillingWizardForm.b1f
+C:\sathya\Doctor Pack\John\New\CBS.CommonAddon\CBS.Xerox\bin\Debug\Forms\CoverageMaster.b1f
+C:\sathya\Doctor Pack\John\New\CBS.CommonAddon\CBS.Xerox\bin\Debug\Forms\LeaseContractForm.b1f
+C:\sathya\Doctor Pack\John\New\CBS.CommonAddon\CBS.Xerox\bin\Debug\Forms\LoadDataForm.b1f
+C:\sathya\Doctor Pack\John\New\CBS.CommonAddon\CBS.Xerox\bin\Debug\Forms\MachinePricingMasterForm.b1f
+C:\sathya\Doctor Pack\John\New\CBS.CommonAddon\CBS.Xerox\bin\Debug\Forms\MeterSetupForm.b1f
+C:\sathya\Doctor Pack\John\New\CBS.CommonAddon\CBS.Xerox\bin\Debug\Forms\SystemForms\Item Master Data.b1f
+C:\sathya\Doctor Pack\John\New\CBS.CommonAddon\CBS.Xerox\bin\Debug\Forms\SystemForms\Item Master Data.b1f__orig_srf
+C:\sathya\Doctor Pack\John\New\CBS.CommonAddon\CBS.Xerox\bin\Debug\Forms\SystemForms\Service Contract.b1f
+C:\sathya\Doctor Pack\John\New\CBS.CommonAddon\CBS.Xerox\bin\Debug\Forms\SystemForms\Service Contract.b1f__orig_srf
+C:\sathya\Doctor Pack\John\New\CBS.CommonAddon\CBS.Xerox\bin\Debug\Forms\TechnicalSkillMasterForm.b1f
+C:\sathya\Doctor Pack\John\New\CBS.CommonAddon\CBS.Xerox\bin\Debug\Forms\SystemForms\EquipmentCardForm.b1f
+C:\sathya\Doctor Pack\John\New\CBS.CommonAddon\CBS.Xerox\bin\Debug\Forms\SystemForms\EquipmentCardForm.b1f__orig_srf
+C:\sathya\Doctor Pack\John\New\CBS.CommonAddon\CBS.Xerox\bin\Debug\Forms\SystemForms\ServiceCallForm.b1f
+C:\sathya\Doctor Pack\John\New\CBS.CommonAddon\CBS.Xerox\bin\Debug\Forms\SystemForms\ServiceCallForm.b1f__orig_srf
+C:\sathya\Doctor Pack\John\New\CBS.CommonAddon\CBS.Xerox\bin\Debug\CBS.Xerox.exe
+C:\sathya\Doctor Pack\John\New\CBS.CommonAddon\CBS.Xerox\bin\Debug\CBS.Xerox.pdb
+C:\sathya\Doctor Pack\John\New\CBS.CommonAddon\CBS.Xerox\bin\Debug\CBS.MainLibrary.dll
+C:\sathya\Doctor Pack\John\New\CBS.CommonAddon\CBS.Xerox\bin\Debug\CBS.MainLibrary.pdb
+C:\sathya\Doctor Pack\John\New\CBS.CommonAddon\CBS.Xerox\obj\Debug\CBS.Xerox.csprojResolveAssemblyReference.cache
