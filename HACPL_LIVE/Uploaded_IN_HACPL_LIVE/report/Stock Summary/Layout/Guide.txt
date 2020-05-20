@@ -1,0 +1,9 @@
+V1 with seperate Grpo & ap invoice, Deliveries and Ar Invoice and others
+V2 made same Feild for Grpo & AP invpoice and other feilds but removed feilds is with space
+V3 made same Feild for Grpo & AP invpoice and other feilds without Space
+V4 fixed the value of inventory transfer and inventory transfer receipt 
+V5 & V6 made to fixed the closing balance and gross total
+
+#######Confusion on on Inventory POsting and Inventory Revaluation ###########
+
+V7- 
