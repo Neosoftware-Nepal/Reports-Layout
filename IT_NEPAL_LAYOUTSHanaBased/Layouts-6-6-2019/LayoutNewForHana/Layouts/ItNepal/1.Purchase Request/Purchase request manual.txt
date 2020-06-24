@@ -1,0 +1,2 @@
+Parameter: DocEntry
+Significance: Fetches the details of Purchase Request according to the DocEntry number through the stored procedure SP_ITN_purchaseRequest

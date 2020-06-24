@@ -1,0 +1,13 @@
+2019-11-17 17:15:38.1377 ITNSBOCustomization.Lib.Base.FormController --- New controller of type OJDT registered.
+2019-11-17 17:15:38.7314 ITNSBOCustomization.Lib.Base.FormController --- Adding fields for the object: OJDT
+2019-11-17 17:15:38.9970 ITNSBOCustomization.Lib.Base.FormController --- New controller of type OJDT registered.
+2019-11-17 17:17:15.6727 ITNSBOCustomization.Lib.Base.FormController --- New controller of type  registered.
+2019-11-17 17:17:15.7039 ITNSBOCustomization.Lib.Base.FormController --- New controller of type  registered.
+2019-11-17 17:17:17.7663 ITNSBOCustomization.Lib.Core.Addon --- {"ClassName":"System.NullReferenceException","Message":"Object reference not set to an instance of an object.","Data":null,"InnerException":null,"HelpURL":null,"StackTraceString":"   at ITNSBOCustomization.Lib.Base.FormController.UnregisterController(FormController ControllerToUnregister)","RemoteStackTraceString":null,"RemoteStackIndex":0,"ExceptionMethod":"8\nUnregisterController\nITNSBOCustomization, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null\nITNSBOCustomization.Lib.Base.FormController\nVoid UnregisterController(ITNSBOCustomization.Lib.Base.FormController)","HResult":-2147467261,"Source":"ITNSBOCustomization","WatsonBuckets":null}
+2019-11-17 17:17:48.8747 ITNSBOCustomization.Lib.Base.FormController --- New controller of type OWOR registered.
+2019-11-17 17:17:49.0153 ITNSBOCustomization.Lib.Base.FormController --- Adding fields for the object: OWOR
+2019-11-17 17:17:49.1559 ITNSBOCustomization.Lib.Base.FormController --- New controller of type OWOR registered.
+2019-11-17 17:18:56.6850 ITNSBOCustomization.Lib.Base.FormController --- New controller of type OIGN registered.
+2019-11-17 17:18:56.7162 ITNSBOCustomization.Lib.Base.FormController --- Adding fields for the object: OIGN
+2019-11-17 17:18:56.8100 ITNSBOCustomization.Lib.Base.FormController --- New controller of type OIGN registered.
+2019-11-17 17:20:22.2134 ITNSBOCustomization.Lib.Core.Addon --- {"ClassName":"System.NullReferenceException","Message":"Object reference not set to an instance of an object.","Data":null,"InnerException":null,"HelpURL":null,"StackTraceString":"   at ITNSBOCustomization.Lib.Base.FormController.UnregisterController(FormController ControllerToUnregister)","RemoteStackTraceString":null,"RemoteStackIndex":0,"ExceptionMethod":"8\nUnregisterController\nITNSBOCustomization, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null\nITNSBOCustomization.Lib.Base.FormController\nVoid UnregisterController(ITNSBOCustomization.Lib.Base.FormController)","HResult":-2147467261,"Source":"ITNSBOCustomization","WatsonBuckets":null}

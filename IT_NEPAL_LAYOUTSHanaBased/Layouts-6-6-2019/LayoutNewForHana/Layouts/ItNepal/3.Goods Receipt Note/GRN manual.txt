@@ -1,0 +1,2 @@
+Parameter: DocEntry
+Significance: Fetches the details of GRN according to the DocEntry number through the stored procedure SP_ITN_GRPO 

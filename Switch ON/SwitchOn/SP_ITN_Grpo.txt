@@ -1,0 +1,208 @@
+CREATE PROCEDURE "SP_ITN_grPO" (IN DocKey INT)
+AS 
+BEGIN
+SELECT 	 T0."DocEntry"
+		,T0."DiscSum" AS "Discount Amount"   --Added By Luman on 3rd Bhadra
+		,T0."VatSum" AS "Vat Amount"		 --Added By Luman on 3rd Bhadra	
+		,T0."DocTotal" 						 --Added By Luman on 3rd Bhadra
+		,T0."NumAtCard"	AS "Challan No."	--Added By Luman on 3rd Bhadra
+		,T0."DocDate"	AS "Chalan Date"	 --Added By Luman on 3rd Bhadra	
+		,T1."WhsCode" AS "WarehouseCode"     --Added By Luman on 3rd Bhadra
+		,T1."U_ITN_EXPU" AS "ExcisePerUnit"				--Added By Luman on 3rd Bhadra
+
+
+/* Numbers   */
+		,IFNULL(T20."SeriesName", '') 
+		|| '' || CAST(T0."DocNum" AS CHAR(20)) AS "GRPONo"
+		/*,IFNULL(T20."BeginStr", '') 
+		|| '' || CAST(T0."DocNum" AS CHAR(20)) 
+		|| '' || CAST(T20."EndStr" AS CHAR(20)) AS "GRPONo"*/
+		,IFNULL(T22."SeriesName", '') 
+	 || '' || CAST(RH."DocNum" AS CHAR(20))  AS "IndentNo"
+	 /*,IFNULL(T22."BeginStr", '') 
+	 || '' || CAST(RH."DocNum" AS CHAR(20)) 
+	 || '' || IFNULL(CAST(T22."EndStr" AS CHAR(20)), '') AS "IndentNo"*/
+	 ,IFNULL(T23."SeriesName", '') 
+	 || '' || CAST(IH."DocNum" AS CHAR(20))  AS "InvoiceNo"
+	 /* ,IFNULL(T23."BeginStr", '') 
+	 || '' || CAST(IH."DocNum" AS CHAR(20)) 
+	 || '' || IFNULL(CAST(T23."EndStr" AS CHAR(20)), '') AS "InvoiceNo"    */
+	 ,IFNULL(T21."SeriesName", '') 
+		|| '' || CAST(T7."DocNum" AS CHAR(20)) AS "PONo"
+		/*IFNULL(T21."BeginStr", '') 
+		|| '' || CAST(T7."DocNum" AS CHAR(20)) 
+		|| '' || CAST(T21."EndStr" AS CHAR(20)) AS "PONo"*/
+	 
+	 
+/*  Dates  */
+	 	,IH."DocDate" as "InvoiceDate"
+		,TO_NVARCHAR(T0."DocDate",'YYYY/MM/DD')  AS "GRPODate"
+		,SUBSTRING(T0."U_ITN_NPDate", 0, 4) || '/' || SUBSTRING(T0."U_ITN_NPDate", 5, 2) || '/' || SUBSTRING(T0."U_ITN_NPDate", 7, 2) AS "Miti"
+		,T7."DocDate" AS "PODate"
+		,ITN_NEPALI_FMT_DATE(T7."U_ITN_NPDate")
+		,SUBSTRING(T7."U_ITN_NPDate", 0, 4) || '/' || SUBSTRING(T7."U_ITN_NPDate", 5, 2) || '/' || SUBSTRING(T7."U_ITN_NPDate", 7, 2) AS "PONpDt"
+		
+		
+/*  Vendor Details    */
+		,T0."CardCode" AS "VendorCode"
+		,T0."CardName" AS "VendorName"
+		,T0."Address2" AS "VendorAddress"
+		,T0."Address" AS "VendorBilToAdrs"
+		,T16."E_Mail" AS "VendorEmail"
+		,T16."Phone1" AS "VendorPhone"
+		,T16."Fax" AS "VendorFax"
+		,T2."TaxId4" AS "VendorPAN"
+		,IFNULL(CAST(AD."Building" AS VARCHAR), '') AS "VendorBuilding"
+		,IFNULL(AD."City", '') AS "VendorCity"
+		,IFNULL(ST."Name", '') AS "VendorState"
+		,IFNULL(CAST(AD."Street" AS VARCHAR), '') AS "VendorStreet"
+		,IFNULL(AD."ZipCode", '') AS "VendorZipCode"
+		,IFNULL(AD."Country", '') AS "VendorCountryCode"
+		,IFNULL(CN."Name", '') AS "VendorCountryName"
+		,IFNULL(CAST(AD1."Street" AS VARCHAR), '') AS "VendorBuildingS"
+		,IFNULL(AD1."City", '') AS "VendorCityS"
+		,IFNULL(ST1."Name", '') AS "VendorStateS"
+		,IFNULL(AD1."ZipCode", '') AS "VendorZipCodeS"
+		,IFNULL(AD1."Country", '') AS "VendorCountryS"
+		
+		
+		
+		
+/*  Company Details    */
+		,OADM."CompnyName" AS "CompanyName"
+		,OADM."CompnyAddr" AS "CompanyAddress"
+		,ADM1."Building" AS "CompanyBuilding"
+		,ADM1."Block" AS "CompanyBlock"
+		,ADM1."Street" AS "CompanyStreet"
+		,ADM1."StreetNo"  AS "CompanyPoBoX"
+		,ADM1."City"  AS "CompanyCity"
+		,ADM1."ZipCode"  AS "CompanyZipCode"
+		,OADM."RevOffice" AS "CompanyPAN"
+		,OADM."Phone1" AS "CompanyPhone"
+		,OADM."Fax" AS "CompanyFax"
+		,OADM."E_Mail" AS "CompanyEmail"
+		,OADM."Country" AS "CompanyCountryName"
+		,ST2."Name" AS "ComStateName"
+		
+		
+		
+		,RH."DocNum" AS "RequisitionNum"
+		,RH."ReqName" AS "RequesterName"
+		,RH."DocDate" AS "RequisitionDate"
+		,T5."ChapterID"
+		,T5."Dscription" AS "ChIdDes"
+		,IFNULL(T1."Quantity", 0) AS "PartyWt"
+		,T12."CurrName" AS "CurrName"
+		,T15."WhsName"
+		,T15."Building" AS "BrBuilding"
+		,T15."City" AS "BrCty"
+		,T15."State" AS "BrState"
+		,T15."ZipCode" AS "BrZpCod"
+		,IFNULL(T1."Quantity", 0) AS "NetCoreWt"
+		
+		/*  Line Details */ 
+		,T1."ItemCode"
+		,T1."Dscription" AS "ItemName"
+		,T6."Quantity" AS "Challan Qty"
+		,IFNULL(T1."Quantity", 0) AS "Quantity"
+		,IFNULL(T4."InvntryUom", '') AS "UoM"
+		,IFNULL(T1."Price", 0) AS "Rate"
+		,T1."Price" * T1."Quantity" AS "LineTotal"
+		--,T4."U_UNE_EXPU" * T1."Quantity" AS "ExciseLineAmt"
+		,CASE 
+			WHEN T0."DocCur" = 'NPR'
+				THEN T1."VatSum"
+			ELSE T1."VatSumFrgn"
+			END AS "VAT AMOUNT"
+		,CASE 
+			WHEN T0."DocCur" = 'NPR'
+				THEN T0."DocTotal"
+			ELSE T0."DocTotalFC"
+			END AS "GRPOTotal"
+		,T0."OwnerCode" AS "PreparedBy"
+		,OUSR."U_NAME" AS "USER_CODE"
+		
+		
+/*   User Defined Feilds   */
+		,T0."U_ITN_PPNumber" AS "PPNumber"
+		,T0."U_ITN_PPDate" AS "PPDate"
+		--,T0."U_ITN_BIlL" AS "BLNo"
+		,T0."U_ITN_LCNUM" AS "LCNo"
+		,T0."U_ITN_VBNO" AS "BillNo"
+	    ,T0."U_ITN_VBDT" AS "BillDate"
+	    ,T0."U_ITN_Consignment" AS "Consignment Number"
+	    ,T0."U_ITN_BLading" AS "Bill Lading"
+		,T0."Comments" AS "Remarks"
+		,IFNULL(T1."U_ITN_AQTY",0) AS "AcceptedQty"
+		,IFNULL(CASE 
+		WHEN T0."DocCur" = 'NPR'
+			THEN T27."LineTotal"
+		ELSE T27."TotalFrgn"
+		END, 0) AS "FreightCharge"
+	--,T0."U_ITN_INDT" AS "InspectionDate"
+	,T0."U_ITN_CFRM" As "Custom Form No"
+	,T0."U_ITN_TRAN"  AS "TransportName"
+	,T0."U_ITN_GEDT" AS "GateEntryDate"
+	,T0."U_ITN_GENO" AS "GateEntryNo"
+	,T0."U_ITN_VECN" AS "VehicleNo"
+	,T0."U_ITN_VETY" AS "VehicleType"
+	--,T0."U_ITN_CFRD" AS "CustomFormDate"
+    ,T0."U_ITN_LRNO" AS "LR/Bilty No"
+    ,IFNULL(CASE 
+		WHEN T0."DocCur" = 'NPR'
+			THEN T19."LineTotal"
+		ELSE T19."TotalFrgn"
+		END, 0) AS "PackingCharges"
+FROM OPDN T0
+INNER JOIN PDN1 T1 ON T0."DocEntry" = T1."DocEntry"
+LEFT JOIN OADM ON 1 = 1
+LEFT JOIN ADM1 ON OADM."Code" = ADM1."Code"
+LEFT JOIN OCRD T16 ON T16."CardCode" = T0."CardCode"
+LEFT JOIN OUSR ON T0."UserSign" = OUSR."USERID"
+INNER JOIN NNM1 T20 ON T20."Series" = T0."Series"
+LEFT JOIN CRD7 T2 ON T2."CardCode" = T0."CardCode"
+	AND T2."Address" = T0."ShipToCode"
+	AND T2."AddrType" = 'S'
+LEFT JOIN OITM T4 ON T4."ItemCode" = T1."ItemCode"
+	AND T1."ObjType" = '20'
+LEFT JOIN OCHP T5 ON T5."AbsEntry" = T4."ChapterID"
+LEFT JOIN POR1 T6 ON T6."DocEntry" = T1."BaseEntry"
+	AND T6."ObjType" = T1."BaseType"
+	AND T6."LineNum" = T1."BaseLine"
+LEFT JOIN OPOR T7 ON T6."DocEntry" = T7."DocEntry"
+LEFT JOIN POR3 T19 ON T0."DocEntry" = T19."DocEntry"
+	 AND T19."ExpnsCode" = 3
+LEFT JOIN NNM1 T21 ON T21."Series" = T7."Series"
+LEFT JOIN OCRN T12 ON T0."DocCur" = T12."CurrCode"
+LEFT JOIN OWHS T15 ON T1."WhsCode" = T15."WhsCode"
+LEFT JOIN OLCT L ON L."Code" = T15."Location"
+LEFT JOIN CRD1 AD ON AD."CardCode" = T0."CardCode"
+	AND AD."Address" = T0."PayToCode"
+	AND AD."AdresType" = 'B'
+LEFT JOIN OCST ST ON ST."Code" = AD."State"
+	AND ST."Country" = AD."Country"
+LEFT JOIN OCRY CN ON CN."Code" = AD."Country"
+LEFT JOIN CRD1 AD1 ON AD1."CardCode" = T0."CardCode"
+	AND AD1."Address" = T0."ShipToCode"
+	AND AD1."AdresType" = 'S'
+LEFT JOIN OCST ST1 ON ST1."Code" = AD1."State"
+	AND ST1."Country" = AD1."Country"
+LEFT JOIN OCPR M ON M."CntctCode" = T0."CntctCode"
+	AND M."CardCode" = T0."CardCode"
+LEFT JOIN PRQ1 RQ ON RQ."DocEntry" = T6."BaseEntry"
+	AND RQ."ObjType" = T6."BaseType"
+	AND RQ."LineNum" = T6."BaseLine"
+LEFT JOIN OPRQ RH ON RH."DocEntry" = RQ."DocEntry"
+LEFT JOIN NNM1 T22 ON T22."Series" = RH."Series"
+Left Join PCH1 IL ON T1."DocEntry" = IL."BaseEntry"
+	AND T1."LineNum" = IL."BaseLine"
+Left JOIN OPCH IH on IH."DocEntry" = IL."DocEntry"
+LEFT JOIN NNM1 T23 ON T23."Series" = IH."Series"
+LEFT JOIN OCST ST2 ON ST2."Code" = OADM."State"
+		AND ST2."Country" = OADM."Country"
+LEFT JOIN PDN3 T27 ON T0."DocEntry" = T27."DocEntry"
+	 AND T27."ExpnsCode" = 2
+LEFT JOIN OEXD T28 ON T27."ExpnsCode" = T28."ExpnsCode"
+	AND T28."ExpnsCode" = 2
+WHERE T0."DocEntry" = :DocKey;
+END

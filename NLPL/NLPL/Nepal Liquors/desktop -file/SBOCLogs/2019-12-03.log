@@ -1,0 +1,14 @@
+2019-12-03 15:51:23.0312 ITNSBOCustomization.Lib.Base.FormController --- New controller of type OWOR registered.
+2019-12-03 15:51:23.8283 ITNSBOCustomization.Lib.Base.FormController --- Adding fields for the object: OWOR
+2019-12-03 15:51:24.1721 ITNSBOCustomization.Lib.Base.FormController --- New controller of type OWOR registered.
+2019-12-03 15:51:42.4373 ITNSBOCustomization.Lib.Base.FormController --- New controller of type _FU_P registered.
+2019-12-03 15:51:42.4529 ITNSBOCustomization.Lib.Base.FormController --- New controller of type _FU_P registered.
+2019-12-03 15:51:45.3915 ITNSBOCustomization.Lib.Base.FormController --- New controller of type OIGE registered.
+2019-12-03 15:51:45.4384 ITNSBOCustomization.Lib.Base.FormController --- Adding fields for the object: OIGE
+2019-12-03 15:51:45.5321 ITNSBOCustomization.Lib.Base.FormController --- New controller of type OIGE registered.
+2019-12-03 15:52:18.2831 ITNSBOCustomization.Lib.Core.Addon --- {"ClassName":"System.NullReferenceException","Message":"Object reference not set to an instance of an object.","Data":null,"InnerException":null,"HelpURL":null,"StackTraceString":"   at ITNSBOCustomization.Lib.Base.FormController.UnregisterController(FormController ControllerToUnregister)","RemoteStackTraceString":null,"RemoteStackIndex":0,"ExceptionMethod":"8\nUnregisterController\nITNSBOCustomization, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null\nITNSBOCustomization.Lib.Base.FormController\nVoid UnregisterController(ITNSBOCustomization.Lib.Base.FormController)","HResult":-2147467261,"Source":"ITNSBOCustomization","WatsonBuckets":null}
+2019-12-03 15:53:05.2914 ITNSBOCustomization.Lib.Base.FormController --- New controller of type OWOR registered.
+2019-12-03 15:53:05.3227 ITNSBOCustomization.Lib.Base.FormController --- Adding fields for the object: OWOR
+2019-12-03 15:53:05.4789 ITNSBOCustomization.Lib.Base.FormController --- New controller of type OWOR registered.
+2019-12-03 15:53:07.4323 ITNSBOCustomization.Lib.Base.FormController --- New controller of type OITT registered.
+2019-12-03 15:53:07.4635 ITNSBOCustomization.Lib.Base.FormController --- New controller of type OITT registered.

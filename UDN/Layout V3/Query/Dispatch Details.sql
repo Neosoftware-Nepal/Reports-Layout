@@ -1,0 +1,27 @@
+Alter PROCeDUre "SP_ITN_Dispatch_BATCH"
+AS
+BEGIN
+SELECT distinct T0."DocNum"
+	,T0."DocEntry"
+	, T1."ItemCode" 
+	, T1."Dscription" 
+	, T1."Quantity"
+	, T2."BatchNum" 
+from ODLN T0
+inner JOIN DLN1 T1 on T0."DocEntry" = T1."DocEntry"
+inner JOIN IBT1 T2 on T2."BaseType" = T0."ObjType" 
+AND T2."BaseNum" = T0."DocNum";
+
+
+/*SELECT
+   T1."ItemCode" || '/' ||  T4."DistNumber" || '/' ||  T6."BinCode" || '/' ||  T5."Quantity" "Barcode",
+     T1."ItemCode" || '-' || T1."Dscription" || '' ||  T4."DistNumber" || '' ||  T6."BinCode" || '' ||  T5."Quantity" "Description"
+   
+	FROM OPDN T0 
+INNER JOIN PDN1 T1 ON T0."DocEntry" = T1."DocEntry" 
+left join OITL T2 on t1."DocEntry" = T2."ApplyEntry" and T1."LineNum" = T2."ApplyLine" and T2."ApplyType" = 20 
+left JOIN ITL1 T3 ON T2."LogEntry" = T3."LogEntry" 
+left join OBTN T4 on T4."ItemCode" = T3."ItemCode" and T3."MdAbsEntry" = t4."AbsEntry"
+Inner Join OBTL T5 on T5."SnBMDAbs" = T3."MdAbsEntry"
+Inner Join OBIN T6 on T6."AbsEntry" = T5."BinAbs"*/
+END

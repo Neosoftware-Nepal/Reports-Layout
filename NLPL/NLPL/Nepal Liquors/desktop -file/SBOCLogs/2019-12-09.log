@@ -1,0 +1,26 @@
+2019-12-09 17:25:31.1797 ITNSBOCustomization.Lib.Base.FormController --- New controller of type OWOR registered.
+2019-12-09 17:25:32.0859 ITNSBOCustomization.Lib.Base.FormController --- Adding fields for the object: OWOR
+2019-12-09 17:25:32.4765 ITNSBOCustomization.Lib.Base.FormController --- New controller of type OWOR registered.
+2019-12-09 17:25:42.1288 ITNSBOCustomization.Lib.Base.FormController --- New controller of type OWOR registered.
+2019-12-09 17:25:42.1913 ITNSBOCustomization.Lib.Base.FormController --- Adding fields for the object: OWOR
+2019-12-09 17:25:42.3788 ITNSBOCustomization.Lib.Base.FormController --- New controller of type OWOR registered.
+2019-12-09 17:25:58.1128 ITNSBOCustomization.Lib.Base.FormController --- New controller of type OWOR registered.
+2019-12-09 17:25:58.1753 ITNSBOCustomization.Lib.Base.FormController --- Adding fields for the object: OWOR
+2019-12-09 17:25:58.3784 ITNSBOCustomization.Lib.Base.FormController --- New controller of type OWOR registered.
+2019-12-09 17:31:00.8102 ITNSBOCustomization.Lib.Base.FormController --- New controller of type OWOR registered.
+2019-12-09 17:31:00.9196 ITNSBOCustomization.Lib.Base.FormController --- Adding fields for the object: OWOR
+2019-12-09 17:31:01.1071 ITNSBOCustomization.Lib.Base.FormController --- New controller of type OWOR registered.
+2019-12-09 17:31:10.2955 ITNSBOCustomization.Lib.Base.FormController --- New controller of type _FU_P registered.
+2019-12-09 17:31:10.3424 ITNSBOCustomization.Lib.Base.FormController --- New controller of type _FU_P registered.
+2019-12-09 17:31:14.1239 ITNSBOCustomization.Lib.Base.FormController --- New controller of type OIGE registered.
+2019-12-09 17:31:14.1864 ITNSBOCustomization.Lib.Base.FormController --- Adding fields for the object: OIGE
+2019-12-09 17:31:14.3739 ITNSBOCustomization.Lib.Base.FormController --- New controller of type OIGE registered.
+2019-12-09 17:31:23.9373 ITNSBOCustomization.Lib.Core.Addon --- {"ClassName":"System.NullReferenceException","Message":"Object reference not set to an instance of an object.","Data":null,"InnerException":null,"HelpURL":null,"StackTraceString":"   at ITNSBOCustomization.Lib.Base.FormController.UnregisterController(FormController ControllerToUnregister)","RemoteStackTraceString":null,"RemoteStackIndex":0,"ExceptionMethod":"8\nUnregisterController\nITNSBOCustomization, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null\nITNSBOCustomization.Lib.Base.FormController\nVoid UnregisterController(ITNSBOCustomization.Lib.Base.FormController)","HResult":-2147467261,"Source":"ITNSBOCustomization","WatsonBuckets":null}
+2019-12-09 17:32:29.8411 ITNSBOCustomization.Lib.Base.FormController --- New controller of type OWOR registered.
+2019-12-09 17:32:29.9192 ITNSBOCustomization.Lib.Base.FormController --- Adding fields for the object: OWOR
+2019-12-09 17:32:30.1223 ITNSBOCustomization.Lib.Base.FormController --- New controller of type OWOR registered.
+2019-12-09 17:32:36.3259 ITNSBOCustomization.Lib.Base.FormController --- New controller of type OWOR registered.
+2019-12-09 17:32:36.4040 ITNSBOCustomization.Lib.Base.FormController --- Adding fields for the object: OWOR
+2019-12-09 17:32:36.5915 ITNSBOCustomization.Lib.Base.FormController --- New controller of type OWOR registered.
+2019-12-09 17:32:37.3571 ITNSBOCustomization.Lib.Base.FormController --- New controller of type OITT registered.
+2019-12-09 17:32:37.4196 ITNSBOCustomization.Lib.Base.FormController --- New controller of type OITT registered.

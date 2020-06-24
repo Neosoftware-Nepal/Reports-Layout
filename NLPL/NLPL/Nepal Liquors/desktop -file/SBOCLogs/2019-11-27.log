@@ -1,0 +1,22 @@
+2019-11-27 15:48:21.3311 ITNSBOCustomization.Lib.Base.FormController --- New controller of type OWOR registered.
+2019-11-27 15:48:21.9873 ITNSBOCustomization.Lib.Base.FormController --- Adding fields for the object: OWOR
+2019-11-27 15:48:22.3935 ITNSBOCustomization.Lib.Base.FormController --- New controller of type OWOR registered.
+2019-11-27 15:48:55.8455 ITNSBOCustomization.Lib.Base.FormController --- New controller of type _FU_P registered.
+2019-11-27 15:48:55.9080 ITNSBOCustomization.Lib.Base.FormController --- New controller of type _FU_P registered.
+2019-11-27 15:48:59.8610 ITNSBOCustomization.Lib.Base.FormController --- New controller of type OIGE registered.
+2019-11-27 15:48:59.9391 ITNSBOCustomization.Lib.Base.FormController --- Adding fields for the object: OIGE
+2019-11-27 15:49:00.1422 ITNSBOCustomization.Lib.Base.FormController --- New controller of type OIGE registered.
+2019-11-27 15:50:56.7476 ITNSBOCustomization.Lib.Core.Addon --- {"ClassName":"System.NullReferenceException","Message":"Object reference not set to an instance of an object.","Data":null,"InnerException":null,"HelpURL":null,"StackTraceString":"   at ITNSBOCustomization.Lib.Base.FormController.UnregisterController(FormController ControllerToUnregister)","RemoteStackTraceString":null,"RemoteStackIndex":0,"ExceptionMethod":"8\nUnregisterController\nITNSBOCustomization, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null\nITNSBOCustomization.Lib.Base.FormController\nVoid UnregisterController(ITNSBOCustomization.Lib.Base.FormController)","HResult":-2147467261,"Source":"ITNSBOCustomization","WatsonBuckets":null}
+2019-11-27 15:51:14.4501 ITNSBOCustomization.Lib.Base.FormController --- New controller of type _FU_P registered.
+2019-11-27 15:51:14.5126 ITNSBOCustomization.Lib.Base.FormController --- New controller of type _FU_P registered.
+2019-11-27 15:51:17.3093 ITNSBOCustomization.Lib.Base.FormController --- New controller of type OIGE registered.
+2019-11-27 15:51:17.4031 ITNSBOCustomization.Lib.Base.FormController --- Adding fields for the object: OIGE
+2019-11-27 15:51:17.6218 ITNSBOCustomization.Lib.Base.FormController --- New controller of type OIGE registered.
+2019-11-27 15:51:26.2153 ITNSBOCustomization.Lib.Core.Addon --- {"ClassName":"System.NullReferenceException","Message":"Object reference not set to an instance of an object.","Data":null,"InnerException":null,"HelpURL":null,"StackTraceString":"   at ITNSBOCustomization.Lib.Base.FormController.UnregisterController(FormController ControllerToUnregister)","RemoteStackTraceString":null,"RemoteStackIndex":0,"ExceptionMethod":"8\nUnregisterController\nITNSBOCustomization, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null\nITNSBOCustomization.Lib.Base.FormController\nVoid UnregisterController(ITNSBOCustomization.Lib.Base.FormController)","HResult":-2147467261,"Source":"ITNSBOCustomization","WatsonBuckets":null}
+2019-11-27 15:52:03.9171 ITNSBOCustomization.Lib.Base.FormController --- New controller of type OWOR registered.
+2019-11-27 15:52:03.9952 ITNSBOCustomization.Lib.Base.FormController --- Adding fields for the object: OWOR
+2019-11-27 15:52:04.2140 ITNSBOCustomization.Lib.Base.FormController --- New controller of type OWOR registered.
+2019-11-27 15:52:05.1983 ITNSBOCustomization.Lib.Base.FormController --- New controller of type OITT registered.
+2019-11-27 15:52:05.2608 ITNSBOCustomization.Lib.Base.FormController --- New controller of type OITT registered.
+2019-11-27 16:27:36.9837 ITNSBOCustomization.Lib.Base.FormController --- New controller of type  registered.
+2019-11-27 16:27:37.0462 ITNSBOCustomization.Lib.Base.FormController --- New controller of type  registered.

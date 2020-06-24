@@ -1,0 +1,28 @@
+SELECT T0."DocNum" AS "IncomingNum"
+	  ,T2."DocNum" As "InvoiceNum"
+	  ,T8."DocNum" As "SaleOrderNum"
+	  ,T4."CashSum" As "Incomming Payment"
+	  ,T0."DocTotal" as "Invoice Total Amount"
+	  ,T8."DocTotal" As "SalesOrder Amont"
+	  ,T1."Quantity" as "Qty"
+	  ,T7."Quantity" as "Quantity"
+	  ,T1."Price" as "Price"
+	  ,T7."Price" as "Sales Order Price"
+	FROM OINV T0
+	LEFT JOIN INV1 T1 ON T0."DocEntry" = T1."DocEntry"
+	LEFT JOIN RCT2 T2 ON T2."DocEntry" = T1."DocEntry"
+	Inner Join ORCT T4 On T2."DocNum" = T4."DocEntry"
+	LEFT JOIN DLN1 T5 ON T1."DocEntry" = T5."TrgetEntry"
+		AND T5."ObjType" = T1."BaseType"
+		AND T5."LineNum" = T1."BaseLine"
+	LEFT JOIN ODLN T6 ON T5."DocEntry" = T6."DocEntry"
+	Left Join OJDT T3 ON T3."TransId" = T0."TransId"
+	LEFT JOIN RDR1 T7 ON T5."DocEntry" = T7."TrgetEntry"
+		AND T7."ObjType" = T5."BaseType"
+		AND T7."LineNum" = T5."BaseLine"
+	LEFT JOIN ORDR T8 ON T7."DocEntry" = T8."DocEntry"
+	
+	
+	
+
+

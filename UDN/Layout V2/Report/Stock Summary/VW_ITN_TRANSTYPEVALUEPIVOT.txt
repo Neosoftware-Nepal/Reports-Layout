@@ -1,0 +1,115 @@
+CREATE VIEW "UDN_CRP_03APR2020"."VW_ITN_TRANSTYPEVALUEPIVOT" ( "ItemCode",
+	 "Dscription",
+	 "Warehouse",
+	 "DocDate",
+	 "A/R Invoices Value",
+	 "A/R Credit Memos Value",
+	 "Deliveries Value",
+	 "Returns Value",
+	 "A/P Invoices Value",
+	 "A/P Credit Memos Value",
+	 "Goods Receipt PO Value",
+	 "Goods Return value",
+	 "Receipt from Production Value",
+	 "Goods Receipt Value",
+	 "Issue for Production Value",
+	 "Inventory Transfers Value",
+	 "Inventory Revaluation Value",
+	 "Inventory Posting Value",
+	 "Landed Cost Value",
+	 "Inventory Transfers Receipt Value",
+	 "Goods Issue Value " ) AS SELECT
+	 "ItemCode" ,
+	 "Warehouse" ,
+	"Dscription" ,
+	 "DocDate" --A/R Invoice
+ ,
+	 CASE WHEN "TransType" = 13 
+THEN IFNULL("TransValue",
+	 0) 
+END AS "A/R Invoices Value" --A/R Credit Memo/ A/R Sales Return
+ ,
+	 CASE WHEN "TransType" = 14 
+THEN IFNULL("TransValue",
+	 0) 
+END AS "A/R Credit Memos Value" -- Delivery
+,
+	 CASE WHEN "TransType" = 15 
+THEN IFNULL("TransValue",
+	 0) 
+END AS "Deliveries Value",
+	 --A/R Returns
+ CASE WHEN "TransType" = 16 
+THEN IFNULL("TransValue",
+	 0) 
+END AS "Returns Value",
+	 --A/P Invoice/ Purchase Invocie
+CASE WHEN "TransType" = 18 
+THEN IFNULL("TransValue",
+	 0) 
+END AS "A/P Invoices Value" --A/P Credit Memo/ Purchase Return
+,
+	 CASE WHEN "TransType" = 19 
+THEN IFNULL("TransValue",
+	 0) 
+END AS "A/P Credit Memos Value" --Goods Receipt PO
+,
+	 CASE WHEN "TransType" = 20 
+THEN IFNULL("TransValue",
+	 0) 
+END AS "Goods Receipt PO Value" --Goods Return
+,
+	 CASE WHEN "TransType" = 21 
+THEN IFNULL("TransValue",
+	 0) 
+END AS "Goods Return Value",
+	 --Receipt from Production
+CASE WHEN "TransType" = 59 
+and "ApplObj" = 202 
+THEN IFNULL("TransValue",
+	 0) 
+END AS "Receipt from Production Value" --Goods Receipt
+,
+	CASE WHEN "TransType" = 59 --and "ApplObj" = -1
+
+THEN IFNULL("TransValue",
+	 0) 
+END AS "Goods Receipt Value" --Issue for Production
+,
+	 CASE WHEN "TransType" = 60 
+and "ApplObj" = 202 
+THEN IFNULL("TransValue",
+	 0) 
+END AS "Issue for Production Value" --Goods Issue
+ ,
+	 CASE WHEN "TransType" = 60 
+and "ApplObj" = -1 
+THEN IFNULL("TransValue",
+	 0) 
+END AS "Goods Issue Value " --Inventory Transfers
+,
+	 CASE WHEN "TransType" = 67 
+THEN IFNULL("TransValue",
+	 0) 
+END AS "Inventory Transfers Value" --Inventory Transfers Receipt
+,
+	 CASE WHEN "TransType" = 67 
+THEN IFNULL("TransValue",
+	 0) 
+END AS "Inventory Transfers Receipt Value" --Landed Cost
+,
+	 CASE WHEN "TransType" = 69 
+THEN IFNULL("TransValue",
+	 0) 
+END AS "Landed Cost Value" --Inventory Posting
+,
+	 CASE WHEN "TransType" = 10000071 
+THEN IFNULL("TransValue",
+	 0) 
+END AS "Inventory Posting Value" --Inventory Revaluation
+,
+	 CASE WHEN "TransType" = 162 
+THEN IFNULL("TransValue",
+	 0) 
+END AS "Inventory Revaluation Value" 
+FROM OINM WITH READ ONLY

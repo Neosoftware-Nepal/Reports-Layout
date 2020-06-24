@@ -1,0 +1,37 @@
+select T0."ItemCode" as "SKU Code"
+	  ,T0."ItemName" as "SKU Name"
+	  ,Sum(T1."Quantity") as "GRPO Qty"
+	  ,Avg(T2."DocTotal") as "Grpo Total"
+	  ,Sum(T3."Quantity") as "Return Qty"
+	  ,Avg(T4."DocTotal") as "Return Total"
+	  
+	  ,Sum(T5."Quantity") as "A/P Invoice Qty"
+	  ,Avg(T6."DocTotal") as "A/P Invoice Total"
+	  
+	  ,Sum(T7."Quantity") as "A/R Qty"
+	  ,Avg(T8."DocTotal") as "A/R Invoice Total"
+	  
+	  ,Sum(T9."Quantity") as "A/R Ret Qty"
+	  ,Avg(T10."DocTotal") as "A/R Ret Total"
+	  
+	  ,Sum(T11."Quantity") as "S O Qty"
+	  ,Avg(T12."DocTotal") as "S O Total"
+	  
+
+FROM OITM T0
+Left Join PDN1 T1 On T0."ItemCode" = T1."ItemCode"
+Left Join OPDN T2 On T1."DocEntry" = T2."DocEntry"
+Left Join RPC1 T3 On T0."ItemCode" = T3."ItemCode"
+Left Join ORPC T4 On T3."DocEntry" = T4."DocEntry"
+Left Join PCH1 T5 On T0."ItemCode" = T5."ItemCode"
+Left Join OPCH T6 On T5."DocEntry" = T6."DocEntry"
+Left Join INV1 T7 On T0."ItemCode" = T7."ItemCode"
+Left Join OINV T8 On T7."DocEntry" = T8."DocEntry"
+Left Join RIN1 T9 On T0."ItemCode" = T9."ItemCode"
+Left Join ORIN T10 On T9."DocEntry" = T10."DocEntry"
+
+Left Join RDR1 T11 On T0."ItemCode" = T1."ItemCode"
+Left Join ORDR T12 On T11."DocEntry" = T12."DocEntry"
+
+Group by T0."ItemCode"
+		,T0."ItemName"

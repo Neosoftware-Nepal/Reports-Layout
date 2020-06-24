@@ -1,0 +1,2 @@
+Parameter: TransId
+Significance: Fetches the details of IncomingPayment according to the TransId number through the stored procedure SP_ITN_HC_IncomingPayment 

@@ -1,0 +1,2 @@
+Parameter: TransId
+Significance: Fetches the details of JournalEntry according to the TransaId number through the stored procedure SP_ITN_TB_JournalVoucher

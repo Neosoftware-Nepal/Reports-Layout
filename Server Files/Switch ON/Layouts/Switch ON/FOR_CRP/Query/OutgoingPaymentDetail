@@ -1,0 +1,26 @@
+CREATE PROCEDURE SP_ITN_OP_Details 
+AS
+BEGIN
+SELECT T0."DocNum" AS "OutgoingNum"
+      ,T0."CardCode" AS "Vendor Code"
+      ,T0."CashSum"
+      ,T2."DocNum" AS "Invoice Number"
+	  ,T2."DocDate" AS "Invoice Date"
+	 
+      ,T1."SumApplied" As "Amount"
+	  ,T2."WTSum" AS "TDS"
+
+	 , T2."DiscSum" 
+	 ,T2."DocTotal" As "BillAmount"
+	 ,T3."BaseRef"
+	 ,T3."TransId"
+	 , (Select Sum(T4."PriceBefDi") from PCH1 T4  where  T2."DocEntry" = T4."DocEntry") As "Taxable Amount"
+	 ,T1."DocEntry"
+	 ,(T2."DocTotal"- T2."PaidToDate") as "Balance Due"
+	 ,T2."NumAtCard"
+	FROM OVPM T0
+	LEFT JOIN VPM2 T1 ON T0."DocEntry" = T1."DocNum"
+	LEFT JOIN OPCH T2 ON T2."DocEntry" = T1."DocEntry"
+	Left Join OJDT T3 ON T3."TransId" = T0."TransId";
+
+End

@@ -1,0 +1,2 @@
+Parameter: TransaId
+Significance: Fetches the details of Outgoingpayment according to the TransId number through the stored procedure SP_ITN_TB_outgoingPayment

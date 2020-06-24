@@ -1,0 +1,4 @@
+Parameter: DocEntry
+Significance: Fetches the details of Sales Order according to the DocEntry number through the stored procedure SP_ITN_HC_salesOrder
+
+

@@ -1,0 +1,99 @@
+CREATE PROCEDURE "SP_ITN_VatPurchaseReturnRegister"
+AS
+BEGIN
+SELECT DISTINCT T0."DocEntry"
+              ,T0."ObjType"
+              ,t6."SeriesName"
+              ,'Credit Memo' AS "DOCTYPE"
+              ,T0."DocNum"
+              ,T0."DocDate"
+              ,T0."CardCode"
+              ,'Vat Purchase Return Register' as "ReportType"
+              ,CASE 
+                     WHEN T0."CANCELED" = 'Y'
+                           THEN 'CANCEL'
+                     ELSE T0."CardName"
+                     END AS "CustomerName"
+              ,CASE 
+                     WHEN T0."CANCELED" = 'Y'
+                           THEN 'CANCELED'
+                     ELSE T0."CardName"
+                     END AS "CardName"
+              ,T0."NumAtCard" AS "Hard Copy No"
+              ,'' AS "BP PAN NO"
+              
+              ,T0."DiscSum" AS "Discount"
+              ,CASE 
+                     WHEN "CANCELED" = 'Y'
+                           THEN 0
+                     ELSE IFNULL((
+                                         SELECT (((SUM(PCH1."LineTotal") - T0."DiscSum")*0.3)+Sum(PCH1."LineTotal"))
+                                         FROM PCH1
+                                         WHERE T0."DocEntry" = PCH1."DocEntry"
+                                                AND T0."VatSum" > 0
+                                         ), 0)
+                     END AS "Taxable Amount"
+       /*,CASE 
+		WHEN T1."TaxCode" LIKE 'EXMPT%'
+		THEN IFNULL(((T4."ExemptTotal" - T0."DiscSum")), 0)
+		ELSE 0
+		END AS "EXEMPT Purchase"*/
+		
+        ,CASE 
+                     WHEN T1."TaxCode" LIKE 'EXMPT%'
+                        Then IFNULL((
+                                         SELECT (SUM(PCH1."LineTotal") - T0."DiscSum")
+                                         FROM PCH1
+                                         WHERE T0."DocEntry" = PCH1."DocEntry"
+                                         ), 0)
+                        Else 0            
+                        
+                     END AS "EXEMPT Amount"
+               ,CASE 
+				WHEN T1."TaxCode" = 'NIL'
+					OR T1."TaxCode" = 'EXEMPT'
+					THEN T1."LineTotal"
+				ELSE 0
+				END AS "ExemptTotal"
+              ,CASE 
+                     WHEN "CANCELED" = 'Y'
+                           THEN 0
+                     ELSE IFNULL((
+                                         SELECT (SUM(PCH1."LineTotal") - T0."DiscSum")
+                                         FROM PCH1
+                                         WHERE T0."DocEntry" = PCH1."DocEntry"
+                                                AND T7."Country" <> 'NP'
+                                         ), 0)
+                     END AS "EXEMPT EXPORT"
+              ,CASE 
+                     WHEN "CANCELED" = 'Y'
+                           THEN 0
+                     ELSE IFNULL(T0."VatSum", 0)
+                     END AS "VatSum"
+              ,T0."DocTotal" AS "DocTotal"
+              ,T5."Location"
+              ,CASE 
+                     WHEN T0."CANCELED" = 'Y'
+                           THEN ''
+                     ELSE T8."TaxId4"
+                     END AS "PanNo"
+              ,IFNULL(t6."BeginStr", '') || '' || CAST(T0."DocNum" AS CHAR(20)) ||'' || CAST(t6."EndStr" AS CHAR(20)) AS "InvNo"
+              --,[dbo].[ITN_NEPALI_FMT_DATE](T0."U_ITN_NPDate") AS "Purchase Miti"
+              ,T2."CardName" 
+              --,SUBSTRING(T0."U_ITN_NPDate", 0, 4) || '/' || SUBSTRING(T0."U_ITN_NPDate", 5, 2) || '/' || SUBSTRING(T0."U_ITN_NPDate", 7, 2) AS "Purchase Miti"
+              ,IFNULL((SELECT sum(RPC4."TaxSum") FROM RPC4 WHERE T0."DocEntry" = RPC4."DocEntry" AND RPC4."LineNum" = T1."LineNum" AND RPC4."staType" = 1), 0) AS "Tax"
+		,IFNULL((SELECT sum(RPC4."BaseSum") FROM RPC4 WHERE T0."DocEntry" = RPC4."DocEntry" AND RPC4."LineNum" = T1."LineNum" AND RPC4."staType" = 1), 0) AS "Value"
+       FROM ORPC T0
+       INNER JOIN RPC1 T1 ON T0."DocEntry" = T1."DocEntry"
+       LEFT OUTER JOIN OCRD T2 ON T0."CardCode" = T2."CardCode"
+       LEFT OUTER JOIN CRD1 T7 ON T7."CardCode" = T2."CardCode"
+              AND T7."Address" = T0."ShipToCode"
+              AND T7."AdresType" = 'S'
+       LEFT OUTER JOIN OCRG t3 ON T2."GroupCode" = t3."GroupCode"
+       LEFT OUTER JOIN OLCT T5 ON T5."Code" = T1."LocCode"
+       LEFT OUTER JOIN NNM1 t6 ON t6."Series" = T0."Series"
+       LEFT OUTER JOIN CRD7 T8 ON T8."CardCode" = T0."CardCode"
+              AND T8."Address" = ''
+              AND T8."AddrType" = 'S'
+       WHERE T0."CANCELED" <> 'C'; --and T0."U_ITN_AGT" = 'Yes';
+       End

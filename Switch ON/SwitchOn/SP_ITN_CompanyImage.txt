@@ -1,0 +1,5 @@
+CREATE PROCEDURE SP_ITN_GetCompanyImage()
+AS 
+Begin
+Select "BitmapPath"||"LogoFile"  From OADP;
+End

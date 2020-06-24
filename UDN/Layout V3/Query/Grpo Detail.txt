@@ -1,0 +1,25 @@
+SELECT distinct
+   --T1."ItemCode" || '/' ||  T4."DistNumber" || '/' ||  T6."BinCode" || '/' ||  T5."Quantity" "Barcode",
+    -- T1."ItemCode" || '-' || T1."Dscription" || '' ||  T4."DistNumber" || '' ||  T6."BinCode" || '' ||  T5."Quantity" "Description"
+   T0."DocEntry"
+   ,T5."Quantity"
+   ,T4."ExpDate"
+   ,T4."MnfDate"
+   ,T6."BinCode"
+   ,T4."DistNumber" as "Batch"
+	FROM OPDN T0 
+INNER JOIN PDN1 T1 ON T0."DocEntry" = T1."DocEntry" 
+left join OITL T2 on t1."DocEntry" = T2."ApplyEntry" and T1."LineNum" = T2."ApplyLine" and T2."ApplyType" = 20 
+left JOIN ITL1 T3 ON T2."LogEntry" = T3."LogEntry" 
+left join OBTN T4 on T4."ItemCode" = T3."ItemCode" and T3."MdAbsEntry" = t4."AbsEntry"
+ Join OBTL T5 on T5."SnBMDAbs" = T3."MdAbsEntry" and T2."LogEntry" = T5."ITLEntry"
+Inner Join OBIN T6 on T6."AbsEntry" = T5."BinAbs"
+where T0."DocEntry" = 200
+
+select * from OITL
+select * from OBIN
+select * from ITL1
+select * from OITL
+select * from ITL1
+Select * from OBTL on OBTL."SnBMDAbs" = ITL1."MdAbsEntry"
+ Where ITL1."LogEntry" = 3

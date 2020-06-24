@@ -1,0 +1,2 @@
+exec [ITN_GET_INVOICE_DATA_DETAILS] 18
+select DocDate from OINV

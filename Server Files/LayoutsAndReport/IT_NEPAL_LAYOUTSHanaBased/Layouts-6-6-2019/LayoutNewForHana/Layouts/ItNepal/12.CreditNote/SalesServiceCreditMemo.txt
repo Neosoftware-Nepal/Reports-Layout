@@ -1,0 +1,2 @@
+Parameter: TransId
+Significance: Fetches the details from Journal of a/r Credit Memo according to the TransId number through the stored procedure SP_ITN_SERVICE_CREDIT_MEMO

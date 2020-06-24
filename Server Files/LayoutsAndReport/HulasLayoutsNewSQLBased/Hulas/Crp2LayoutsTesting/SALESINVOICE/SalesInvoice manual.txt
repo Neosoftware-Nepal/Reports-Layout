@@ -1,0 +1,5 @@
+Parameter: DocEntry
+Significance: Fetches the details of Sales Invoice according to the DocEntry number through the stored procedure SP_ITN_SalesInvoice
+And SP_ITN_SALESINVOICEBATCH
+
+Note:SP_ITN_SALESINVOICEBATCH Procudeure is Applicable for Serial no and batch Transaction

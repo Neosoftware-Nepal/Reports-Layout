@@ -1,0 +1,62 @@
+CREATE VIEW "TRANSTYPEVALUEPIVOT" ( "ItemCode",
+	 "Warehouse",
+	 "DocDate",
+	 "A/R Invoices Value",
+	 "A/R Credit Memos Value",
+	 "Deliveries Value",
+	 "Returns Value",
+	 "A/P Invoices Value",
+	 "A/P Credit Memos Value",
+	 "Goods Receipt PO Value",
+	 "Goods Return Value",
+	 "Receipt from Production Value",
+	 "Issue for Production Value",
+	 "Inventory Transfers Value" ) AS SELECT
+	 "ItemCode" ,
+	 "Warehouse" ,
+	 "DocDate" ,
+	 CASE WHEN "TransType" = 13 
+THEN IFNULL("TransValue",
+	 0) 
+END AS "A/R Invoices Value" ,
+	 CASE WHEN "TransType" = 14 
+THEN IFNULL("TransValue",
+	 0) 
+END AS "A/R Credit Memos Value" ,
+	 CASE WHEN "TransType" = 15 
+THEN IFNULL("TransValue",
+	 0) 
+END AS "Deliveries Value" ,
+	 CASE WHEN "TransType" = 16 
+THEN IFNULL("TransValue",
+	 0) 
+END AS "Returns Value" ,
+	 CASE WHEN "TransType" = 18 
+THEN IFNULL("TransValue",
+	 0) 
+END AS "A/P Invoices Value" ,
+	 CASE WHEN "TransType" = 19 
+THEN IFNULL("TransValue",
+	 0) 
+END AS "A/P Credit Memos Value" ,
+	 CASE WHEN "TransType" = 20 
+THEN IFNULL("TransValue",
+	 0) 
+END AS "Goods Receipt PO Value" ,
+	 CASE WHEN "TransType" = 21 
+THEN IFNULL("TransValue",
+	 0) 
+END AS "Goods Return Value" ,
+	 CASE WHEN "TransType" = 59 
+THEN IFNULL("TransValue",
+	 0) 
+END AS "Receipt from Production Value" ,
+	 CASE WHEN "TransType" = 60 
+THEN IFNULL("TransValue",
+	 0) 
+END AS "Issue for Production Value" ,
+	 CASE WHEN "TransType" = 67 
+THEN IFNULL("TransValue",
+	 0) 
+END AS "Inventory Transfers Value" 
+FROM OINM 

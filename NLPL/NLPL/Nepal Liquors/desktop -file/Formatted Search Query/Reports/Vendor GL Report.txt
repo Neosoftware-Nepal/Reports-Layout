@@ -1,0 +1,11 @@
+SELECT distinct T1."DocEntry", T1."DocNum",  T1."DocDate", T1."CardName"as VendoreName,T1."NumAtCard" as "Bill Number",T1."TaxDate" as "Invoice date", T1."DocTotal" as "Total PurchaseAmount",
+T1."WTSum"as TdsAmount, (select H."WTCode" from PCH5 H where H."AbsEntry"=T1."DocEntry") as "GL Code",
+(select sum(B."LineTotal") from PCH1 B where B."DocEntry"=T1."DocEntry") as "Base Total",
+ (select Sum(C."TaxSum") from PCH4 C where C."DocEntry" =T1."DocEntry" and (C."StaCode"='Vat13' or  C."StaCode"='Vat13' ) ) as "VATAmount",
+--(select Sum(C."TaxSum") from PCH4 C where C."DocEntry" =T1."DocEntry" and C."StaCode"='PIED' ) as "PIED",
+--(select Sum(C."TaxSum") from PCH4 C where C."DocEntry" =T1."DocEntry" and C."StaCode"='Levies' ) as "Levies",
+--(select Sum(C."TaxSum") from PCH4 C where C."DocEntry" =T1."DocEntry" and C."StaCode"='ED40' ) as "ExciesDuty",
+(select D."TransCat" from PCH12 D where D."DocEntry" =T1."DocEntry" ) 
+ FROM PCH1 T0  INNER JOIN OPCH T1 ON T0."DocEntry"  = T1."DocEntry"
+
+where T1."CardName" = [%0]

@@ -1,0 +1,17 @@
+<!-- Definition of XML elements -->
+
+<!-- root element of configuration file in XML format -->
+<!ELEMENT configuration    (node*) >
+<!-- internal configuration tree node : contains at least one node or leaf as children -->
+<!ELEMENT node             ((node*| leaf*)+)  >
+<!-- configuration tree leaf : contains one or more value elements-->
+<!ELEMENT leaf             (value+) >
+<!-- value element containing parsed characted data as content -->
+<!ELEMENT value            (#PCDATA) >
+
+<!-- Definition of XML attributes -->
+
+<!ATTLIST node             name CDATA #REQUIRED >
+<!ATTLIST leaf             name CDATA #REQUIRED 
+                           kind  (single | group) "single"
+ 	                   type  (Integer | Bool | String | Binary | ULong) "String" >

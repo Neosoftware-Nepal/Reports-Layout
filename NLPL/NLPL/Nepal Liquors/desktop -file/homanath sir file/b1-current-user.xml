@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE configuration SYSTEM "b1-conf.dtd">
+<configuration>
+
+  <node name="REGISTRY">
+    <node name="HKEY_CURRENT_USER">
+      <node name="SOFTWARE">
+        <node name="SAP">
+          <node name="SAP Manage">
+            <node name="SAP Business One">
+              <leaf kind="single" name="SearchPicker" type="String">
+                <value>Y</value>
+              </leaf>
+              <leaf kind="single" name="CFLPicker" type="String">
+                <value>Y</value>
+              </leaf>
+              <leaf kind="single" name="TransPicker" type="String">
+                <value>Y</value>
+              </leaf>
+              <leaf kind="single" name="DatePicker" type="String">
+                <value>Y</value>
+              </leaf>
+              <leaf kind="single" name="CalculatorPicker" type="String">
+                <value>Y</value>
+              </leaf>
+              <leaf kind="single" name="RoundFormatPicker" type="String">
+                <value>Y</value>
+              </leaf>
+              <leaf kind="single" name="FilePicker" type="String">
+                <value>Y</value>
+              </leaf>
+              <node name="LogIN">
+                <leaf kind="single" name="ServerType" type="Binary">
+                  <value>C:\Users\homnath\Local Settings\Application Data\SAP\SAP Business One\-REGISTRY-HKEY_CURRENT_USER-SOFTWARE-SAP-SAP_Manage-SAP_Business_One-LogIN-ServerType-ServerType.binary</value>
+                </leaf>
+                <leaf kind="single" name="Server" type="Binary">
+                  <value>C:\Users\homnath\Local Settings\Application Data\SAP\SAP Business One\-REGISTRY-HKEY_CURRENT_USER-SOFTWARE-SAP-SAP_Manage-SAP_Business_One-LogIN-Server-Server.binary</value>
+                </leaf>
+                <leaf kind="single" name="Company" type="Binary">
+                  <value>C:\Users\homnath\Local Settings\Application Data\SAP\SAP Business One\-REGISTRY-HKEY_CURRENT_USER-SOFTWARE-SAP-SAP_Manage-SAP_Business_One-LogIN-Company-Company.binary</value>
+                </leaf>
+                <leaf kind="single" name="Port" type="Binary">
+                  <value>C:\Users\homnath\Local Settings\Application Data\SAP\SAP Business One\-REGISTRY-HKEY_CURRENT_USER-SOFTWARE-SAP-SAP_Manage-SAP_Business_One-LogIN-Port-Port.binary</value>
+                </leaf>
+                <leaf kind="single" name="CompanyName" type="Binary">
+                  <value>C:\Users\homnath\Local Settings\Application Data\SAP\SAP Business One\-REGISTRY-HKEY_CURRENT_USER-SOFTWARE-SAP-SAP_Manage-SAP_Business_One-LogIN-CompanyName-CompanyName.binary</value>
+                </leaf>
+              </node>
+              <node name="Docking">
+                <leaf kind="single" name="DockState" type="String">
+                  <value>S</value>
+                </leaf>
+                <leaf kind="single" name="DockHeight" type="String">
+                  <value>150</value>
+                </leaf>
+              </node>
+              <leaf kind="single" name="ShowSyslogMessage" type="String">
+                <value>N</value>
+              </leaf>
+              <leaf kind="single" name="LogPath" type="String">
+                <value>C:\ProgramData\SAP\SAP Business One\Log\SAP Business One\homnath\BusinessOne\</value>
+              </leaf>
+              <leaf kind="single" name="LogPathOverride" type="String">
+                <value>N</value>
+              </leaf>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
+
+</configuration>

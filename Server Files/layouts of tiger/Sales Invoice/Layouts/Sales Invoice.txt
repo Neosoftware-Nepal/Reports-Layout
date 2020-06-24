@@ -1,0 +1,12 @@
+##Sales Invoice
+1. Title changed
+2. contact name is changed 
+3. Name is added in customer
+4. Invoice and transaction date and miti is added 
+5. Remark is removed 
+6. Vehicle and driver name and number is removed 
+7. Note and text box is added
+8. Excise amount is changed into excise duty @165/litre 
+
+
+### remaining: serial number and Excise amount 

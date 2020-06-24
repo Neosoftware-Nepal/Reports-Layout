@@ -1,0 +1,12 @@
+SELECT U_percasediscount FROM [dbo].[@Discount]
+WHERE Code = $[$38.1.0]
+
+
+SELECT U_percasediscount * $[$38.11.0] FROM [dbo].[@Discount]
+WHERE Code = $[$38.1.0]
+
+
+SELECT ItemCode, ItemName FROM OITM
+
+SELECT ItemName FROM OITM
+WHERE ItemCode = $[$3.Code.0]

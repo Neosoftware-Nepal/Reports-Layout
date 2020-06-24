@@ -1,0 +1,9 @@
+
+	Create function [dbo].[ITN_NEPALI_FMT_DATE]  
+(  
+   @DateString varchar(30)  
+)  
+returns nvarchar(100)  
+as  
+begin return(select concat(SUBSTRING(@DateString,1,4), '/', SUBSTRING(@DateString,6,2),'/',SUBSTRING(@DateString,9,2)))  
+end
