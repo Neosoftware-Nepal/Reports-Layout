@@ -1,0 +1,70 @@
+/* Franchise  */
+select T0."DocDueDate", T1."DocDate", DAYS_BETWEEN (T0."DocDate", T0."DocDueDate")as  "days between" 
+from OINV T0
+Left Join ORCT T1 ON T0."DocEntry" = T1."DocEntry"
+Left Join OCRD T2 ON T0."CardCode" = T2."CardCode"
+Left Join OCRG T3 ON T2."GroupCode" = T3."GroupCode"
+Where  T3."CardCode" = 'Fran%' and DAYS_BETWEEN (T0."DocDate", T0."DocDueDate") >= '3'
+
+--Corrected
+select T2."CardName",T2."CardCode" , DAYS_BETWEEN (T0."U_ITN_SoldDate", CURRENT_DATE) as  "days between" 
+from "@REPORTS" T0
+Left Join OCRD T2 ON T0."U_ITN_CardCode" = T2."CardCode"
+Where  DAYS_BETWEEN (T0."U_ITN_SoldDate", CURRENT_DATE) >= 3 
+
+			
+			
+	/*  Local  */		
+select T0."DocDueDate", T1."DocDate", DAYS_BETWEEN (T0."DocDate", T0."DocDueDate")as  "days between" 
+from OINV T0
+Left Join ORCT T1 ON T0."DocEntry" = T1."DocEntry"
+Left Join OCRD T2 ON T0."CardCode" = T2."CardCode"
+Left Join OCRG T3 ON T2."GroupCode" = T3."GroupCode"
+Where T0."DocDueDate" = T1."DocDate"
+
+
+
+/* Sales Order Created but A/R Invoice of Order is not created */
+--correct
+Select T0."DocNum", T0."DocStatus"
+From ORDR T0
+Where T0."DocStatus" = 'O'
+
+
+--need to test
+SELECT T0."DocNum" , T2."DocNum"  
+FROM OINV T0 
+JOIN INV1 T1 ON T0."DocEntry" = T1."DocEntry" 
+JOIN ORDR T2 ON T1."BaseEntry" = T2."DocEntry" 
+
+--need to test
+Select ORDR."DocNum", OINV."DocNum" 
+from ORDR
+Join INV1 on ORDR."DocEntry" = INV1."BaseEntry"
+Join OINV ON INV1."DocEntry" = OINV."DocEntry"
+
+--Expiry date alert 
+Select T0."DocDate"
+	  ,T0."DocDueDate"
+	  ,DAYS_BETWEEN (T0."DocDueDate", CURRENT_DATE) as  "days between"  
+from ORDR T0
+Where T0."DocDueDate" = Current_Date
+
+-- Payment due alert
+Select  T0."DocDate"
+	  ,T0."DocDueDate" 
+	  ,DAYS_BETWEEN (T0."DocDueDate", CURRENT_DATE) as  "days between"
+from OVPM T0
+Left Join OPCH T1 ON T0."DocEntry" = T1."DocEntry" and 
+Left Join OCTG T1.ON  T1."GroupNum" = T2."GroupNum"
+Where T0."DocDueDate" = Current_Date 
+
+
+
+and case when T2."GroupNum" = '1' 
+		then   DAYS_BETWEEN (T0."DocDueDate", CURRENT_DATE) >= 25
+		when 
+
+
+Select * from OCRD
+select * from  OCTG

@@ -1,0 +1,14 @@
+Select T0."DocNum"
+                  ,T0."DocDate"
+                  ,T0."CardCode"
+                  ,T0."CardName"
+                   ,T1."WtLiable"
+                   ,T0."WTSum"
+                   ,T0."DocTotal"
+                   ,T3."Rate"
+                  
+From OPCH T0
+Inner Join PCH1 T1 On T0."DocEntry" = T1."DocEntry"
+Left Join OVPM T2 On T0."DocEntry" = T2."DocEntry" 
+Inner Join PCH5 T3 On T0."DocEntry" = T3."AbsEntry"
+Where T1."WtLiable" = 'Y' and  T0."DocDate">='[%0]' and T0."DocDate"<='[%1]'

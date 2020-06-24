@@ -1,0 +1,52 @@
+E:\FrameWork\CBS.CommonAddon\CBS.MainLibrary\obj\Debug\ITNepal.MainLibrary.csprojResolveAssemblyReference.cache
+C:\UDN\Framework\ITNepal.UDN\ITNepal.MainLibrary\obj\Debug\ITNepal.MainLibrary.dll
+C:\UDN\Framework\ITNepal.UDN\ITNepal.MainLibrary\obj\Debug\ITNepal.MainLibrary.pdb
+C:\UDN\Framework\ITNepal.UDN\ITNepal.MainLibrary\bin\Debug\ITNepal.MainLibrary.dll.config
+C:\UDN\Framework\ITNepal.UDN\ITNepal.MainLibrary\bin\Debug\ITNepal.MainLibrary.dll
+C:\UDN\Framework\ITNepal.UDN\ITNepal.MainLibrary\bin\Debug\ITNepal.MainLibrary.pdb
+C:\UDN\Framework\Sales Addon\ITNepal.UDN\ITNepal.MainLibrary\bin\Debug\ITNepal.MainLibrary.dll.config
+C:\UDN\Framework\Sales Addon\ITNepal.UDN\ITNepal.MainLibrary\bin\Debug\ITNepal.MainLibrary.dll
+C:\UDN\Framework\Sales Addon\ITNepal.UDN\ITNepal.MainLibrary\bin\Debug\ITNepal.MainLibrary.pdb
+C:\UDN\Framework\Sales Addon\ITNepal.UDN\ITNepal.MainLibrary\obj\Debug\ITNepal.MainLibrary.dll
+C:\UDN\Framework\Sales Addon\ITNepal.UDN\ITNepal.MainLibrary\obj\Debug\ITNepal.MainLibrary.pdb
+D:\ITNepal.UDN (2)\ITNepal.UDN\ITNepal.MainLibrary\bin\Debug\ITNepal.MainLibrary.dll.config
+D:\ITNepal.UDN (2)\ITNepal.UDN\ITNepal.MainLibrary\bin\Debug\ITNepal.MainLibrary.dll
+D:\ITNepal.UDN (2)\ITNepal.UDN\ITNepal.MainLibrary\bin\Debug\ITNepal.MainLibrary.pdb
+D:\ITNepal.UDN (2)\ITNepal.UDN\ITNepal.MainLibrary\obj\Debug\ITNepal.MainLibrary.csprojResolveAssemblyReference.cache
+D:\ITNepal.UDN (2)\ITNepal.UDN\ITNepal.MainLibrary\obj\Debug\ITNepal.MainLibrary.dll
+D:\ITNepal.UDN (2)\ITNepal.UDN\ITNepal.MainLibrary\obj\Debug\ITNepal.MainLibrary.pdb
+D:\ITNepal.UDN\ITNepal.UDN\ITNepal.MainLibrary\bin\Debug\ITNepal.MainLibrary.dll.config
+D:\ITNepal.UDN\ITNepal.UDN\ITNepal.MainLibrary\bin\Debug\ITNepal.MainLibrary.dll
+D:\ITNepal.UDN\ITNepal.UDN\ITNepal.MainLibrary\bin\Debug\ITNepal.MainLibrary.pdb
+D:\ITNepal.UDN\ITNepal.UDN\ITNepal.MainLibrary\obj\Debug\ITNepal.MainLibrary.dll
+D:\ITNepal.UDN\ITNepal.UDN\ITNepal.MainLibrary\obj\Debug\ITNepal.MainLibrary.pdb
+D:\ITNepal.UDN\ITNepal.UDN\ITNepal.MainLibrary\obj\Debug\ITNepal.MainLibrary.csprojResolveAssemblyReference.cache
+C:\Users\pc\Downloads\ITNepal.UDN\ITNepal.UDN\ITNepal.UDN\ITNepal.MainLibrary\bin\Debug\ITNepal.MainLibrary.dll.config
+C:\Users\pc\Downloads\ITNepal.UDN\ITNepal.UDN\ITNepal.UDN\ITNepal.MainLibrary\bin\Debug\ITNepal.MainLibrary.dll
+C:\Users\pc\Downloads\ITNepal.UDN\ITNepal.UDN\ITNepal.UDN\ITNepal.MainLibrary\bin\Debug\ITNepal.MainLibrary.pdb
+C:\Users\pc\Downloads\ITNepal.UDN\ITNepal.UDN\ITNepal.UDN\ITNepal.MainLibrary\obj\Debug\ITNepal.MainLibrary.csprojResolveAssemblyReference.cache
+C:\Users\pc\Downloads\ITNepal.UDN\ITNepal.UDN\ITNepal.UDN\ITNepal.MainLibrary\obj\Debug\ITNepal.MainLibrary.dll
+C:\Users\pc\Downloads\ITNepal.UDN\ITNepal.UDN\ITNepal.UDN\ITNepal.MainLibrary\obj\Debug\ITNepal.MainLibrary.pdb
+C:\Projects\ITnepal Rushabh\ITNepal.UDN\ITNepal.UDN\ITNepal.UDN\ITNepal.MainLibrary\bin\Debug\ITNepal.MainLibrary.dll.config
+C:\Projects\ITnepal Rushabh\ITNepal.UDN\ITNepal.UDN\ITNepal.UDN\ITNepal.MainLibrary\bin\Debug\ITNepal.MainLibrary.dll
+C:\Projects\ITnepal Rushabh\ITNepal.UDN\ITNepal.UDN\ITNepal.UDN\ITNepal.MainLibrary\bin\Debug\ITNepal.MainLibrary.pdb
+C:\Projects\ITnepal Rushabh\ITNepal.UDN\ITNepal.UDN\ITNepal.UDN\ITNepal.MainLibrary\obj\Debug\ITNepal.MainLibrary.csprojResolveAssemblyReference.cache
+C:\Projects\ITnepal Rushabh\ITNepal.UDN\ITNepal.UDN\ITNepal.UDN\ITNepal.MainLibrary\obj\Debug\ITNepal.MainLibrary.dll
+C:\Projects\ITnepal Rushabh\ITNepal.UDN\ITNepal.UDN\ITNepal.UDN\ITNepal.MainLibrary\obj\Debug\ITNepal.MainLibrary.pdb
+C:\Anish\ITNepal.UDN\ITNepal.MainLibrary\bin\Debug\ITNepal.MainLibrary.dll.config
+C:\Anish\ITNepal.UDN\ITNepal.MainLibrary\bin\Debug\ITNepal.MainLibrary.dll
+C:\Anish\ITNepal.UDN\ITNepal.MainLibrary\bin\Debug\ITNepal.MainLibrary.pdb
+C:\Anish\ITNepal.UDN\ITNepal.MainLibrary\obj\Debug\ITNepal.MainLibrary.csprojResolveAssemblyReference.cache
+C:\Anish\ITNepal.UDN\ITNepal.MainLibrary\obj\Debug\ITNepal.MainLibrary.dll
+C:\Anish\ITNepal.UDN\ITNepal.MainLibrary\obj\Debug\ITNepal.MainLibrary.pdb
+C:\Projects\ITnepal Rushabh\ITNepal.UDN\ITNepal.UDN\ITNepal.UDN (3)\ITNepal.UDN\ITNepal.MainLibrary\bin\Debug\ITNepal.MainLibrary.dll.config
+C:\Projects\ITnepal Rushabh\ITNepal.UDN\ITNepal.UDN\ITNepal.UDN (3)\ITNepal.UDN\ITNepal.MainLibrary\bin\Debug\ITNepal.MainLibrary.dll
+C:\Projects\ITnepal Rushabh\ITNepal.UDN\ITNepal.UDN\ITNepal.UDN (3)\ITNepal.UDN\ITNepal.MainLibrary\bin\Debug\ITNepal.MainLibrary.pdb
+C:\Projects\ITnepal Rushabh\ITNepal.UDN\ITNepal.UDN\ITNepal.UDN (3)\ITNepal.UDN\ITNepal.MainLibrary\obj\Debug\ITNepal.MainLibrary.csprojResolveAssemblyReference.cache
+C:\Projects\ITnepal Rushabh\ITNepal.UDN\ITNepal.UDN\ITNepal.UDN (3)\ITNepal.UDN\ITNepal.MainLibrary\obj\Debug\ITNepal.MainLibrary.dll
+C:\Projects\ITnepal Rushabh\ITNepal.UDN\ITNepal.UDN\ITNepal.UDN (3)\ITNepal.UDN\ITNepal.MainLibrary\obj\Debug\ITNepal.MainLibrary.pdb
+C:\Users\luman\Desktop\UDN\ITNepal.UDN\ITNepal.MainLibrary\bin\Debug\ITNepal.MainLibrary.dll.config
+C:\Users\luman\Desktop\UDN\ITNepal.UDN\ITNepal.MainLibrary\bin\Debug\ITNepal.MainLibrary.dll
+C:\Users\luman\Desktop\UDN\ITNepal.UDN\ITNepal.MainLibrary\bin\Debug\ITNepal.MainLibrary.pdb
+C:\Users\luman\Desktop\UDN\ITNepal.UDN\ITNepal.MainLibrary\obj\Debug\ITNepal.MainLibrary.dll
+C:\Users\luman\Desktop\UDN\ITNepal.UDN\ITNepal.MainLibrary\obj\Debug\ITNepal.MainLibrary.pdb

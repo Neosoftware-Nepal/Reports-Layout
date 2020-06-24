@@ -1,0 +1,77 @@
+C:\John\sathya_Common Framework\CBS.CommonAddon\CBS.Addon\obj\Debug\CBS.Addon.csprojResolveAssemblyReference.cache
+C:\John\sathya_Common Framework\CBS.CommonAddon\CBS.Addon\bin\Debug\CBS.Addon.exe.config
+C:\John\sathya_Common Framework\CBS.CommonAddon\CBS.Addon\bin\Debug\Images\imgLogo.png
+C:\John\sathya_Common Framework\CBS.CommonAddon\CBS.Addon\bin\Debug\Forms\ApplyCoverage.b1f.cs
+C:\John\sathya_Common Framework\CBS.CommonAddon\CBS.Addon\bin\Debug\Forms\BillingWizardForm.b1f.cs
+C:\John\sathya_Common Framework\CBS.CommonAddon\CBS.Addon\bin\Debug\Forms\CoverageMaster.b1f.cs
+C:\John\sathya_Common Framework\CBS.CommonAddon\CBS.Addon\bin\Debug\Forms\LeaseContractForm.b1f.cs
+C:\John\sathya_Common Framework\CBS.CommonAddon\CBS.Addon\bin\Debug\Forms\LoadDataForm.b1f.cs
+C:\John\sathya_Common Framework\CBS.CommonAddon\CBS.Addon\bin\Debug\Forms\MachinePricingMasterForm.b1f.cs
+C:\John\sathya_Common Framework\CBS.CommonAddon\CBS.Addon\bin\Debug\Forms\MeterSetupForm.b1f.cs
+C:\John\sathya_Common Framework\CBS.CommonAddon\CBS.Addon\bin\Debug\Forms\SystemForms\Item Master Data.b1f.cs
+C:\John\sathya_Common Framework\CBS.CommonAddon\CBS.Addon\bin\Debug\Forms\SystemForms\Service Contract.b1f.cs
+C:\John\sathya_Common Framework\CBS.CommonAddon\CBS.Addon\bin\Debug\Forms\TechnicalSkillMasterForm.b1f.cs
+C:\John\sathya_Common Framework\CBS.CommonAddon\CBS.Addon\bin\Debug\Forms\SystemForms\EquipmentCardForm.b1f.cs
+C:\John\sathya_Common Framework\CBS.CommonAddon\CBS.Addon\bin\Debug\Forms\SystemForms\ServiceCallForm.b1f.cs
+C:\John\sathya_Common Framework\CBS.CommonAddon\CBS.Addon\bin\Debug\Forms\ApplyCoverage.b1f
+C:\John\sathya_Common Framework\CBS.CommonAddon\CBS.Addon\bin\Debug\Forms\BillingWizardForm.b1f
+C:\John\sathya_Common Framework\CBS.CommonAddon\CBS.Addon\bin\Debug\Forms\CoverageMaster.b1f
+C:\John\sathya_Common Framework\CBS.CommonAddon\CBS.Addon\bin\Debug\Forms\LeaseContractForm.b1f
+C:\John\sathya_Common Framework\CBS.CommonAddon\CBS.Addon\bin\Debug\Forms\LoadDataForm.b1f
+C:\John\sathya_Common Framework\CBS.CommonAddon\CBS.Addon\bin\Debug\Forms\MachinePricingMasterForm.b1f
+C:\John\sathya_Common Framework\CBS.CommonAddon\CBS.Addon\bin\Debug\Forms\MeterSetupForm.b1f
+C:\John\sathya_Common Framework\CBS.CommonAddon\CBS.Addon\bin\Debug\Forms\SystemForms\Item Master Data.b1f
+C:\John\sathya_Common Framework\CBS.CommonAddon\CBS.Addon\bin\Debug\Forms\SystemForms\Item Master Data.b1f__orig_srf
+C:\John\sathya_Common Framework\CBS.CommonAddon\CBS.Addon\bin\Debug\Forms\SystemForms\Service Contract.b1f
+C:\John\sathya_Common Framework\CBS.CommonAddon\CBS.Addon\bin\Debug\Forms\SystemForms\Service Contract.b1f__orig_srf
+C:\John\sathya_Common Framework\CBS.CommonAddon\CBS.Addon\bin\Debug\Forms\TechnicalSkillMasterForm.b1f
+C:\John\sathya_Common Framework\CBS.CommonAddon\CBS.Addon\bin\Debug\Forms\SystemForms\EquipmentCardForm.b1f
+C:\John\sathya_Common Framework\CBS.CommonAddon\CBS.Addon\bin\Debug\Forms\SystemForms\EquipmentCardForm.b1f__orig_srf
+C:\John\sathya_Common Framework\CBS.CommonAddon\CBS.Addon\bin\Debug\Forms\SystemForms\ServiceCallForm.b1f
+C:\John\sathya_Common Framework\CBS.CommonAddon\CBS.Addon\bin\Debug\Forms\SystemForms\ServiceCallForm.b1f__orig_srf
+C:\John\sathya_Common Framework\CBS.CommonAddon\CBS.Addon\bin\Debug\CBS.Addon.exe
+C:\John\sathya_Common Framework\CBS.CommonAddon\CBS.Addon\bin\Debug\CBS.Addon.pdb
+C:\John\sathya_Common Framework\CBS.CommonAddon\CBS.Addon\bin\Debug\CBS.MainLibrary.dll
+C:\John\sathya_Common Framework\CBS.CommonAddon\CBS.Addon\bin\Debug\CBS.MainLibrary.pdb
+C:\John\sathya_Common Framework\CBS.CommonAddon\CBS.Addon\obj\Debug\CBS.Addon.exe
+C:\John\sathya_Common Framework\CBS.CommonAddon\CBS.Addon\obj\Debug\CBS.Addon.pdb
+D:\SVN\SOP\trunk\CBS.CommonAddon\CBS.Addon\bin\Debug\CBS.Addon.exe.config
+D:\SVN\SOP\trunk\CBS.CommonAddon\CBS.Addon\obj\Debug\CBS.Addon.exe
+D:\SVN\SOP\trunk\CBS.CommonAddon\CBS.Addon\obj\Debug\CBS.Addon.pdb
+C:\Users\John\Desktop\Deepak\CBS.CommonAddon\CBS.Addon\bin\Debug\CBS.Addon.exe.config
+C:\Users\John\Desktop\Deepak\CBS.CommonAddon\CBS.Addon\obj\Debug\CBS.Addon.exe
+C:\Users\John\Desktop\Deepak\CBS.CommonAddon\CBS.Addon\obj\Debug\CBS.Addon.pdb
+C:\Users\John\Desktop\Deepak\CBS.CommonAddon\CBS.Addon\bin\Debug\Images\imgLogo.png
+C:\Users\John\Desktop\Deepak\CBS.CommonAddon\CBS.Addon\bin\Debug\Forms\ApplyCoverage.b1f.cs
+C:\Users\John\Desktop\Deepak\CBS.CommonAddon\CBS.Addon\bin\Debug\Forms\BillingWizardForm.b1f.cs
+C:\Users\John\Desktop\Deepak\CBS.CommonAddon\CBS.Addon\bin\Debug\Forms\CoverageMaster.b1f.cs
+C:\Users\John\Desktop\Deepak\CBS.CommonAddon\CBS.Addon\bin\Debug\Forms\LeaseContractForm.b1f.cs
+C:\Users\John\Desktop\Deepak\CBS.CommonAddon\CBS.Addon\bin\Debug\Forms\LoadDataForm.b1f.cs
+C:\Users\John\Desktop\Deepak\CBS.CommonAddon\CBS.Addon\bin\Debug\Forms\MachinePricingMasterForm.b1f.cs
+C:\Users\John\Desktop\Deepak\CBS.CommonAddon\CBS.Addon\bin\Debug\Forms\MeterSetupForm.b1f.cs
+C:\Users\John\Desktop\Deepak\CBS.CommonAddon\CBS.Addon\bin\Debug\Forms\SystemForms\Item Master Data.b1f.cs
+C:\Users\John\Desktop\Deepak\CBS.CommonAddon\CBS.Addon\bin\Debug\Forms\SystemForms\Service Contract.b1f.cs
+C:\Users\John\Desktop\Deepak\CBS.CommonAddon\CBS.Addon\bin\Debug\Forms\TechnicalSkillMasterForm.b1f.cs
+C:\Users\John\Desktop\Deepak\CBS.CommonAddon\CBS.Addon\bin\Debug\Forms\SystemForms\EquipmentCardForm.b1f.cs
+C:\Users\John\Desktop\Deepak\CBS.CommonAddon\CBS.Addon\bin\Debug\Forms\SystemForms\ServiceCallForm.b1f.cs
+C:\Users\John\Desktop\Deepak\CBS.CommonAddon\CBS.Addon\bin\Debug\Forms\ApplyCoverage.b1f
+C:\Users\John\Desktop\Deepak\CBS.CommonAddon\CBS.Addon\bin\Debug\Forms\BillingWizardForm.b1f
+C:\Users\John\Desktop\Deepak\CBS.CommonAddon\CBS.Addon\bin\Debug\Forms\CoverageMaster.b1f
+C:\Users\John\Desktop\Deepak\CBS.CommonAddon\CBS.Addon\bin\Debug\Forms\LeaseContractForm.b1f
+C:\Users\John\Desktop\Deepak\CBS.CommonAddon\CBS.Addon\bin\Debug\Forms\LoadDataForm.b1f
+C:\Users\John\Desktop\Deepak\CBS.CommonAddon\CBS.Addon\bin\Debug\Forms\MachinePricingMasterForm.b1f
+C:\Users\John\Desktop\Deepak\CBS.CommonAddon\CBS.Addon\bin\Debug\Forms\MeterSetupForm.b1f
+C:\Users\John\Desktop\Deepak\CBS.CommonAddon\CBS.Addon\bin\Debug\Forms\SystemForms\Item Master Data.b1f
+C:\Users\John\Desktop\Deepak\CBS.CommonAddon\CBS.Addon\bin\Debug\Forms\SystemForms\Item Master Data.b1f__orig_srf
+C:\Users\John\Desktop\Deepak\CBS.CommonAddon\CBS.Addon\bin\Debug\Forms\SystemForms\Service Contract.b1f
+C:\Users\John\Desktop\Deepak\CBS.CommonAddon\CBS.Addon\bin\Debug\Forms\SystemForms\Service Contract.b1f__orig_srf
+C:\Users\John\Desktop\Deepak\CBS.CommonAddon\CBS.Addon\bin\Debug\Forms\TechnicalSkillMasterForm.b1f
+C:\Users\John\Desktop\Deepak\CBS.CommonAddon\CBS.Addon\bin\Debug\Forms\SystemForms\EquipmentCardForm.b1f
+C:\Users\John\Desktop\Deepak\CBS.CommonAddon\CBS.Addon\bin\Debug\Forms\SystemForms\EquipmentCardForm.b1f__orig_srf
+C:\Users\John\Desktop\Deepak\CBS.CommonAddon\CBS.Addon\bin\Debug\Forms\SystemForms\ServiceCallForm.b1f
+C:\Users\John\Desktop\Deepak\CBS.CommonAddon\CBS.Addon\bin\Debug\Forms\SystemForms\ServiceCallForm.b1f__orig_srf
+C:\Users\John\Desktop\Deepak\CBS.CommonAddon\CBS.Addon\bin\Debug\CBS.Addon.exe
+C:\Users\John\Desktop\Deepak\CBS.CommonAddon\CBS.Addon\bin\Debug\CBS.Addon.pdb
+C:\Users\John\Desktop\Deepak\CBS.CommonAddon\CBS.Addon\bin\Debug\CBS.MainLibrary.dll
+C:\Users\John\Desktop\Deepak\CBS.CommonAddon\CBS.Addon\bin\Debug\CBS.MainLibrary.pdb
+C:\Users\John\Desktop\Deepak\CBS.CommonAddon\CBS.Addon\obj\Debug\CBS.Addon.csprojResolveAssemblyReference.cache

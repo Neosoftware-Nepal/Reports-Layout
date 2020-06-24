@@ -1,0 +1,19 @@
+CREATE PROCeDUre "SP_ITN_GRPO_BATCH" 
+AS
+BEGIN
+SELECT T3."DocEntry"
+	 ,T0."BaseLinNum"
+	,T1."MnfDate" As  "MfgDate"
+	,T1."MnfSerial" as  "ManufactureNumber"
+	,T1."DistNumber" 
+	,T1."Notes" as "Notes"
+    ,T1."InDate" as "AdmissionDate"
+    ,T1."LotNumber" AS "BatchNo"
+FROM SRI1 T0
+INNER JOIN OSRN T1 ON T1."SysNumber" = T0."SysSerial"
+	AND T1."ItemCode" = T0."ItemCode"
+INNER JOIN PDN1 T2 ON T2."DocEntry" = T0."BaseEntry"
+	AND T2."ItemCode" = T0."ItemCode"
+	AND T2."LineNum" = T0."BaseLinNum"
+INNER JOIN OPDN T3 ON T3."DocEntry" = T2."DocEntry";
+END

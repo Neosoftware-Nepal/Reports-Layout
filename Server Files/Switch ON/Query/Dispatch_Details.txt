@@ -1,0 +1,24 @@
+CREATE PROCeDUre "SP_ITN_Dispatch_BATCH" 
+AS
+BEGIN
+SELECT 
+	T0."DocNum"
+   ,T0."DocEntry"
+   ,T1."Quantity"
+   ,T4."MnfDate" as "Received Date"
+   ,T4."MnfSerial" as "BarCode"
+   ,I1."BaseLinNum"
+   ,T4."Notes" as "Details"
+FROM ODLN T0
+INNER JOIN DLN1 T1 ON T0."DocEntry" = T1."DocEntry"
+LEFT  JOIN SRI1 I1 ON T1."ItemCode" = I1."ItemCode"
+	AND (
+		T1."DocEntry" = I1."BaseEntry"
+		AND T1."ObjType" = I1."BaseType"
+	)	
+and t1."LineNum"=i1."BaseLinNum"
+LEFT JOIN OSRN T4 ON T4."ItemCode" = I1."ItemCode"
+	AND I1."SysSerial" = T4."SysNumber"
+;
+
+END

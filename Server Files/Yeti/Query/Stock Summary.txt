@@ -1,0 +1,70 @@
+With VATCTE as (
+Select T0."DocEntry"
+, IFNULL((SELECT Sum(INV4."TaxSum") FROM INV4 WHERE T0."DocEntry" = INV4."DocEntry" AND INV4."LineNum" = T1."LineNum" AND INV4."staType" = 7), 0) AS "ExciseAmount"
+	,IFNULL((SELECT sum(INV4."BaseSum") FROM INV4 WHERE T0."DocEntry" = INV4."DocEntry" AND INV4."LineNum" = T1."LineNum" AND INV4."staType" = 1), 0) AS "TaxableAmount"
+From OINV T0
+Inner Join INV1 T1 on T0."DocEntry" = T1."DocEntry"
+
+)
+
+
+
+SELECT T0."DocEntry"
+,T0."DocNum"
+	,T0."DocDate"
+	,T0."U_UNE_NPDate"
+	,T0."CardCode"
+	,T0."CardName"
+	,CASE 
+		WHEN T0."CANCELED" = 'Y'
+			THEN 'CANCEL'
+	 END AS "Status"
+	 ,Sum(T2."ExciseAmount") as "Exciseable Amount"
+	 ,CASE 
+		WHEN T0."CANCELED" = 'Y'
+			THEN 0
+	 ELSE
+	 (SELECT SUM(T1."TaxSum")
+	 FROM INV4 T1
+	 WHERE T0."DocEntry" = T1."DocEntry"
+	 AND T1."StaCode" = 'EX@0')
+	 END AS "Excise Amount"
+	  ,Sum(T2."TaxableAmount") as "Taxable Amount"
+	 
+	 ,T0."VatSum"
+	,CASE 
+		WHEN T0."CANCELED" = 'Y'
+			THEN 0
+		ELSE T0."DocTotal"
+	END AS "Total Sales"
+	
+	/*,CASE 
+		WHEN T0."CANCELED" = 'Y'
+			THEN 0
+	 ELSE
+	 (SELECT SUM(T1."TaxSum")
+	 FROM INV4 T1
+	 WHERE T0."DocEntry" = T1."DocEntry"
+	 AND T1."StaCode" = 'VAT13') 
+	 END AS "Total VAT"*/
+	 ,T0."DocTotal"
+	 
+	
+	 
+	
+FROM OINV T0
+Inner Join INV1 T1 on T0."DocEntry" = T1."DocEntry"
+Left Join VATCTE T2 On T0."DocEntry" = T2."DocEntry"
+WHERE T0."CANCELED" <> 'C'
+AND T0."DocDate" > TO_DATE('30/04/2019', 'DD/MM/YYYY')
+Group By T0."DocEntry"
+,T0."DocNum"
+	,T0."DocDate"
+	,T0."U_UNE_NPDate"
+	,T0."CardCode"
+	,T0."CardName"
+	,T0."CANCELED"
+	,T0."DocTotal"
+	,T2."TaxableAmount"
+	,T0."VatSum"
+ORDER BY 4

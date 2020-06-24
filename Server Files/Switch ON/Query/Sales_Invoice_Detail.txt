@@ -1,0 +1,20 @@
+CREATE PROCeDUre "SP_ITN_SalesInvoice_BATCH" 
+AS
+BEGIN
+select T0."DocEntry"
+	  ,T3."MnfSerial" as "Bar Code"
+	  ,T3."Notes" as "Details"
+	  ,T3."InDate" as "Received Date"
+	  ,T1."LineNum"
+from OINV T0
+Inner Join INV1 T1 On T0."DocEntry" = T1."DocEntry"
+Left Join SRI1 T2 On (CASE WHEN T1."BaseType" = 15 then T1."BaseEntry" else  T1."DocEntry" end) = T2."BaseEntry"
+		and (case when T1."BaseType" = 15 then T1."BaseType" else 13 end) = T2."BaseType" 
+		and (case when T1."BaseType" = 15 then T1."BaseLine" else T1."LineNum" end) = T2."BaseLinNum" 
+		and T2."Direction" = 1
+Left Join OSRN T3 ON T2."SysSerial" = T3."SysNumber"
+	AND T2."ItemCode" = T3."ItemCode";
+	
+
+
+END
