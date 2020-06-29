@@ -1,0 +1,136 @@
+SAP - Copyrights and Trademarks 
+
+ENGLISH - German version below
+
+© 2013 SAP AG or an SAP affiliate company.  All rights reserved.
+No part of this publication may be reproduced or transmitted in any form or for any purpose without the express permission of SAP AG. The information contained herein may be changed without prior notice.
+Some software products marketed by SAP AG and its distributors contain proprietary software components of other software vendors.
+
+Adobe, the Adobe logo, Acrobat, PostScript, and Reader are trademarks or registered trademarks of Adobe Systems Incorporated in the United States and other countries.
+
+Apple, App Store, FaceTime, iBooks, iPad, iPhone, iPhoto, iPod, iTunes, Multi-Touch, Objective-C, Retina, Safari, Siri, and Xcode are trademarks or registered trademarks of Apple Inc.
+
+Bluetooth is a registered trademark of Bluetooth SIG Inc.
+
+Citrix, ICA, Program Neighborhood, MetaFrame now XenApp, WinFrame, VideoFrame, and MultiWin are trademarks or registered trademarks of Citrix Systems Inc.
+
+Computop is a registered trademark of Computop Wirtschaftsinformatik GmbH. 
+
+Edgar Online is a registered trademark of EDGAR Online Inc., an R.R. Donnelley & Sons Company.
+
+Facebook, the Facebook and F logo, FB, Face, Poke, Wall, and 32665 are trademarks of Facebook.
+
+Google App Engine, Google Apps, Google Checkout, Google Data API, Google Maps, Google Mobile Ads, Google Mobile Updater, Google Mobile, Google Store, Google Sync, Google Updater, Google Voice, Google Mail, Gmail, YouTube, Dalvik, and Android are trademarks or registered trademarks of Google Inc.
+
+HP is a registered trademark of the Hewlett-Packard Development Company L.P.
+
+HTML, XML, XHTML, and W3C are trademarks, registered trademarks, or claimed as generic terms by the Massachusetts Institute of Technology (MIT), European Research Consortium for Informatics and Mathematics (ERCIM), or Keio University. 
+
+IBM, DB2, DB2 Universal Database, System i, System i5, System p, System p5, System x, System z, System z10, z10, z/VM, z/OS, OS/390, zEnterprise, PowerVM, Power Architecture, Power Systems, POWER7, POWER6+, POWER6, POWER, PowerHA, pureScale, PowerPC, BladeCenter, System Storage, Storwize, XIV, GPFS, HACMP, RETAIN, DB2 Connect, RACF, Redbooks, OS/2, AIX, Intelligent Miner, WebSphere, Tivoli, Informix, and Smarter Planet are trademarks or registered trademarks of IBM Corporation.
+
+Microsoft, Windows, Excel, Outlook, PowerPoint, Silverlight, and Visual Studio are registered trademarks of Microsoft Corporation. 
+
+INTERMEC is a registered trademark of Intermec Technologies Corporation.
+
+IOS is a registered trademark of Cisco Systems Inc.
+
+The Klout name and logos are trademarks of Klout Inc.
+
+Linux is the registered trademark of Linus Torvalds in the United States and other countries.
+
+Motorola is a registered trademark of Motorola Trademark Holdings LLC. 
+
+Mozilla and Firefox and their logos are registered trademarks of the Mozilla Foundation.
+
+Novell and SUSE Linux Enterprise Server are registered trademarks of Novell Inc.
+
+OpenText is a registered trademark of OpenText Corporation. 
+
+Oracle and Java are registered trademarks of Oracle and its affiliates.
+
+QR Code is a registered trademark of Denso Wave Incorporated.
+
+RIM, BlackBerry, BBM, BlackBerry Curve, BlackBerry Bold, BlackBerry Pearl, BlackBerry Torch, BlackBerry Storm, BlackBerry Storm2, BlackBerry PlayBook, and BlackBerry AppWorld are trademarks or registered trademarks of Research in Motion Limited.
+
+SAVO is a registered trademark of The Savo Group Ltd.
+
+The Skype name is a trademark of Skype or related entities.
+
+Twitter and Tweet are trademarks or registered trademarks of Twitter.
+
+UNIX, X/Open, OSF/1, and Motif are registered trademarks of the Open Group.
+
+Wi-Fi is a registered trademark of Wi-Fi Alliance.
+
+SAP, R/3, ABAP, BAPI, SAP NetWeaver, Duet, PartnerEdge, ByDesign, SAP BusinessObjects Explorer, StreamWork, SAP HANA, the Business Objects logo, BusinessObjects, Crystal Reports, Crystal Decisions, Web Intelligence, Xcelsius, Sybase, Adaptive Server, Adaptive Server Enterprise, iAnywhere, Sybase 365, SQL Anywhere, Crossgate, B2B 360° and B2B 360° Services, m@gic EDDY, Ariba, the Ariba logo, Quadrem, b-process, Ariba Discovery, SuccessFactors, Execution is the Difference, BizX Mobile Touchbase, It's time to love work again, SuccessFactors Jam and BadAss SaaS, and other SAP products and services mentioned herein as well as their respective logos are trademarks or registered trademarks of SAP AG in Germany or an SAP affiliate company.
+
+All other product and service names mentioned are the trademarks of their respective companies. Data contained in this document serves informational purposes only. National product specifications may vary.
+These materials are subject to change without notice. These materials are provided by SAP AG and its affiliated companies ("SAP Group") for informational purposes only, without representation or warranty of any kind, and SAP Group shall not be liable for errors or omissions with respect to the materials. The only warranties for SAP Group products and services are those that are set forth in the express warranty statements accompanying such products and services, if any. Nothing herein should be construed as constituting an additional warranty. 
+
+  
+
+GERMAN
+© 2013 SAP AG oder ein SAP-Konzernunternehmen.  Alle Rechte vorbehalten. 
+Weitergabe und Vervielfältigung dieser Publikation oder von Teilen daraus sind, zu welchem Zweck und in welcher Form auch immer, ohne die ausdrückliche schriftliche Genehmigung durch SAP AG nicht gestattet. In dieser Publikation enthaltene Informationen können ohne vorherige Ankündigung geändert werden. 
+Die von SAP AG oder deren Vertriebsfirmen angebotenen Softwareprodukte können Softwarekomponenten auch anderer Softwarehersteller enthalten. 
+
+Adobe, das Adobe-Logo, Acrobat, PostScript und Reader sind Marken oder eingetragene Marken von Adobe Systems Incorporated in den USA und/oder anderen Ländern. 
+
+Apple, App Store, FaceTime, iBooks, iPad, iPhone, iPhoto, iPod, iTunes, Multi-Touch, Objective-C, Retina, Safari, Siri und Xcode sind Marken oder eingetragene Marken der Apple Inc. 
+
+Bluetooth ist eine eingetragene Marke von Bluetooth SIG Inc. 
+
+Citrix, ICA, Program Neighborhood, MetaFrame jetzt XenApp, WinFrame, VideoFrame und MultiWin sind Marken oder eingetragene Marken von Citrix Systems, Inc. 
+
+Computop ist eine eingetragene Marke der Computop Wirtschaftsinformatik GmbH. 
+
+Edgar Online ist eine eingetragene Marke von EDGAR Online Inc., ein Unternehmen von R.R. Donnelley & Sons. 
+
+Facebook, das Facebook- und F-Logo, FB, Face, Poke, Wall und 32665 sind Marken von Facebook. 
+
+Google App Engine, Google Apps, Google Checkout, Google Data API, Google Maps, Google Mobile Ads, Google Mobile Updater, Google Mobile, Google Store, Google Sync, Google Updater, Google Voice, Google Mail, Gmail, YouTube, Dalvik und Android sind Marken oder eingetragene Marken von Google Inc. 
+
+HP ist eine eingetragene Marke der Hewlett-Packard Development Company L.P. 
+
+HTML, XML, XHTML und W3C sind Marken, eingetragene Marken oder werden vom Massachusetts Institute of Technology (MIT), European Research Consortium for Informatics and Mathematics (ERCIM) oder der Keio University als nicht geschützte Begriffe beansprucht. 
+
+IBM, DB2, DB2 Universal Database, System i, System i5, System p, System p5, System x, System z, System z10, z10, z/VM, z/OS, OS/390, zEnterprise, PowerVM, Power Architecture, Power Systems, POWER7, POWER6+, POWER6, POWER, PowerHA, pureScale, PowerPC, BladeCenter, System Storage, Storwize, XIV, GPFS, HACMP, RETAIN, DB2 Connect, RACF, Redbooks, OS/2, AIX, Intelligent Miner, WebSphere, Tivoli, Informix und Smarter Planet sind Marken oder eingetragene Marken der IBM Corporation. 
+
+Microsoft, Windows, Excel, Outlook, PowerPoint, Silverlight und Visual Studio sind eingetragene Marken der Microsoft Corporation. 
+
+INTERMEC ist eine eingetragene Marke der Intermec Technologies Corporation. 
+
+IOS ist eine eingetragene Marke von Cisco Systems Inc. 
+
+Der Name Klout und die Klout-Logos sind Marken von Klout Inc. 
+
+Linux ist eine eingetragene Marke von Linus Torvalds in den USA und anderen Ländern. 
+
+Motorola ist eine eingetragene Marke von Motorola Trademark Holdings, LLC. 
+
+Mozilla und Firefox und ihre Logos sind eingetragene Marken der Mozilla Foundation. 
+
+Novell und SUSE Linux Enterprise Server sind eingetragene Marken von Novell Inc. 
+
+OpenText ist eine eingetragene Marke der OpenText Corporation. 
+
+Oracle und Java sind eingetragene Marken von Oracle und/oder ihrer Tochtergesellschaften. 
+
+QR Code ist eine eingetragene Marke von Denso Wave Incorporated. 
+
+RIM, BlackBerry, BBM, BlackBerry Curve, BlackBerry Bold, BlackBerry Pearl, BlackBerry Torch, BlackBerry Storm, BlackBerry Storm2, BlackBerry PlayBook und BlackBerry AppWorld sind Marken oder eingetragene Marken von Research in Motion Limited. 
+
+SAVO ist eine eingetragene Marke von The Savo Group Ltd. 
+
+Der Name Skype ist eine Marke von Skype oder verbundenen Unternehmen. 
+
+Twitter und Tweet sind Marken oder eingetragene Marken von Twitter. 
+
+UNIX, X/Open, OSF/1 und Motif sind eingetragene Marken der Open Group. 
+
+Wi-Fi ist eine eingetragene Marke der Wi-Fi Alliance. 
+
+SAP, R/3, ABAP, BAPI, SAP NetWeaver, Duet, PartnerEdge, ByDesign, SAP BusinessObjects Explorer, StreamWork, SAP HANA, das Business-Objects-Logo, BusinessObjects, Crystal Reports, Crystal Decisions, Web Intelligence, Xcelsius, Sybase, Adaptive Server, Adaptive Server Enterprise, iAnywhere, Sybase 365, SQL Anywhere, Crossgate, B2B 360° und B2B 360° Services, m@gic EDDY, Ariba, das Ariba-Logo, Quadrem, b-process, Ariba Discovery, SuccessFactors, Execution is the Difference, BizX Mobile Touchbase, It's time to love work again, SuccessFactors Jam und BadAss SaaS und weitere im Text erwähnte SAP-Produkte und Dienstleistungen sowie die entsprechenden Logos sind Marken oder eingetragene Marken der SAP AG in Deutschland oder von einem SAP-Konzernunternehmen. 
+
+Alle anderen Namen von Produkten und Dienstleistungen sind Marken der jeweiligen Firmen. Die Angaben im Text sind unverbindlich und dienen lediglich zu Informationszwecken. Produkte können länderspezifische Unterschiede aufweisen. 
+In dieser Publikation enthaltene Informationen können ohne vorherige Ankündigung geändert werden. Die vorliegenden Angaben werden von SAP AG und ihren Konzernunternehmen („SAP-Konzern“) bereitgestellt und dienen ausschließlich Informationszwecken. Der SAP-Konzern übernimmt keinerlei Haftung oder Garantie für Fehler oder Unvollständigkeiten in dieser Publikation. Der SAP-Konzern steht lediglich für Produkte und Dienstleistungen nach der Maßgabe ein, die in der Vereinbarung über die jeweiligen Produkte und Dienstleistungen ausdrücklich geregelt ist. Aus den in dieser Publikation enthaltenen Informationen ergibt sich keine weiterführende Haftung.

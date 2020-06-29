@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<assembly>
+  <sourcedir id="d:/rel32/win32_x86/release/bin/Connectivity/dataAccess/connectionServer/drivers/lib32">
+    <file name="dbd_tdodbc.dll" installdir="[INSTALLDIR]SAP BusinessObjects Enterprise XI 4.0/dataAccess/connectionServer/drivers/lib32" size="337368"/>
+    <file name="dbd_wtdodbc.dll" installdir="[INSTALLDIR]SAP BusinessObjects Enterprise XI 4.0/dataAccess/connectionServer/drivers/lib32" size="337368"/>
+  </sourcedir>
+  <sourcedir id="d:/rel32/win32_x86/release/bin/Connectivity/dataAccess/connectionServer/setup">
+    <file name="teradata_odbc.32.setup" installdir="[INSTALLDIR]SAP BusinessObjects Enterprise XI 4.0/dataAccess/connectionServer/setup" size="479"/>
+  </sourcedir>
+</assembly>

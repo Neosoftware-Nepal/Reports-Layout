@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<duseed>
+  <deploymentUnit id="connectivity.connectionserver.drivers.progress.odbc.config-4.0-core-32" revision="14.0.4.738" schemaVersion="3" packagedOnPlatform="win32_x86" installiverseId="aurora" sizeInCache="28457">
+    <requiredDeploymentUnit ref="connectivity.connectionserver.drivers.odbc.core.config-4.0-core"/>
+    <requiredDeploymentUnit ref="setup.core-4.0-core"/>
+  </deploymentUnit>
+  <uninstall>
+    <action id="UninstallDUBundle">
+      <arg name="guid" value="AF5EFF04-0FD6-4464-A04A-2FEF1659690E"/>
+      <arg name="Props" value="INSTALLDIR=&quot;[INSTALLDIR]&quot;"/>
+    </action>
+  </uninstall>
+  <install>
+    <action id="InstallDUBundle">
+      <arg name="Props" value="INSTALLDIR=&quot;[INSTALLDIR]&quot;"/>
+    </action>
+  </install>
+</duseed>

@@ -1,0 +1,34 @@
+Existem dois conjuntos de arquivos de transporte que podem ser usados com o BusinessObjects Enterprise Integration Kit for SAP. Um conjunto é ANSI e o outro é de codificação Unicode.
+
+O conjunto de transportes a ser utilizado depende do sistema BASIS no qual o seu sistema SAP está sendo executado. Além disso, cada transporte consiste em um arquivo de dados e um cofile que estão listados entre parênteses após os nomes dos transportes.
+
+Se o seu sistema SAP é executado em um sistema BASIS anterior ao 6.20, você precisa usar os arquivos listados abaixo:
+
+(Estes arquivos são ANSI.)
+
+* Transporte Conectividade Open SQL (K900128.r22 e R900128.r22)
+* Transporte Conectividade Info Set (K900121.r22 e R900121.r22)
+* Transporte Definição de Segurança em Nível de Linha (K900122.r22 e R900122.r22)
+* Transporte Definição de Cluster (K900123.r22 e R900123.r22)
+* Transporte Auxiliares de Autenticação (K900124.r22 e R900124.r22)
+
+
+Se o seu sistema SAP é executado em um sistema BASIS 6.20 ou posterior, você precisa usar os arquivos listados abaixo:
+
+(Estes arquivos são de codificação Unicode.)
+
+* Transporte Conectividade Open SQL (K900732.R21 e R900732.R21)
+* Transporte Conectividade Info Set (K900688.r21 e R900688.r21)
+* Transporte Definição de Segurança em Nível de Linha (K900689.r21 e R900689.r21)
+* Transporte Definição de Cluster (K900690.r21 e R900690.r21)
+* Transporte Auxiliares de Autenticação (K900691.r21 e R900691.r21)
+
+
+Os arquivos seguintes devem ser usados em um sistema SAP BW:
+
+(Estes arquivos são de codificação Unicode.)
+
+* Transporte Administração de Conteúdo (K900722.r21 e R900722.r21)
+* Transporte Personalização (K900748.r21 e R900748.r21)
+* Transporte Conectividade de Consulta MDX (K900744.r21 e R900744.r21)
+* Transporte Conectividade ODS (K900695.r21 e R900695.r21)

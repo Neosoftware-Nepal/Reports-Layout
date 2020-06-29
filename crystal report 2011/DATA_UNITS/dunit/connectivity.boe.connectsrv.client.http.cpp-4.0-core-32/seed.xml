@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<duseed>
+  <deploymentUnit id="connectivity.boe.connectsrv.client.http.cpp-4.0-core-32" revision="14.0.3.613" schemaVersion="3" packagedOnPlatform="win32_x86" installiverseId="aurora" sizeInCache="245607">
+    <requiredDeploymentUnit ref="connectivity.connectionserver.helpers.cpp-4.0-core"/>
+    <requiredDeploymentUnit ref="connectivity.connectionserver.tools.cscheck-4.0-core"/>
+    <requiredDeploymentUnit ref="setup.core-4.0-core"/>
+  </deploymentUnit>
+  <uninstall>
+    <action id="UninstallDUBundle">
+      <arg name="guid" value="D4B0D6E9-2DB3-4B46-BB60-DA2F6E14674C"/>
+      <arg name="Props" value="INSTALLDIR=&quot;[INSTALLDIR]&quot;"/>
+    </action>
+  </uninstall>
+  <install>
+    <action id="InstallDUBundle">
+      <arg name="Props" value="INSTALLDIR=&quot;[INSTALLDIR]&quot;"/>
+    </action>
+  </install>
+</duseed>

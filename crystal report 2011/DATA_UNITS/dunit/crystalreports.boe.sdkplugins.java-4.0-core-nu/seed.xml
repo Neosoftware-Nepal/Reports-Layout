@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<duseed>
+  <deploymentUnit id="crystalreports.boe.sdkplugins.java-4.0-core-nu" revision="14.0.4.738" schemaVersion="3" packagedOnPlatform="win32_x86" installiverseId="aurora" sizeInCache="9288669">
+    <requiredDeploymentUnit ref="platform.sdk.boe.java-4.0-core"/>
+    <requiredDeploymentUnit ref="platform.sdk.boe.java.bundles-4.0-core"/>
+    <requiredDeploymentUnit ref="platform.sdk.boe.java.deploymentfile.actions.trigger-4.0-core" forceLangPackRef="yes"/>
+    <requiredDeploymentUnit ref="foundation.javalibs-4.0-core"/>
+    <requiredDeploymentUnit ref="crystalreports.boe.sdkplugins.java.crlov-4.0-core"/>
+    <requiredDeploymentUnit ref="crystalreports.boe.sdkplugins.java.managedreports-4.0-core"/>
+    <requiredDeploymentUnit ref="crystalreports.sdk.java-4.0-core"/>
+    <requiredDeploymentUnit ref="platform.services.ras21.clientsdk.java-4.0-core"/>
+    <requiredDeploymentUnit ref="platform.services.ras21.clientsdk_bundle-4.0-core"/>
+    <requiredDeploymentUnit ref="tp.apache.abdera.bundle.biprs-1.1.2-core"/>
+    <requiredDeploymentUnit ref="tp.apache.cxf.bundle.biprs-2.3.3-core"/>
+    <requiredDeploymentUnit ref="platform.services.ras21.clientsdk_shared_bundle-4.0-core"/>
+    <requiredDeploymentUnit ref="setup.core-4.0-core"/>
+  </deploymentUnit>
+  <uninstall>
+    <action id="UninstallDUBundle">
+      <arg name="guid" value="DB711FB4-5A17-4C76-9306-5E796130EF55"/>
+      <arg name="Props" value="INSTALLDIR=&quot;[INSTALLDIR]&quot;"/>
+    </action>
+  </uninstall>
+  <install>
+    <action id="InstallDUBundle">
+      <arg name="Props" value="INSTALLDIR=&quot;[INSTALLDIR]&quot;"/>
+    </action>
+  </install>
+</duseed>

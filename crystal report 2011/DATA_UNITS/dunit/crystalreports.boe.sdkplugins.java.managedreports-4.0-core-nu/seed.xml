@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<duseed>
+  <deploymentUnit id="crystalreports.boe.sdkplugins.java.managedreports-4.0-core-nu" revision="14.0.4.738" schemaVersion="3" packagedOnPlatform="win32_x86" installiverseId="aurora" sizeInCache="645396">
+    <requiredDeploymentUnit ref="crystalreports.sdk.java.sdkcommon-4.0-core"/>
+    <requiredDeploymentUnit ref="crystalreports.sdk.java.repository-4.0-core"/>
+    <requiredDeploymentUnit ref="platform.sdk.boe.java-4.0-core"/>
+    <requiredDeploymentUnit ref="platform.services.ras21.clientsdk.java-4.0-core"/>
+    <requiredDeploymentUnit ref="tp.apache.xerces.java-2.6.2-core"/>
+    <requiredDeploymentUnit ref="tp.ooc.java-4.0.5-core"/>
+    <requiredDeploymentUnit ref="setup.core-4.0-core"/>
+  </deploymentUnit>
+  <uninstall>
+    <action id="UninstallDUBundle">
+      <arg name="guid" value="3A47BEDC-47DD-4A71-B152-2DED16500C8B"/>
+      <arg name="Props" value="INSTALLDIR=&quot;[INSTALLDIR]&quot;"/>
+    </action>
+  </uninstall>
+  <install>
+    <action id="InstallDUBundle">
+      <arg name="Props" value="INSTALLDIR=&quot;[INSTALLDIR]&quot;"/>
+    </action>
+  </install>
+</duseed>

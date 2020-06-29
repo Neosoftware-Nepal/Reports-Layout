@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<assembly>
+  <sourcedir id="d:/rel32/win32_x86/release/bin/Connectivity/dataAccess/connectionServer/setup">
+    <file name="netezza_odbc.32.setup" installdir="[INSTALLDIR]SAP BusinessObjects Enterprise XI 4.0/dataAccess/connectionServer/setup" size="477"/>
+  </sourcedir>
+</assembly>

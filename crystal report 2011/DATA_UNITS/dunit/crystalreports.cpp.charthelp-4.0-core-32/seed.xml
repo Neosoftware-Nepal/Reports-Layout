@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<duseed>
+  <deploymentUnit id="crystalreports.cpp.charthelp-4.0-core-32" revision="14.0.3.613" schemaVersion="3" packagedOnPlatform="win32_x86" installiverseId="aurora" sizeInCache="389">
+    <requiredDeploymentUnit ref="setup.core-4.0-core"/>
+  </deploymentUnit>
+  <uninstall>
+	</uninstall>
+  <install>
+	</install>
+</duseed>

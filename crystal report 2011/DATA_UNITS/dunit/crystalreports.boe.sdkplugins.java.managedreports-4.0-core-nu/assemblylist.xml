@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<assembly>
+  <sourcedir id="d:/rel32/win32_x86/release/bin/crystalreports.boe.sdkplugins.java/java">
+    <file name="cereports.jar" installdir="[INSTALLDIR]/SAP BusinessObjects Enterprise XI 4.0/java/lib" size="720025"/>
+  </sourcedir>
+</assembly>

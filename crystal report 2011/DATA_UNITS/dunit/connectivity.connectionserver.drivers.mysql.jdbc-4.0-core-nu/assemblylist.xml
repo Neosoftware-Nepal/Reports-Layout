@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<assembly>
+  <sourcedir id="d:/rel32/win32_x86/release/bin/Connectivity/dataAccess/connectionServer/jdbc">
+    <file name="mysql.rss" installdir="[INSTALLDIR]SAP BusinessObjects Enterprise XI 4.0/dataAccess/connectionServer/jdbc" size="12012"/>
+    <file name="mysql.sbo" installdir="[INSTALLDIR]SAP BusinessObjects Enterprise XI 4.0/dataAccess/connectionServer/jdbc" size="2319"/>
+    <file name="mysql.prm" installdir="[INSTALLDIR]SAP BusinessObjects Enterprise XI 4.0/dataAccess/connectionServer/jdbc" size="21249"/>
+  </sourcedir>
+  <sourcedir id="d:/rel32/win32_x86/release/bin/Connectivity/dataAccess/connectionServer/setup">
+    <file name="mysql_jdbc.setup" installdir="[INSTALLDIR]SAP BusinessObjects Enterprise XI 4.0/dataAccess/connectionServer/setup" size="477"/>
+  </sourcedir>
+</assembly>

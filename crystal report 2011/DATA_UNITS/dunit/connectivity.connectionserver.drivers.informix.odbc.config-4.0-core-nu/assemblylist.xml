@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<assembly>
+  <sourcedir id="d:/rel32/win32_x86/release/bin/Connectivity/dataAccess/connectionServer/odbc">
+    <file name="informix.prm" installdir="[INSTALLDIR]SAP BusinessObjects Enterprise XI 4.0/dataAccess/connectionServer/odbc" size="15539"/>
+    <file name="informix.sbo" installdir="[INSTALLDIR]SAP BusinessObjects Enterprise XI 4.0/dataAccess/connectionServer/odbc" size="1530"/>
+    <file name="informix.rss" installdir="[INSTALLDIR]SAP BusinessObjects Enterprise XI 4.0/dataAccess/connectionServer/odbc" size="12336"/>
+    <file name="informix.stg" installdir="[INSTALLDIR]SAP BusinessObjects Enterprise XI 4.0/dataAccess/connectionServer/odbc" size="4718"/>
+    <file name="informix.crs" installdir="[INSTALLDIR]SAP BusinessObjects Enterprise XI 4.0/dataAccess/connectionServer/odbc" size="526"/>
+  </sourcedir>
+  <sourcedir id="d:/rel32/win32_x86/release/bin/Connectivity/dataAccess/connectionServer/odbc/extensions/legacy">
+    <file name="informix.rss" installdir="[INSTALLDIR]SAP BusinessObjects Enterprise XI 4.0/dataAccess/connectionServer/odbc/extensions/legacy" size="379559"/>
+  </sourcedir>
+</assembly>

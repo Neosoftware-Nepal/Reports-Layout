@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<assembly>
+  <sourcedir id="d:/rel32/win32_x86/release/bin/connectivity.boe">
+    <file name="ccis_plugin.dll" installdir="[INSTALLDIR]SAP BusinessObjects Enterprise XI 4.0/win32_x86" size="161272"/>
+    <file name="ccis.dll" installdir="[INSTALLDIR]SAP BusinessObjects Enterprise XI 4.0/win32_x86" size="116216"/>
+    <file name="ccis_repo_update.exe" installdir="[INSTALLDIR]SAP BusinessObjects Enterprise XI 4.0/win32_x86" size="33792"/>
+  </sourcedir>
+</assembly>

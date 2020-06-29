@@ -1,0 +1,34 @@
+Vi sono due tipi di file di trasporto che possono essere utilizzati con BusinessObjects Enterprise Integration Kit for SAP. Un tipo è ANSI, mentre l'altro è Unicode. 
+
+Il tipo di file di trasporto da utilizzare dipende dal sistema BASIS nel quale viene eseguito il sistema SAP. Inoltre, ciascun file di trasporto è composto da un file di dati e da un cofile, entrambi elencati tra parentesi dopo i nomi dei file di trasporto.
+
+Se il sistema SAP è in esecuzione in un sistema BASIS anteriore alla versione 6.20, utilizzare i file elencati di seguito:
+
+Questi file sono ANSI.
+
+* Trasporto Connettività Open SQL (K900128.r22 e R900128.r22)
+* Trasporto Connettività Info Set (K900121.r22 e R900121.r22)
+* Trasporto Definizione protezione a livello di riga (K900122.r22 e R900122.r22)
+* Trasporto Definizione cluster (K900123.r22 e R900123.r22)
+* Trasporto Supporti autenticazione (K900124.r22 e R900124.r22)
+
+
+Se il sistema SAP è in esecuzione in un sistema BASIS 6.20 o versione successiva, utilizzare i file elencati di seguito:
+
+Questi file sono Unicode.
+
+* Trasporto Connettività Open SQL (K900732.R21 e R900732.R21)
+* Trasporto Connettività Info Set (K900688.r21 e R900688.r21)
+* Trasporto Definizione protezione a livello di riga (K900689.r21 e R900689.r21)
+* Trasporto Definizione cluster (K900690.r21 e R900690.r21)
+* Trasporto Supporti autenticazione (K900691.r21 e R900691.r21)
+
+
+Utilizzare i seguenti file in un sistema SAP BW:
+
+Questi file sono Unicode.
+
+* Trasporto Amministrazione contenuto (K900722.r21 e R900722.r21)
+* Trasporto personalizzazione (K900748.r21 e R900748.r21)
+* Trasporto Connettività query MDX (K900744.r21 e R900744.r21)
+* Trasporto Connettività ODS (K900695.r21 e R900695.r21)

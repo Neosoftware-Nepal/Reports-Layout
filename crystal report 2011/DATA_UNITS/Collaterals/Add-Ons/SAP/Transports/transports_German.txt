@@ -1,0 +1,34 @@
+Es gibt zwei Sätze von Transportdateien, die mit BusinessObjects Integration Kit for SAP verwendet werden können. Ein Satz ist ANSI-, der andere ist Unicode-fähig. 
+
+Der zu verwendende Satz von Transportdateien hängt davon ab, auf welchem BASIS-System Ihr SAP-System ausgeführt wird. Jeder Transport besteht außerdem aus einer Datendatei (Datafile) und einem Cofile, welche in Klammern hinter den Transportnamen aufgeführt werden.
+
+Wird Ihr SAP-System auf einem BASIS-System einer früheren Version als 6.20 ausgeführt, müssen Sie die nachfolgend aufgeführten Dateien verwenden: 
+
+(Hierbei handelt es sich um ANSI-Dateien.)
+
+* Open SQL Connectivity-Transport (K900128.r22 und R900128.r22)
+* InfoSet Connectivity-Transport (K900121.r22 und R900121.r22)
+* Transport zur Sicherheitsdefinition auf Zeilenebene (K900122.r22 und R900122.r22)
+* Transport für die Clusterdefinition (K900123.r22 und R900123.r22)
+* Transport für Authentifizierungshelfer (K900124.r22 und R900124.r22)
+
+
+Wird Ihr SAP-System auf einem BASIS-System der Version 6.20 oder später ausgeführt, müssen Sie die nachfolgend aufgeführten Dateien verwenden: 
+
+(Hierbei handelt es sich um Unicode-Dateien.)
+
+* Open SQL Connectivity-Transport (K900732.R21 und R900732.R21)
+* InfoSet Connectivity-Transport (K900688.r21 und R900688.r21)
+* Transport zur Sicherheitsdefinition auf Zeilenebene (K900689.r21 und R900689.r21)
+* Transport für die Clusterdefinition (K900690.r21 und R900690.r21)
+* Transport für Authentifizierungshelfer (K900691.r21 und R900691.r21)
+
+
+Die folgenden Dateien müssen auf einem SAP BW-System ausgeführt werden:
+
+(Hierbei handelt es sich um Unicode-Dateien.)
+
+* Transport für die Inhaltsverwaltung (K900722.r21 und R900722.r21)
+* Personalisierungstransport (K900748.r21 und R900748.r21)
+* BW MDX Connectivity-Transport (K900744.r21 und R900744.r21)
+* ODS Connectivity-Transport (K900695.r21 und R900695.r21)

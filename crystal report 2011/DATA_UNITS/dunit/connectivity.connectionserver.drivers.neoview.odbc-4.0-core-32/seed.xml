@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<duseed>
+  <deploymentUnit id="connectivity.connectionserver.drivers.neoview.odbc-4.0-core-32" revision="14.0.3.613" schemaVersion="3" packagedOnPlatform="win32_x86" installiverseId="aurora" sizeInCache="25601">
+    <requiredDeploymentUnit ref="connectivity.connectionserver.drivers.odbc.core-4.0-core"/>
+    <requiredDeploymentUnit ref="connectivity.connectionserver.drivers.neoview.odbc.config-4.0-core"/>
+    <requiredDeploymentUnit ref="setup.core-4.0-core"/>
+  </deploymentUnit>
+  <uninstall>
+    <action id="UninstallDUBundle">
+      <arg name="guid" value="1AD89AEA-341B-4306-B1F9-DCE425A6C1AD"/>
+      <arg name="Props" value="INSTALLDIR=&quot;[INSTALLDIR]&quot;"/>
+    </action>
+  </uninstall>
+  <install>
+    <action id="InstallDUBundle">
+      <arg name="Props" value="INSTALLDIR=&quot;[INSTALLDIR]&quot;"/>
+    </action>
+  </install>
+</duseed>

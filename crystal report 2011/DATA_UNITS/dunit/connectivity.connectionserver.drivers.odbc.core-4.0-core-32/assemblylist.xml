@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<assembly>
+  <sourcedir id="d:/rel32/win32_x86/release/bin/Connectivity/dataAccess/connectionServer/drivers/lib32">
+    <file name="dbd_odbc.dll" installdir="[INSTALLDIR]SAP BusinessObjects Enterprise XI 4.0/dataAccess/connectionServer/drivers/lib32" size="308696"/>
+    <file name="dbd_wodbc.dll" installdir="[INSTALLDIR]SAP BusinessObjects Enterprise XI 4.0/dataAccess/connectionServer/drivers/lib32" size="312792"/>
+    <file name="dbd_odbc3.dll" installdir="[INSTALLDIR]SAP BusinessObjects Enterprise XI 4.0/dataAccess/connectionServer/drivers/lib32" size="320984"/>
+    <file name="dbd_wodbc3.dll" installdir="[INSTALLDIR]SAP BusinessObjects Enterprise XI 4.0/dataAccess/connectionServer/drivers/lib32" size="329176"/>
+    <file name="dbd_odbc35.dll" installdir="[INSTALLDIR]SAP BusinessObjects Enterprise XI 4.0/dataAccess/connectionServer/drivers/lib32" size="320984"/>
+    <file name="dbd_wodbc35.dll" installdir="[INSTALLDIR]SAP BusinessObjects Enterprise XI 4.0/dataAccess/connectionServer/drivers/lib32" size="329176"/>
+  </sourcedir>
+</assembly>

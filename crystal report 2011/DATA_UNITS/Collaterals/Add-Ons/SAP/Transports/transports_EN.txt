@@ -1,0 +1,42 @@
+There are two sets of transport files, which can be used with BusinessObjects Enterprise Integration Kit for SAP. One set is ANSI and the other set is Unicode enabled. 
+
+The set of transports you must use depends on the BASIS system your SAP system is running on. Additionally, each transport consists of a data file and a cofile, which are listed in brackets behind the transport names.
+
+If your SAP system is running on a BASIS system earlier than 6.20, you must use the files listed below:
+
+(These files are ANSI.)
+
+* Open SQL Connectivity transport (K900128.r22 and R900128.r22)
+* Info Set Connectivity transport (K900121.r22 and R900121.r22)
+* Row-level Security Definition transport (K900122.r22 and R900122.r22)
+* Cluster Definition transport (K900123.r22 and R900123.r22)
+* Authentication Helpers transport (K900124.r22 and R900124.r22)
+
+
+
+If your SAP system is running on a 6.20 BASIS system or later, you must use the files listed below:
+
+(These files are Unicode enabled.)
+
+* Open SQL Connectivity transport (K900732.R21 and R900732.R21)
+* Info Set Connectivity transport (K900688.r21 and R900688.r21)
+* Row-level Security Definition transport (K900689.r21 and R900689.r21)
+* Cluster Definition transport (K900690.r21 and R900690.r21)
+* Authentication Helpers transport (K900691.r21 and R900691.r21)
+
+
+The following files must be used on an SAP BW system:
+
+(These files are Unicode enabled.)
+
+* Content Administration transport (K900722.r21 and R900722.r21)
+* Personalization transport (K900748.r21 and R900748.r21)
+* ODS Connectivity transport (K900695.r21 and R900695.r21)
+
+If your SAP BW system has not applied SAP Note 1232751, you must use the file listed below:
+* MDX Query Connectivity transport (K900744.r21 and R900744.r21)
+If your SAP BW system has applied SAP Note 1232751, you must use the file listed below:
+* MDX Query Connectivity transport (K900047.R72 and R900047.R72)
+
+
+

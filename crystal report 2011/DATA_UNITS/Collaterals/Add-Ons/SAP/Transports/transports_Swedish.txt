@@ -1,0 +1,34 @@
+Det finns två typer av transportfiler som kan användas med BusinessObjects Enterprise Integration Kit for SAP. Den ena är en ANSI-uppsättning och den andra Unicode-aktiverad. 
+
+Den transportuppsättning du måste använda beror på det BASIS-system som ditt SAP-system körs på. Dessutom består varje transport av en datafil och en tillhörande fil. Dessa visas inom hakparenteser efter transportnamnen.
+
+Om ditt SAP-system körs på ett BASIS-system som är tidigare än 6.20 måste du använda nedanstående filer:
+
+(De här filerna är i ANSI-format.)
+
+* Transport av öppen SQL-anslutning (K900128.r22 och R900128.r22)
+* Transport av informationsuppsättning om anslutning (K900121.r22 och R900121.r22)
+* Transport av säkerhetsdefinition på radnivå (K900122.r22 och R900122.r22)
+* Transport av klusterdefinition (K900123.r22 och R900123.r22)
+* Transport av autentiseringshjälpare (K900124.r22 och R900124.r22)
+
+
+Om ditt SAP-system körs på ett 6.20 BASIS-system eller senare måste du använda nedanstående filer:
+
+(De här filerna är Unicode-aktiverade.)
+
+* Transport av öppen SQL-anslutning (K900732.R21 och R900732.R21)
+* Transport av informationsuppsättning om anslutning (K900688.r21 och R900688.r21)
+* Transport av säkerhetsdefinition på radnivå (K900689.r21 och R900689.r21)
+* Transport av klusterdefinition (K900690.r21 och R900690.r21)
+* Transport av autentiseringshjälpare (K900691.r21 och R900691.r21)
+
+
+Följande filer måste användas på ett SAP BW-system:
+
+(De här filerna är Unicode-aktiverade.)
+
+* Transport av innehållsadministration (K900722.r21 och R900722.r21)
+* Transport av egen anpassning (K900748.r21 och R900748.r21)
+* Transport av MDX-frågeanslutning (K900744.r21 och R900744.r21)
+* Transport av ODS-anslutning (K900695.r21 och R900695.r21)

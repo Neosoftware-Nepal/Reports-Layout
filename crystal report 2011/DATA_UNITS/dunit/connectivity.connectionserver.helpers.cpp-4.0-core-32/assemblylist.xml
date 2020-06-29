@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<assembly>
+  <sourcedir id="d:/rel32/win32_x86/release/bin/Connectivity">
+    <file name="cs_tools.dll" installdir="[INSTALLDIR]SAP BusinessObjects Enterprise XI 4.0/win32_x86" size="255448"/>
+    <file name="cs_helpers.dll" installdir="[INSTALLDIR]SAP BusinessObjects Enterprise XI 4.0/win32_x86" size="972248"/>
+    <file name="cs_jnihelpers.dll" installdir="[INSTALLDIR]SAP BusinessObjects Enterprise XI 4.0/win32_x86" size="300504"/>
+    <file name="cs_clnt.dll" installdir="[INSTALLDIR]SAP BusinessObjects Enterprise XI 4.0/win32_x86" size="103896"/>
+  </sourcedir>
+</assembly>

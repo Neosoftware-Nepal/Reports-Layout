@@ -1,0 +1,60 @@
+<oem name="CustomCompanyCrystalReports">
+	<cloneProduct sourceId="product.crystalreports-4.0-core-32">
+	
+		<!-- lang attribute can be langcode, "all" or csv "en;fr;ja" -->
+        <replaceString id="product.cr_name" value="SAP Crystal Reports for SAP Business One" lang="all"/>
+		<replaceString id="product.cr_shortname" value="SAP CR for SAP Business One" lang="all"/>
+		
+		<!-- Remove ProductKey dialog and set default product key -->
+		<removeDialog id="CREnterProductKey.dialog"/>
+		<replaceProperty id="ProductKey" defaultValue="D720C-KH4A00W-T70WP0J-3A20040-WE"/>
+
+		<!-- Create Custom Windows Add/Remove Programs entry with new display name, publisher, and icon -->		
+		<arp duSourceId="product.crystalreports.arp-4.0-core">             
+            <arg id="publisher" value="SAP Business Objects"/>
+            <arg id="display_name" value="SAP Crystal Reports for SAP Business One" lang="all"/>
+        </arp>
+		
+		
+		<!-- Create a new crystal reports shortcut in the startmenu by specifying where you want it with the fullLinkPath argument, set it's tooltip description with the description argument -->					
+        <shortcut duSourceId="product.crystalreports.shortcut.crw-4.0-core">                   
+			<arg id="linkFullPath" value="[programmenufolder]\SAP Business One\SAP Crystal Reports for SAP Business One.lnk" lang="all"/>
+			<arg id="description" value="Creates and modifies formatted data reports (.RPT)" lang="all"/> 
+        </shortcut>
+		<shortcut duSourceId="product.crystalreports.shortcut.odbc-4.0-core">
+            <arg id="linkFullPath" value="[programmenufolder]\SAP Business One\32-bit Data Source Administrator.lnk" lang="all"/>
+			<arg id="description" value="Adds, removes and configures Open Database Connectivity (ODBC) data sources and drivers" lang="all"/> 
+        </shortcut>
+		<shortcut duSourceId="product.crystalreports.shortcut.rptpubwiz-4.0-core">
+             <arg id="linkFullPath" value="[programmenufolder]\SAP Business One\Report Upload Wizard.lnk" lang="all"/>
+			 <arg id="description" value="Report Upload Wizard" lang="all"/> 
+        </shortcut>
+		
+		
+	</cloneProduct>
+
+	
+	
+	
+	<!-- Using the clone Patch product allows you to run the oem tool with the same oem.xml on future patches to create compatible oem patches -->
+	<clonePatchProduct sourceId="product.cr.patch-4.0.3.0-core-32">
+	
+		<!-- Update the productname in each language.  Rebrands the UI dialog title, and default shortcut menu folder. -->
+		<!-- lang attribute can be langcode, "all" or csv "en;fr;ja" -->
+        <replaceString id="product.cr_name" value="SAP Crystal Reports for SAP Business One" lang="all"/>
+		<replaceString id="product.cr_shortname" value="SAP CR for SAP Business One" lang="all"/>
+		
+		<!-- Remove ProductKey dialog and set default product key -->
+		<removeDialog id="CREnterProductKey.dialog"/>
+		<replaceProperty id="ProductKey" defaultValue="D5109-NUZ6000-TFFV89C-4UBG6G2-H1"/>
+	
+		
+		<!-- Create Custom Windows Add/Remove Programs entry for the patch with new display name, publisher, and icon -->
+        <arp duSourceId="product.cr.patch.arp-4.0.3.0-core">                   
+            <arg id="publisher" value="SAP Business Objects"/>
+            <arg id="display_name" value="SAP Crystal Reports for SAP Business One" lang="all"/>
+        </arp>
+		
+	</clonePatchProduct>
+	
+</oem>

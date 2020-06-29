@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<assembly>
+  <registryKey name="HKEY_LOCAL_MACHINE\SOFTWARE\SAP BusinessObjects\Suite XI 4.0\Shared Tools\MDS_res.dll">
+    <registryValue name="Path" type="string">[INSTALLDIR]SAP BusinessObjects Enterprise XI 4.0\win32_x86\</registryValue>
+  </registryKey>
+  <sourcedir id="d:/rel32/win32_x86/release/bin/crystalreports.cpp">
+    <file name="MDS.dll" installdir="[INSTALLDIR]SAP BusinessObjects Enterprise XI 4.0/win32_x86" size="1582512"/>
+    <file name="MetaDataPlugins.dll" installdir="[INSTALLDIR]SAP BusinessObjects Enterprise XI 4.0/win32_x86" size="1504712"/>
+    <file name="EnterpriseRepositoryAdaptor.dll" installdir="[INSTALLDIR]SAP BusinessObjects Enterprise XI 4.0/win32_x86" size="239584"/>
+  </sourcedir>
+</assembly>

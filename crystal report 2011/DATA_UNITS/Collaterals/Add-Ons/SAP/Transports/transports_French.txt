@@ -1,0 +1,34 @@
+Il existe deux jeux de fichiers de transports utilisables avec le BusinessObjects Enterprise Integration Kit for SAP. Il s'agit des jeux ANSI et Unicode activé. 
+
+Le jeu de transports à utiliser dépend du système BASIS sur lequel s'exécute votre système SAP. De plus, chaque transport comprend un fichier de données et un fichier de code, répertoriés entre parenthèses après le nom du transport.
+
+Si votre système SAP s'exécute sur un système BASIS antérieur à la version 6.20, vous devez utiliser les fichiers ci-dessous :
+
+(Il s'agit de fichiers ANSI.)
+
+* Transport de connectivité Open SQL (K900128.r22 et R900128.r22)
+* Transport de connectivité InfoSet (K900121.r22 et·R900121.r22)
+* Transport de définition de la sécurité de niveau de ligne (K900122.r22 et R900122.r22)
+* Transport de définition de clusters (K900123.r22 et R900123.r22)
+* Transport des programmes d'aide à l'authentification (K900124.r22 et R900124.r22)
+
+
+Si votre système SAP s'exécute sur un système BASIS version 6.20 ou ultérieure, vous devez utiliser les fichiers ci-dessous :
+
+(Il s'agit de fichiers Unicode activé.)
+
+* Transport de connectivité Open SQL (K900732.R21 et R900732.R21)
+* Transport de connectivité InfoSet (K900688.r21 et R900688.r21)
+* Transport de définition de la sécurité de niveau de ligne (K900689.r21 et·R900689.r21)
+* Transport de définition de clusters (K900690.r21 et R900690.r21)
+* Transport des programmes d'aide à l'authentification (K900691.r21 et R900691.r21)
+
+
+Les fichiers ci-dessous doivent être utilisés sur un système SAP BW :
+
+(Il s'agit de fichiers Unicode activé.)
+
+* Transport d'administration du contenu (K900722.r21 et R900722.r21)
+* Transport de personnalisation (K900748.r21 et R900748.r21)
+* Transport de connectivité de requête MDX (K900744.r21 et R900744.r21)
+* Transport de connectivité ODS (K900695.r21 et R900695.r21)

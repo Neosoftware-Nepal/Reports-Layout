@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<assembly>
+  <registryKey name="HKEY_LOCAL_MACHINE\Software\SAP BusinessObjects\Suite XI 4.0\default\Shared\CLASSID\csHTTPXIR3">
+    <registryValue name="InprocServer" type="string">[INSTALLDIR]SAP BusinessObjects Enterprise XI 4.0\win32_x86\ics_http_xir3.dll</registryValue>
+  </registryKey>
+  <sourcedir id="d:/rel32/win32_x86/release/bin/connectivity.boe">
+    <file name="ics_http_xir3.dll" installdir="[INSTALLDIR]SAP BusinessObjects Enterprise XI 4.0/win32_x86" size="124336"/>
+    <file name="cs_http_xir3.dll" installdir="[INSTALLDIR]SAP BusinessObjects Enterprise XI 4.0/win32_x86" size="746928"/>
+  </sourcedir>
+</assembly>

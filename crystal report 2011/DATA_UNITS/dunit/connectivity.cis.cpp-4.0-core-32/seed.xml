@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<duseed>
+  <deploymentUnit id="connectivity.cis.cpp-4.0-core-32" revision="14.0.3.613" schemaVersion="3" packagedOnPlatform="win32_x86" installiverseId="aurora" sizeInCache="357">
+    <requiredDeploymentUnit ref="setup.core-4.0-core"/>
+  </deploymentUnit>
+  <uninstall/>
+  <install/>
+</duseed>

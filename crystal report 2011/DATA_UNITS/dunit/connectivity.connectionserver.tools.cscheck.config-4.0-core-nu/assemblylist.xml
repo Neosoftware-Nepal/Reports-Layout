@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<assembly>
+  <registryKey name="HKEY_LOCAL_MACHINE\Software\SAP BusinessObjects\Suite XI 4.0\default\Shared\ConnectionServer\CSCheck">
+    <registryValue name="Data Directory" type="string">[INSTALLDIR]SAP BusinessObjects Enterprise XI 4.0\dataAccess\connectionServer\tools</registryValue>
+  </registryKey>
+  <sourcedir id="d:/rel32/win32_x86/release/bin/Connectivity/dataAccess/connectionServer/tools">
+    <file name="cscheck.xml" installdir="[INSTALLDIR]SAP BusinessObjects Enterprise XI 4.0/dataAccess/connectionServer/tools" size="644996"/>
+    <file name="cscheck.xsd" installdir="[INSTALLDIR]SAP BusinessObjects Enterprise XI 4.0/dataAccess/connectionServer/tools" size="8846"/>
+    <file name="cschecklocales.xml" installdir="[INSTALLDIR]SAP BusinessObjects Enterprise XI 4.0/dataAccess/connectionServer/tools" size="1942"/>
+    <file name="cschecklocales.xsd" installdir="[INSTALLDIR]SAP BusinessObjects Enterprise XI 4.0/dataAccess/connectionServer/tools" size="1479"/>
+    <file name="cscheckresults.xsd" installdir="[INSTALLDIR]SAP BusinessObjects Enterprise XI 4.0/dataAccess/connectionServer/tools" size="9160"/>
+  </sourcedir>
+</assembly>

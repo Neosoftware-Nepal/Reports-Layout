@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Root>
+<ProductName>SAP Crystal Reports for SAP Business One</ProductName>
+<MainFrameMenu>
+<Help>
+<CrystalReportHelp>SAP Crystal Reports Súgó</CrystalReportHelp>
+<AboutCrystalReport>mintegy SAP Crystal Reports</AboutCrystalReport>
+</Help>
+</MainFrameMenu>
+</Root>

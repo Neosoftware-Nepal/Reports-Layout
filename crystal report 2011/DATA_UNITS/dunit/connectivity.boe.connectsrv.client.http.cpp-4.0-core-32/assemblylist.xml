@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<assembly>
+  <registryKey name="HKEY_LOCAL_MACHINE\Software\SAP BusinessObjects\Suite XI 4.0\default\Shared\CLASSID\csHTTP">
+    <registryValue name="InprocServer" type="string">[INSTALLDIR]SAP BusinessObjects Enterprise XI 4.0\win32_x86\ics_http.dll</registryValue>
+  </registryKey>
+  <sourcedir id="d:/rel32/win32_x86/release/bin/connectivity.boe">
+    <file name="ics_http.dll" installdir="[INSTALLDIR]SAP BusinessObjects Enterprise XI 4.0/win32_x86" size="136624"/>
+    <file name="cs_http.dll" installdir="[INSTALLDIR]SAP BusinessObjects Enterprise XI 4.0/win32_x86" size="562608"/>
+  </sourcedir>
+</assembly>
