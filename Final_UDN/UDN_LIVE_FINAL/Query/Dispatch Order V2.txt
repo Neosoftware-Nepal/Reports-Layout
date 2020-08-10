@@ -1,0 +1,93 @@
+ALTER PROCEDURE "SP_ITN_DispatchOrder" (IN DocKey INT)
+AS
+BEGIN
+SELECT 	 T0."DocEntry"
+		,T0."DocNum"
+		,T4."SalUnitMsr" AS "UoM"
+		,T4."NumInBuy" as "Qty/Case"
+		,ADM1."IntrntAdrs" As "InternetAddress"
+		,IFNULL(T20."BeginStr", '') 
+		 || '' || CAST(T0."DocNum" AS CHAR(20)) 
+		 || '' || IFNULL(CAST(T20."EndStr" AS CHAR(20)), '') AS "DONumber"
+		,T0."DocDueDate" AS "DeliveryDate"
+		,T0."DocDate"    AS "PostingDate"
+		,T0."TaxDate"	 AS "DocumentDate"
+		,ITN_NEPALI_FMT_DATE(T0."U_ITN_NPDate") AS "Miti"
+		,T0."CardCode" AS "CustomerCode"
+		,T0."CardName" AS "CustomerName"
+		,T0."Address2" AS "CustomerAddress"
+		,T0."Address" AS "CustomerBilToAdrs"
+		,T21."ItmsGrpNam" as "Business Unit"
+		
+		,T0."OwnerCode" AS "PreparedBy"
+		--,T0."U_ITN_TRAN" AS "Shipper"
+		,T0."CreateDate" as "DocumentDate"
+		,T9."SlpName" AS "Sales Employee"
+		
+		,IFNULL(CAST(AD."Street" AS VARCHAR), '') AS "CustomerStreet"
+		,IFNULL(AD."City", '') AS "CustomerCity"
+		,IFNULL(ST."Name", '') AS "CustomerState"
+		,IFNULL(AD."ZipCode", '') AS "CustomerZipCode"
+		,IFNULL(AD."Country", '') AS "CustomerCountry"
+		,T17."Name" AS "CustCountryName"
+		,IFNULL(CAST(AD1."Street" AS VARCHAR), '') AS "CustomerBuildingS"
+		,IFNULL(AD1."City", '') AS "CustomerCityS"
+		,IFNULL(ST1."Name", '') AS "CustomerStateS"
+		,IFNULL(AD1."ZipCode", '') AS "CustomerZipCodeS"
+		,IFNULL(AD1."Country", '') AS "CustomerCountryS"
+		,T1."ItemCode" as "ItemCode"
+		,T1."Dscription" as "ItemDescription"
+		,T1."Quantity" as "Quantity"
+		,T1."LineNum"
+		
+		,OUSR."U_NAME" AS "USER_CODE"
+		,IFNULL(M."FirstName", '')AS "CustContFName"
+		,IFNULL(M."MiddleName",'')AS "CustContMName"
+		,IFNULL(M."LastName", '') AS "CustContLName"
+		,IFNULL(M."Cellolar", '') AS "CustContMobileNo"
+		,IFNULL(M."Tel1" , '')    AS "CustContTel"
+		,IFNULL(M."E_MailL", '')  AS "CustContEmail"
+		,T11."TaxId4"  AS "CustomerPAN"
+		,T0."Comments" as "Remarks"
+		
+		,IFNULL(T20."BeginStr", '') 
+		|| '' || CAST(T18."DocNum" AS CHAR(20)) AS "SONumber"
+		,T18."DocDate" AS "SODate"
+		,ITN_NEPALI_FMT_DATE(T18."U_ITN_NPDate")  AS "SOMiti"
+		 
+	FROM ODLN T0
+	INNER JOIN DLN1 T1 ON T0."DocEntry" = T1."DocEntry"
+	--LEFT join  OPOR T1 ON T1."DocEntry" = OPOR."DocEntry"
+	INNER JOIN OADM ON 1 = 1
+	LEFT JOIN ADM1 ON ADM1."Code" = OADM."Code"
+	LEFT JOIN ORDR T18 ON T18."DocEntry" = T1."BaseEntry"
+	LEFT JOIN OSHP T7 ON T7."TrnspCode" = T0."TrnspCode"
+	LEFT JOIN OCTG T8 ON T8."GroupNum" = T0."GroupNum"
+	LEFT JOIN OSLP T9 ON T9."SlpCode" = T0."SlpCode"
+	LEFT JOIN OCRD T10 ON T10."CardCode" = T0."CardCode"
+	LEFT JOIN OUSR ON T0."UserSign" = OUSR."USERID"
+	LEFT JOIN CRD1 AD ON AD."CardCode" = T0."CardCode"
+		AND AD."Address" = T0."PayToCode"
+		AND AD."AdresType" = 'B'
+	LEFT JOIN OCST ST ON ST."Code" = AD."State"
+		AND ST."Country" = AD."Country"
+	LEFT JOIN CRD1 AD1 ON AD1."CardCode" = T0."CardCode"
+		AND AD1."Address" = T0."ShipToCode"
+		AND AD1."AdresType" = 'S'
+	LEFT JOIN OCST ST1 ON ST1."Code" = AD1."State"
+		AND ST1."Country" = AD1."Country"
+	LEFT JOIN CRD7 T11 ON T11."CardCode" = T0."CardCode"
+		AND T11."Address" = ''
+		AND T11."AddrType" = 'S'
+	LEFT JOIN OCPR M ON M."CntctCode" = T0."CntctCode"
+		AND M."CardCode" = T0."CardCode"
+	LEFT JOIN OITM T4 ON T4."ItemCode" = T1."ItemCode"
+	inner Join OITB T21 On T4."ItmsGrpCod" = T21."ItmsGrpCod"
+	--LEFT JOIN V_ITN_ITEMDLN Pivot ON Pivot."ItemCode" = T4."ItemCode"
+    --AND Pivot."DocEntry" = T0."DocEntry"
+	LEFT JOIN OCRY T17 ON T17."Code" = AD."Country"
+	INNER JOIN NNM1 T20 ON T20."Series" = T0."Series" 
+	LEFT JOIN OCST ST2 ON ST2."Code" = OADM."State"
+		AND ST2."Country" = OADM."Country"
+	WHERE T0."DocEntry" = :DocKey;
+		END

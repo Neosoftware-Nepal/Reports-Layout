@@ -1,0 +1,43 @@
+SELECT 
+	T0."Project" as "Business Unit"
+              ,T0."Series"
+	,T0."DocNum"
+	,T0."DocDate" as "Doc. Date"
+	,T0."DocDueDate"
+	,T0."CardCode" as "Customer Code"
+	,T0."CardName" as "Customer Name"
+	,T0."NumAtCard" as "Cust.Ref. No"
+	,T1."ItemCode" 
+	,T1."Dscription" as "Item Name"
+	,T1."Quantity"
+	,T1."UomCode"
+	,case when T1."FreeTxt" Like 'Free%'
+                     then T1."FreeTxt"
+                     Else cast(T1."Price" as char(20)) End as "Unit Price"
+	,T1."TaxCode"
+              ,IFNULL(T1."U_ITNPRODISPR", 0) as "Promotion Discount Percent"
+	,T1."U_ITNPRODISAM" as "Promotion Discount Amount"
+              ,T1."DiscPrcnt" as "Production Discount"
+              ,T1."VatSum" as "RowWise Tax Amount"
+	,T1."LineTotal" as "Line Total"
+	,T2."U_SUFCTR"
+              ,T1."WhsCode"
+	,T1."OcrCode"
+	,T1."OcrCode2"
+	,T0."U_ITNTRDDIS" as "Volume Discount Percent"
+	,T0."U_ITNTRDDISAM" as "Volume Discount Amount"
+	,T0."U_ITNCProD" as "Consumer Discount Percent"
+	,T0."U_ITNCProAmt" as "Consumer Discount Amount"
+	,T0."U_ITNTRDDIS" as "Trade Discount Percent"
+	,T0."U_ITNTRDDISAM" as "Trade Discount Amount"
+	,T0."VatSum" as "Total Tax Amount"
+	,T0."DocTotal"
+,T0."CANCELED"
+
+	,CASE WHEN T0."DocStatus" = 'O' THEN 'Open' WHEN T0."DocStatus" = 'C' THEN 'Closed'  ELSE ' ' END as "Status",(SELECT DISTINCT OLCT."Location" FROM OLCT LEFT JOIN INV1 ON OLCT."Code" = INV1."LocCode" WHERE INV1."DocEntry" = T0."DocEntry") AS "Location" 
+
+
+
+FROM OINV T0
+INNER JOIN INV1 T1 ON T0."DocEntry"= T1."DocEntry"
+INNER JOIN OITM T2 ON T1."ItemCode" = T2."ItemCode"

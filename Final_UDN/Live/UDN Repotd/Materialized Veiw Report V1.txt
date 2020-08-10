@@ -1,0 +1,107 @@
+CREATE PROCEDURE "SP_ITN_MaterializedView"
+AS
+BEGIN
+	SELECT DISTINCT T0."DocEntry"
+		,T0."PIndicator"
+		,T0."ObjType"
+		,T0."DocStatus"
+		,T0."CANCELED"
+		,T6."SeriesName"
+		,'AR INVOICE' AS "DOCTYPE"
+		,IFNULL(T6."SeriesName", '') || ' ' ||CAST(T0."DocNum" AS CHAR(20)) AS "DocNo"
+		,T0."U_ITN_NPDate" AS "NP Date"
+		,T0."DocDate"
+		,CASE 
+			WHEN T0."CANCELED" = 'Y'
+				THEN 'CANCELED'
+			ELSE T0."CardCode"
+			END AS "CardCode"
+		,CASE 
+			WHEN T0."CANCELED" = 'Y'
+				THEN 'CANCELED'
+			ELSE T0."CardName"
+			END AS "CardName"
+		,T0."NumAtCard" AS "Hard Copy No"
+		,CASE 
+			WHEN T0."CANCELED" = 'Y'
+				THEN ''
+			ELSE CRD7."TaxId4"
+			END AS "BP PAN NO"
+		,CASE 
+			WHEN T0."CANCELED" = 'Y'
+				THEN 0
+			ELSE SUM(T1."LineTotal")
+			END AS "AMOUNT"
+		,CASE 
+			WHEN T0."CANCELED" = 'Y'
+				THEN 0
+			ELSE T0."DiscSum"
+			END AS "Discount"
+		,CASE 
+			WHEN T0."CANCELED" = 'Y'
+				THEN 0
+			ELSE (T0."DocTotal" - T0."VatSum")
+			END AS "Taxable Amount"
+		,CASE 
+			WHEN T0."CANCELED" = 'Y'
+				THEN 0
+			ELSE (IFNULL(T0."VatSum", 0))
+			END AS "VatSum"
+		,CASE 
+			WHEN T0."CANCELED" = 'Y'
+				THEN 0
+			ELSE T0."DocTotal"
+			END AS "DocTotal"
+		,T5."Location"
+		,(CAST(FLOOR(T0."DocTime" / 100) AS VARCHAR) || ':' || CAST(RIGHT(T0."DocTime", 2) AS VARCHAR)) AS "DocTime"
+		-- Change below once UDF fields are available
+		,'No' AS "Sync with IRD"
+		,'Yes' AS "Is Bill Active"
+		,'No' AS "Is Real Time"
+		,'Credit' AS "Payment Method"
+		-- Change above once UDF fields are available
+		,T0."Printed"
+		,T7."U_NAME"
+		,0.00 AS "VAT Refund Amount"
+	FROM OINV T0
+	INNER JOIN INV1 T1 ON T0."DocEntry" = T1."DocEntry"
+	LEFT JOIN OCRD T2 ON T0."CardCode" = T2."CardCode"
+	LEFT JOIN CRD1 T10 ON T10."CardCode" = T2."CardCode"
+		AND T10."Address" = T0."ShipToCode"
+		AND T10."AdresType" = 'S'
+	LEFT JOIN OCRG t3 ON T2."GroupCode" = t3."GroupCode"
+	LEFT JOIN OLCT T5 ON T5."Code" = T1."LocCode"
+	LEFT JOIN NNM1 t6 ON t6."Series" = t0."Series"
+	LEFT JOIN CRD7 ON CRD7."CardCode" = T0."CardCode"
+		AND CRD7."Address" = ''
+		AND CRD7."AddrType" = 'S'
+	LEFT JOIN OUSR T7 ON T0."UserSign" = T7."USERID"
+	WHERE T0."CANCELED" <> 'C'
+	AND T0."Series" = 4
+	GROUP BY T0."DocEntry"
+		,T6."BeginStr"
+		,T6."EndStr"
+		,T0."DocNum"
+		,T0."U_ITN_NPDate"
+		,T0."DocDate"
+		,T0."CardCode"
+		,T0."CardName"
+		,T0."VatSum"
+		,T0."DiscSum"
+		,T0."DocTotal"
+		,T2."CardFName"
+		,T0."NumAtCard"
+		,T5."Location"
+		,T6."SeriesName"
+		,T10."Country"
+		,T0."ObjType"
+		,T0."PIndicator"
+		,T0."DocTime"
+		,T0."Printed"
+		,T0."DocStatus"
+		,T7."U_NAME"
+		,T0."CANCELED"
+		,T7."Country"
+		,CRD7."TaxId4"
+		ORDER BY T0."DocEntry";
+END;

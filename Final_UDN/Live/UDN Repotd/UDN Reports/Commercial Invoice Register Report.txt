@@ -1,0 +1,16 @@
+SELECT T0."DocNum", T0."CreateDate", T0."U_BU", T0."U_NPDate",T0."U_POEntry", T0."U_PURDATE", T0."U_PROINDE", T0."U_PROINNUM", T0."U_VCODE", T0."U_VNAME", T0."U_CURR", T0."U_REFNUM", T0."U_VENREFDAT", T0."U_IRNUM", T1."U_SKU", T1."U_DSCRIPTION", T1."U_UOM", T1."U_UOMQTY", T1."U_QTY", IFNULL(T1."NumInBuy", 1) as "UPC",
+T0."U_CURR" as "Currency"
+, T1."U_UNP"
+, T1."U_LTXC"
+, T1."U_LTAMT"
+, T1."U_LAMT", T1."U_CIQTY"
+, T1."U_RMRKS", T0."U_TBDIS"
+, T0."U_DISC", T0."U_TXC"
+, T0."U_TXAMT", T0."U_DOCTOTAL"
+, T0."U_PREPBY", T0."U_REMARKS"
+, T2."U_ATCHMENT", T2."U_FILENAME"
+, T2."U_DATE" 
+FROM "@ITN_OCIN"  T0 
+Inner Join "@ITN_CIN1"  T1 On T0."DocEntry" = T1."DocEntry" 
+Inner Join OITM T2 On T1."ItemCode" = T2."ItemCode"
+Left Join "@ITN_CIN2"  T2 On T0."DocEntry" = T2."DocEntry"

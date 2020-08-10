@@ -1,0 +1,88 @@
+CREATE PROCEDURE "SP_ITN_VaTSalesRegisTer"
+AS
+BEGIN
+	SELECT DISTINCT T0."DocEntry"
+		,T0."ObjType"
+		,T6."SeriesName"
+		,'A/R Invoice' AS "DOCTYPE"
+		,T0."DocNum"
+		,T0."DocDate"
+		,CASE 
+			WHEN T0."CANCELED" = 'Y'
+				THEN 'CANCELED'
+			ELSE T0."CardCode"
+			END AS "CardCode"
+		,CASE 
+			WHEN T0."CANCELED" = 'Y'
+				THEN 'CANCELED'
+			ELSE T0."CardName"
+			END AS "CustomerName"
+		,T0."NumAtCard" AS "Hard Copy No"
+		,CASE 
+			WHEN T0."CANCELED" = 'Y'
+				THEN 0
+			ELSE T0."DiscSum"
+			END AS "DiscounT"
+		,CASE 
+			WHEN T0."CANCELED" = 'Y'
+				THEN 0
+			ELSE IFNULL((
+						SELECT (SUM(INV1."LineTotal") - T0."DiscSum")
+						FROM INV1
+						WHERE T0."DocEntry" = INV1."DocEntry"
+							AND INV1."TaxCode" LIKE 'EXEMPT%'
+							AND (
+								T7."Country" = 'NP'
+								OR T7."Country" IS NULL
+								)
+						), 0)
+			END AS "EXEMPT Amount"
+		,CASE 
+			WHEN T0."CANCELED" = 'Y'
+				THEN 0
+			ELSE IFNULL((
+						SELECT (SUM(INV1."LineTotal") - T0."DiscSum")
+						FROM INV1
+						WHERE T0."DocEntry" = INV1."DocEntry"
+							AND T7."Country" <> 'NP'
+						), 0)
+			END AS "EXEMPT EXPORT"
+		,CASE 
+			WHEN T0."CANCELED" = 'Y'
+				THEN 0
+			ELSE IFNULL(T0."VatSum", 0)
+			END AS "VatSum"
+		,CASE 
+			WHEN T0."CANCELED" = 'Y'
+				THEN 0
+			ELSE T0."DocTotal"
+			END AS "DocTotal"
+		,T5."Location"
+		/* Taxable amount */
+		,CASE 
+			WHEN T0."CANCELED" = 'Y'
+				THEN 0
+			ELSE (T0."DocTotal" - T0."VatSum")
+			END AS "Taxable Amount"
+		,CASE 
+			WHEN T0."CANCELED" = 'Y'
+				THEN ''
+			ELSE T8."TaxId4"
+			END AS "PanNo"
+		,IFNULL(T6."SeriesName", '') || ' ' || CAST(T0."DocNum" AS CHAR(20)) AS "InvNo"
+		,T0."U_ITN_NPDate" AS "Sales MiTi"
+	FROM OINV T0
+	JOIN INV1 T1 ON T0."DocEntry" = T1."DocEntry"
+	LEFT OUTER JOIN OCRD T2 ON T0."CardCode" = T2."CardCode"
+	LEFT OUTER JOIN CRD1 T7 ON T7."CardCode" = T2."CardCode"
+		AND T7."Address" = T0."ShipToCode"
+		AND T7."AdresType" = 'S'
+	LEFT OUTER JOIN OCRG T3 ON T2."GroupCode" = T3."GroupCode"
+	LEFT OUTER JOIN OLCT T5 ON T5."Code" = T1."LocCode"
+	LEFT OUTER JOIN NNM1 T6 ON T6."Series" = T0."Series"
+	LEFT OUTER JOIN CRD7 T8 ON T8."CardCode" = T0."CardCode"
+		AND T8."Address" = ''
+		AND T8."AddrType" = 'S'
+	WHERE T0."CANCELED" <> 'C'
+	ORDER BY T0."DocEntry";
+END

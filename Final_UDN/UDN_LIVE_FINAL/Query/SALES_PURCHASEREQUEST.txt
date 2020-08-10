@@ -1,0 +1,84 @@
+CREATE Procedure "SP_ITN_purchaseRequest"(IN DocKey INT)
+AS
+BEGIN
+SELECT 
+	T0."DocEntry"
+	,T1."LineVendor"
+	,T2."Location"
+	,IFNULL(T4."BeginStr", '') 
+	 || '' || CAST(T0."DocNum" AS CHAR(20)) 
+	 || '' || IFNULL(CAST(T4."EndStr" AS CHAR(20)), '') AS "PurOrdNo"
+	,CASE 
+		WHEN T0."DocCur" = 'NPR'
+			THEN T0."DocTotal"
+		ELSE T0."DocTotalFC"
+		END AS "POTotal"
+	
+	,T9."SlpName"    AS "BuyerName"
+	,T0."Comments"   AS "Remarks"
+	,T4."Remark"AS "Remark"
+	
+	,OUSR."U_NAME" AS "Prepared By"
+	,T0."U_CUSENPONT" as "Custom Entry Point"
+	,T0."U_INCOTERM" as "Incoterm"
+	
+	
+	/*  Date   */
+	,SUBSTRING(T0."U_ITN_NPDate",0,4)
+	||'/'||SUBSTRING(T0."U_ITN_NPDate",5,2)
+	||'/'||SUBSTRING(T0."U_ITN_NPDate",7,2) AS "Miti" 
+	,T0."DocDate" AS "PurOrdDt"
+	,MonthName(T0."DocDate") as "Month"
+	
+	
+	/* Vendor Detail   */
+	
+   ,T0."U_CCODE" AS "VendorCode"
+	,T0."ReqName" 
+	,T13."Block" AS "BillingAddress"
+	,(select distinct "TaxId4" from CRD7 TT where TT."CardCode"=T0."U_CCODE" and "TaxId4" is not null) AS "PartyPAN"
+	,T16."Block" AS "ShippingAddress"
+	,T14."CurrName" AS "CurrencyName"
+	,T0."DocCur" AS "Currency"
+	,T0."DocDueDate" as "Expected Delivery Date"
+	,T15."ItmsGrpNam" as "Business Unit"
+	
+	/*  Line Details */
+	,T1."ItemCode" AS "ItemCode"
+	,CASE 
+		WHEN T1."Text" IS NULL
+			THEN T1."Dscription"
+		ELSE T1."Text"
+		END AS "Particulars"
+	,T1."unitMsr" AS "ItemUOM"
+	,T1."Quantity" AS "Quantity"
+	,T11."CardName" as "Party"
+	,T1."Price" AS "Price"
+	,T1."Price" As "Rate"
+	,T1."LineTotal" AS "Amount"
+	,((IFNULL(T1."PriceBefDi", 0) - IFNULL(T1."Price", 0)) * IFNULL(T1."Quantity", 0)) + T0."DiscSum" AS "DisAmt"
+
+FROM OPRQ T0
+INNER JOIN PRQ1 T1 ON T0."DocEntry" = T1."DocEntry"
+LEFT JOIN OLCT T2 ON T1."LocCode" = T2."Code"
+LEFT JOIN OITM T3 ON T1."ItemCode" = T3."ItemCode"
+LEFT JOIN NNM1 T4 ON T0."Series" = T4."Series"
+LEFT JOIN OSHP T5 ON T0."TrnspCode" = T5."TrnspCode"
+LEFT JOIN OCTG T6 ON T0."GroupNum" = T6."GroupNum"
+LEFT JOIN OPYM T7 ON T0."PeyMethod" = T7."PayMethCod"
+LEFT JOIN OCPR T8 ON T0."CntctCode" = T8."CntctCode"
+LEFT JOIN OSLP T9 ON T0."SlpCode" = T9."SlpCode"
+LEFT JOIN OSTC T10 ON t1."TaxCode" = T10."Code"
+LEFT JOIN OCRN T14 ON T0."DocCur" = T14."CurrCode"
+LEFT JOIN OCRD T11 ON T11."CardCode" = T0."U_CCODE"
+--INNER JOIN CRD7 T12 ON T12."CardCode" = T0."U_CCODE"
+--AND T12."AddrType" IN ('B', 'S')
+LEFT JOIN CRD1 T13 ON T13."CardCode" = T0."U_CCODE"
+	AND T13."AdresType" = 'B'
+LEFT JOIN OUSR ON T0."UserSign" = OUSR."USERID"
+INNER JOIN OADM ON 1 = 1
+INNER JOIN OITB T15 ON T3."ItmsGrpCod" = T15."ItmsGrpCod"
+LEFT JOIN CRD1 T16 ON T16."CardCode" = T0."U_CCODE"
+	AND T16."AdresType" = 'S'
+WHERE T0."DocType" = 'I' AND T0."DocEntry" = :DocKey;
+END
